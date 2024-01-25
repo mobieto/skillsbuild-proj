@@ -1,13 +1,1 @@
-Definition of done
-
-(needs to be checked with user stories)
-1 Follows gamification guidelines   
-2 Security when handling users sensitive data   
-3 Successful extensive testing   
-4 No critical bugs   
-5 Follows clients branding   
-6 No known defects   
-7 Optimised Performance   
-8 Scalability   
-9 User Documentation   
-10 Stakeholder Approval   
+Definition of done1. Follows gamification guidelines2. Security when handling user’s sensitive data3. Successful extensive testing 4. Follows client’s branding5. No known defects 6. User Documentation7. Approved by stakeholders 
