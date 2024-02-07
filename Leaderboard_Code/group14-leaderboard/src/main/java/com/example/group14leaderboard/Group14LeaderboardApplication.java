@@ -1,6 +1,7 @@
 package com.example.group14leaderboard;
 
 import model.Leaderboard;
+import model.Player;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,7 +16,12 @@ public class Group14LeaderboardApplication implements CommandLineRunner {
     ArrayList<String> list = new ArrayList<String>();
     public void run(String... args) throws Exception {
         Leaderboard leaderboard = new Leaderboard();
-        leaderboard.setName();
-        leaderboard.getName()
+        leaderboard.setPlayers(new ArrayList<>());
+
+        Player player = new Player();
+        player.setName("Moksh");
+        player.setScore(100);
+
+        leaderboard.getPlayers().add(player);
     }
 }

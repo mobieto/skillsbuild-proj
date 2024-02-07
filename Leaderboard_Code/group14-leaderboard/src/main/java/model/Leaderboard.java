@@ -1,23 +1,14 @@
 package model;
-
+import java.util.ArrayList;
+import java.util.List;
 public class Leaderboard {
-    private String name;
-    private int score;
+    private List<Player> players;
 
-    public String getName() {
-        return name;
+    public List<Player> getPlayers() {
+        return players;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPlayers(List<Player> players) {
+        this.players = players;
     }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
 }
