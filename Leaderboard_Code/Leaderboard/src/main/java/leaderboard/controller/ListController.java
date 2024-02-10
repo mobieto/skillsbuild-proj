@@ -1,5 +1,6 @@
 package leaderboard.controller;
 
+import leaderboard.LeaderboardApplication;
 import leaderboard.model.Leaderboard;
 import leaderboard.model.Players;
 import org.springframework.ui.Model;
@@ -11,11 +12,11 @@ import java.util.List;
 
 @Controller
 public class ListController {
-    Leaderboard leaderboard = new Leaderboard();
-    List<Players> player = leaderboard.getPlayers();
+    Leaderboard l = new Leaderboard();
+    List<Players> p = l.getPlayers();
     @GetMapping("/leaderboard")
-    public String listZoo(Model model){
-        model.addAttribute("player", player);
+    public String leaderboard(Model model){
+        model.addAttribute("players", p );
         return "list";
     }
 
