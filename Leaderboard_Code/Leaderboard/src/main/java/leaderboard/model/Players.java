@@ -1,9 +1,18 @@
 package leaderboard.model;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Players {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
     private int coursesCompleted;
+
+    @ManyToOne
+    @JoinColumn(name = "leaderboard_id")
+    private Leaderboard leaderboard;
 
     public int getId() {
         return id;
@@ -29,12 +38,18 @@ public class Players {
         this.coursesCompleted = coursesCompleted;
     }
 
+    public Leaderboard getLeaderboard() {
+        return leaderboard;
+    }
+
+    public void setLeaderboard(Leaderboard leaderboard) {
+        this.leaderboard = leaderboard;
+    }
+
     @Override
     public String toString() {
-        return "Players{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", coursesCompleted=" + coursesCompleted +
-                '}';
+        return id + " " + name + " " + coursesCompleted;
+
     }
 }
+

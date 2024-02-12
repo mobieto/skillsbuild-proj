@@ -10,19 +10,15 @@
 <table>
     <thead>
     <tr>
+        <th>Player ID</th>
         <th>Player Name</th>
         <th>Courses Completed</th>
     </tr>
     </thead>
-    <tbody>
-    <c:forEach var="player" items="${players}">
-        <tr>
-            <td>${player.name}</td>
-            <td>${player.coursesCompleted}</td>
-        </tr>
-    </c:forEach>
-    </tbody>
 </table>
+<c:forEach items="${players}" var="player">
+    <p>${player}</p>
+</c:forEach>
 </body>
 </html>
 
