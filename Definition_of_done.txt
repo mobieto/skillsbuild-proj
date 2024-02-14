@@ -1,6 +1,6 @@
 Definition of done
 
-1. badges and leaderboard gamification element included
+1. badges and leaderboard gamification elements included
 2. Security when handling users sensitive data   
 3. Successful extensive testing   
 4. Follows IBM branding  
