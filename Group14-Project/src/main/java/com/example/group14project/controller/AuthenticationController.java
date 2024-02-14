@@ -17,7 +17,7 @@ public class AuthenticationController {
     @Autowired
     private SkillsBuildUserRepository repo;
 
-    @RequestMapping(value = "/success-login", method = RequestMethod.GET)
+    @GetMapping(value = "/success-login")
     public String successLogin(Principal principal) {
         SkillsBuildUser user = repo.findByName(principal.getName());
         if (user.getRoles().isEmpty()) {
