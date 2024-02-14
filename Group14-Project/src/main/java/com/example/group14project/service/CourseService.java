@@ -1,8 +1,8 @@
-package org.example.wstest.service;
+package com.example.group14project.service;
 
 import jakarta.annotation.PostConstruct;
-import org.example.wstest.model.Course;
-import org.example.wstest.repo.CourseRepository;
+import com.example.group14project.domain.Course;
+import com.example.group14project.repo.CourseRepository;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
