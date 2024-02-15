@@ -1,5 +1,7 @@
 package com.example.group14project.domain;
 
+import com.example.group14project.repo.BadgeRepository;
+
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -16,6 +18,9 @@ public class SkillsBuildUser {
 
     @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Badge> badges;
+
+    @Autowired
+    private BadgeRepository badgeRepository;
 
     public String getName() {
         return name;
@@ -49,5 +54,6 @@ public class SkillsBuildUser {
         if (this.badges == null) this.badges = new ArrayList<Badge>();
 
         this.badges.add(badge);
+        badgeRepository.save(badge);
     }
 }
