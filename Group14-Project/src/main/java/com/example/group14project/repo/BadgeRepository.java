@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface BadgeRepository extends CrudRepository<Badge, Integer> {
-    Badge findByName(String name);
+    Badge findById(int id);
 
     List<Badge> findByOwnerName(String name);
 }
