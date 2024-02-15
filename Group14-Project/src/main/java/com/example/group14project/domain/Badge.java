@@ -11,7 +11,7 @@ public class Badge {
 
     private String description;
 
-    @ManyToOne
+    @OneToOne
     private SkillsBuildUser owner;
 
     public Badge(int id, String name, String description) {
