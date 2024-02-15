@@ -1,9 +1,9 @@
 Definition of done
 
-1. Follows gamification guidelines   
+1. badges and leaderboard gamification elements included
 2. Security when handling users sensitive data   
 3. Successful extensive testing   
-4. Follows clients branding   
+4. Follows IBM branding  
 5. No known defects   
-6. User Documentation   
-7. Approved by stakeholders    
+6. user documentation for this story is completed
+7. Approved by stakeholders   
