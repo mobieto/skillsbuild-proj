@@ -3,6 +3,7 @@ package com.example.group14project.domain;
 import com.example.group14project.repo.BadgeRepository;
 
 import jakarta.persistence.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
