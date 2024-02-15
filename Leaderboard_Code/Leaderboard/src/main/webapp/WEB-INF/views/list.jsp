@@ -43,7 +43,7 @@
     </c:forEach>
     </tbody>
 </table>
-
+<p><a href="/">Dashboard</a></p>
 </body>
 </html>
 
