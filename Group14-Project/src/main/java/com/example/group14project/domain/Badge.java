@@ -5,8 +5,6 @@ import jakarta.persistence.*;
 @Entity
 public class Badge {
     @Id
-    private int id;
-
     private String name;
 
     private String description;
