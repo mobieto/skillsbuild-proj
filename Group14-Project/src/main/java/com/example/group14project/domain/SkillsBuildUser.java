@@ -7,25 +7,15 @@ import java.util.List;
 
 @Entity
 public class SkillsBuildUser {
-<<<<<<< HEAD
-    @Id
-    private String name;
-
-    @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true)
-    private List<Badge> badges;
-
-    public void awardBadge(Badge badge) {
-        if (this.badges == null) this.badges = new ArrayList<Badge>();
-
-        this.badges.add(badge);
-=======
-
     @Id
     private String name;
     private String password;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<UserRole> userRoles = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<Badge> badges;
 
     public String getName() {
         return name;
@@ -53,6 +43,11 @@ public class SkillsBuildUser {
 
     public void addRole(UserRole role) {
         this.userRoles.add(role);
->>>>>>> origin/main
+    }
+
+    public void awardBadge(Badge badge) {
+        if (this.badges == null) this.badges = new ArrayList<Badge>();
+
+        this.badges.add(badge);
     }
 }
