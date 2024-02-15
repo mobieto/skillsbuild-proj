@@ -5,4 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface BadgeRepository extends CrudRepository<Badge, Integer> {
     Badge findByName(String name);
+
+    Badge findByPlayerName(String name);
 }
