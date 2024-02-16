@@ -26,19 +26,21 @@
 <table>
     <thead>
     <tr>
-        <th>Player ID</th>
+        <th>Rank</th>
         <th>Player Name</th>
         <th>Courses Completed</th>
     </tr>
     </thead>
     <tbody>
+    <c:set var="rank" value="1" />
     <c:forEach items="${players}" var="leaderboard">
         <c:forEach items="${leaderboard.getPlayers()}" var="player">
             <tr>
-                <td>${player.id}</td>
+                <td>${rank}</td>
                 <td>${player.name}</td>
                 <td>${player.coursesCompleted}</td>
             </tr>
+            <c:set var="rank" value="${rank + 1}" />
         </c:forEach>
     </c:forEach>
     </tbody>
@@ -46,5 +48,7 @@
 <p><a href="/">Dashboard</a></p>
 </body>
 </html>
+
+
 
 

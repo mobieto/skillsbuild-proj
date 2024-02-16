@@ -11,25 +11,23 @@ import java.util.List;
 
 @Controller
 public class CourseController {
+
     @Autowired
     private PlayerRepository playerRepository;
 
     @GetMapping("/completeCourse")
-    public String showCompleteCourseForm(Model model) {
-        model.addAttribute("completeCourse", new CompleteCourseForm());
-        return "completeCourse";
-    }
+    public String completeCourse() {
+        String playerName = "Moksh";
 
-    @PostMapping("/completeCourse")
-    public String completeCourse(@ModelAttribute("completeCourseForm") CompleteCourseForm form) {
-        int playerId = form.getPlayerId();
-        List<Players> playersList = playerRepository.findById(playerId);
-        if (!playersList.isEmpty()) {
-            Players player = playersList.get(0);
+        Players player = playerRepository.findByName(playerName);
+
+        if (player != null) {
             player.setCoursesCompleted(player.getCoursesCompleted() + 1);
             playerRepository.save(player);
         }
-        return "redirect:/";
+
+        return "redirect:/leaderboard";
     }
 }
+
 

@@ -1,8 +1,16 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<form:form action="/completeCourse" method="POST" modelAttribute="completeCourse">
-    Player ID:
-    <form:input path="playerId" required="true"/>
-    <form:errors path="playerId"/>
-    <input type="submit">
-</form:form>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complete Course</title>
+</head>
+<body>
+<h2>Complete Course</h2>
+<form action="/completeCourse" method="get">
+    <input type="submit" value="Complete Course">
+</form>
+</body>
+</html>
+
 
