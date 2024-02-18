@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#dashboard {
+    border-collapse: collapse;
+    width:97%;
+    margin: 1rem 0;
+}
+
+#dashboard th, #dashboard td {
+    text-align: left;
+    padding: 8px;
+}
+
+#dashboard th {
+    background-color: #0f75bc;
+    color: white;
+    align-items: center;
+}
+
+#dashboard th p {
+    display: inline-block;
+
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+#dashboard th i {
+    display: inline-block;
+    align-items: center;
+    padding-left: 5px;
+    font-size: 0.75rem;
+}
+
+#dashboard th i:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#dashboard th i:active {
+    transform: scale(0.95);
+}
+
+
+#dashboard th:first-child {
+    border-top-left-radius: 5px;
+}
+
+#dashboard th:nth-child(2) {
+    border-top-right-radius: 5px;
+}
+
+#dashboard tr {
+    transition: 0.05s ease;
+    user-select: none;
+}
+
+#dashboard tr:nth-child(even) {
+    background-color: #d1f5fd;
+}
+
+#dashboard tr:hover {
+    background-color: #e8e8e8;
+}
+
+#courselink {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.05s ease;
+}
+
+#courselink:hover {
+    color: #f7b03e;
+    cursor: pointer;
+}
