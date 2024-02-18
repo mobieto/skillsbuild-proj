@@ -36,5 +36,10 @@
     </select>
     <input type="submit" value="Resume Session">
 </form>
+<form action="/addCourse" method="post">
+    <label for="newCourse">Add New Course:</label>
+    <input type="text" id="newCourse" name="newCourse" required>
+    <input type="submit" value="Add Course">
+</form>
 </body>
 </html>

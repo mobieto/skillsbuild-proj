@@ -7,10 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class CourseController {
@@ -19,7 +16,7 @@ public class CourseController {
 
     @GetMapping("/courses")
     public String showCourses(Model model) {
-        List<String> courseList = Arrays.asList("Course1", "Course2", "Course3");
+        List<String> courseList = new ArrayList<>(activeSessions.keySet());
 
         Map<String, String> elapsedTimeMap = new HashMap<>();
         for (String courseName : activeSessions.keySet()) {
@@ -32,7 +29,6 @@ public class CourseController {
 
         return "courses";
     }
-
 
     @PostMapping("/startSession")
     public String startSession(@RequestParam String courseName) {
@@ -56,5 +52,19 @@ public class CourseController {
             session.resume();
         }
         return "redirect:/courses";
+    }
+
+    @PostMapping("/addCourse")
+    public String addCourse(@RequestParam String newCourse) {
+        if (!activeSessions.containsKey(newCourse)) {
+            activeSessions.put(newCourse, new CourseSession(newCourse, LocalDateTime.now()));
+        }
+        return "redirect:/courses";
+    }
+
+    private CourseSession createCourseSession(String courseName, String userId) {
+        CourseSession courseSession = new CourseSession(courseName, LocalDateTime.now());
+        courseSession.setUserId(userId);
+        return courseSession;
     }
 }
