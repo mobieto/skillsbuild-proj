@@ -2,6 +2,7 @@ package com.example.group14project.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Badge {
@@ -11,6 +12,9 @@ public class Badge {
     private String name;
 
     private String description;
+
+    @OneToOne
+    private SkillsBuildUser owner;
 
     public Badge(int id, String name, String description) {
         this.id = id;
@@ -42,6 +46,14 @@ public class Badge {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public SkillsBuildUser getOwner() {
+        return owner;
+    }
+
+    public void setOwner(SkillsBuildUser owner) {
+        this.owner = owner;
     }
 
     @Override
