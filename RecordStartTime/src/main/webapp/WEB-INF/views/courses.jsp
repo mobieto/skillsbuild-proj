@@ -5,6 +5,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Course Sessions</title>
+    <style>
+        body {
+            background-color: #f4f7fc;
+            font-family: 'IBM Plex Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header, footer {
+            background-color: #132c33;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+        }
+        h2 {
+            color: #132c33;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #ffffff;
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #d1d1d1;
+            border-radius: 5px;
+        }
+        form {
+            margin-top: 10px;
+        }
+        input[type="text"], input[type="submit"] {
+            padding: 5px;
+            margin: 5px;
+            border: 1px solid #132c33;
+            border-radius: 3px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap">
 </head>
 <body>
 <h2>Active Courses</h2>
