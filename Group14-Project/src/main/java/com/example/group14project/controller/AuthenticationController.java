@@ -23,7 +23,7 @@ public class AuthenticationController {
         if (user.getRoles().isEmpty()) {
             return "security/denied";
         }
-        return "redirect:/Dashboard";
+        return "redirect:/dashboard";
     }
 
     @GetMapping(value = "/login-form")

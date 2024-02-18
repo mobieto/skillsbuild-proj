@@ -1,13 +1,25 @@
 package com.example.group14project.controller;
 
+import com.example.group14project.domain.Course;
+import com.example.group14project.repo.CourseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
+
 
 @Controller
 public class DashboardController {
-    @GetMapping("/Dashboard")
-    public String dashboard() {
-        return "home";
+    @Autowired
+    private CourseRepository courseRepository;
+
+    @GetMapping("/dashboard")
+    public String showDashboard(Model model) {
+        List<Course> courses = courseRepository.findAll();
+        model.addAttribute("courses", courses);
+        return "dashboard";
     }
+
 }

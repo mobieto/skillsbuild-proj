@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
 </head>
 <body>
-<h2>Home</h2>
+<h2>Dashboard</h2>
 <p><a href="/leaderboard">Global Leaderboard</a></p>
+<p><a href="/completeCourse">Complete Course</a></p>
 </body>
 </html>
