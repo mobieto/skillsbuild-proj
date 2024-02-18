@@ -10,20 +10,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class CourseController {
 
     @Autowired
-    private PlayerRepository playerRepository;
+    private PlayerRepository Prepo;
 
     @GetMapping("/completeCourse")
     public String completeCourse() {
         String playerName = "Moksh";
 
-        Players player = playerRepository.findByName(playerName);
+        Players player = Prepo.findByName(playerName);
 
         if (player != null) {
             player.setCoursesCompleted(player.getCoursesCompleted() + 1);
-            playerRepository.save(player);
+            Prepo.save(player);
         }
 
-        return "redirect:/leaderboard";
+        return "redirect:/dashboard";
     }
 }
 
