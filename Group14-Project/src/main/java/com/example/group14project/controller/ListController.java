@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ListController {
+
     @Autowired
     private LeaderboardRepository repo;
     @GetMapping("/leaderboard")
