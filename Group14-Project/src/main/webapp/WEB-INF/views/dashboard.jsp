@@ -4,61 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashboard</title>
-    <style>
-        * {
-            margin: 0;
-            border: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        #dashboard {
-            border-collapse: collapse;
-            border: 2px solid #8ACB88;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            width:70%;
-        }
-
-        #dashboard th, #dashboard td {
-            text-align: left;
-            padding: 8px;
-        }
-
-        #dashboard th {
-            background-color: #648381;
-            color: white;
-            font-weight: bold;
-        }
-
-        #dashboard tr:nth-child(even) {
-            background-color: #E4FDE1;
-        }
-
-        #dashboard tr:hover {
-            background-color: #f5f5f5;
-        }
-    </style>
+    <link rel="stylesheet" href="/dashboardCss.css" />
+    <script src="https://kit.fontawesome.com/650125ee3f.js" crossorigin="anonymous"></script>
+    <script src="/dashboardJs.js"></script>
 </head>
 <body>
-<table id="dashboard">
-    <tr>
-        <th>Course</th>
-        <th>Category</th>
-    </tr>
-    <c:forEach items="${courses}" var="course">
+<div id="container">
+    <table id="dashboard">
+        <thead>
         <tr>
-            <td>
-                <a href="${course.link}" target="_blank">${course.name}</a>
-            </td>
-            <td>
-                    ${course.category}
-            </td>
+            <th>
+                <p>Course</p>
+                <i class="fa-solid fa-sort-down" id="course_click"></i>
+            </th>
+
+            <th>
+                <p>Category</p>
+                <i class="fa-solid fa-sort" id="category_click"></i>
+            </th>
         </tr>
-    </c:forEach>
-</table>
+        </thead>
+        <tbody>
+        <c:forEach items="${courses}" var="course">
+            <tr>
+                <td>
+                    <a href="#" id="courselink">${course.name}</a>
+                </td>
+                <td>
+                        ${course.category}
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</div>
+<div id="separatepagelinks">
+    <p><a href="/leaderboard">Global Leaderboard</a></p>
+    <p><a href="/completeCourse">Complete Course</a></p>
+</div>
 </body>
 </html>
