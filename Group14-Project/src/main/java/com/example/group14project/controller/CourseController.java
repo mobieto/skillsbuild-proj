@@ -5,6 +5,8 @@ import com.example.group14project.repo.SkillsBuildUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 @Controller
 public class CourseController {
@@ -14,8 +16,8 @@ public class CourseController {
 
     @GetMapping("/completeCourse")
     public String completeCourse() {
-        String playerName = "Moksh";
-
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String playerName = authentication.getName();
         SkillsBuildUser player = repo.findByName(playerName);
 
         if (player != null) {
