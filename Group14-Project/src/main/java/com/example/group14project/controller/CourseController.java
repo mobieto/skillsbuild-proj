@@ -69,7 +69,6 @@ public class CourseController {
         }
         return "redirect:/courses";
     }
-
     @GetMapping("/completeCourse")
     public String completeCourse() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -84,5 +83,3 @@ public class CourseController {
         return "redirect:/dashboard";
     }
 }
-
-
