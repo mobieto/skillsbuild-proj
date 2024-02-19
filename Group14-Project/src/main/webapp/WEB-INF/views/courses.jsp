@@ -6,13 +6,8 @@
     <meta charset="UTF-8">
     <title>Course Sessions</title>
     <style>
-        input[type="submit"] {
-            background-color: #0f75bc;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            cursor: pointer;
-        }
+
+
 
         body {
             background-color: #f4f7fc;
@@ -56,22 +51,12 @@
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         }
 
-        footer {
-            background-color: #0f75bc;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap">
 </head>
 <body>
-<header>
-    <img id="ibm-logo" src="${pageContext.request.contextPath}/images/IBM_logo.png" alt="IBM Logo">
-</header>
+
 <div>
     <h2>Active Courses</h2>
     <ul>
