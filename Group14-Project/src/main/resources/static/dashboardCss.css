@@ -9,7 +9,34 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr) repeat(1, 6fr);
+    grid-template-areas:
+        'top'
+        'container';
+}
+
+#top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    box-shadow: 1px 2px 7px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    min-width: 100%;
+    user-select: none;
+    background-color: white;
+    z-index: 100;
+    grid-area: top;
+}
+
 #container {
+    grid-area: container;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -18,7 +45,7 @@ html {
 #dashboard {
     border-collapse: collapse;
     width:97%;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
 }
 
 #dashboard th, #dashboard td {
@@ -60,7 +87,7 @@ html {
     border-top-left-radius: 5px;
 }
 
-#dashboard th:nth-child(2) {
+#dashboard th:last-child {
     border-top-right-radius: 5px;
 }
 

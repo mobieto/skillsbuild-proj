@@ -1,7 +1,9 @@
 package com.example.group14project.controller;
 
+import com.example.group14project.domain.Leaderboard;
 import com.example.group14project.domain.SkillsBuildUser;
 import com.example.group14project.domain.UserRole;
+import com.example.group14project.repo.LeaderboardRepository;
 import com.example.group14project.repo.SkillsBuildUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,14 +17,17 @@ import java.security.Principal;
 public class AuthenticationController {
 
     @Autowired
-    private SkillsBuildUserRepository repo;
+    private SkillsBuildUserRepository skillsBuildUserRepository;
+
+    @Autowired
+    private LeaderboardRepository leaderboardRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @GetMapping(value = "/success-login")
     public String successLogin(Principal principal) {
-        SkillsBuildUser user = repo.findByName(principal.getName());
+        SkillsBuildUser user = skillsBuildUserRepository.findByName(principal.getName());
         if (user.getRoles().isEmpty()) {
             return "security/denied";
         }
@@ -55,7 +60,11 @@ public class AuthenticationController {
         UserRole role = new UserRole("default");
         skillsBuildUser.addRole(role);
         skillsBuildUser.setPassword(passwordEncoder.encode(skillsBuildUser.getPassword()));
-        repo.save(skillsBuildUser);
+        skillsBuildUser.setCoursesCompleted(0);
+        skillsBuildUserRepository.save(skillsBuildUser);
+        Leaderboard leaderboard = leaderboardRepository.findById(1);
+        leaderboard.getPlayers().add(skillsBuildUser);
+        leaderboardRepository.save(leaderboard);
         return "security/login";
     }
 

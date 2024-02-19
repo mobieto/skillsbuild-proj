@@ -3,13 +3,93 @@
 <head>
     <meta charset="UTF-8">
 </head>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 10px;
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 10vh;
+    }
+
+    header {
+        padding: 20px;
+        text-align: center;
+        margin: 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #ibm-logo {
+        max-width: 30%;
+        height: auto;
+        display: block;
+        margin: 20px auto;
+        box-shadow: 0 0 20px rgb(255, 255, 255);
+    }
+
+    #typing-message {
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: center;
+        margin: 10px;
+        font-size: 24px;
+        animation: typing 10s steps(100);
+        color: #0f75bc;
+    }
+
+    @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+    }
+
+    form {
+        text-align: center;
+        margin-top: 50px;
+        max-width: 400px;
+        width: 100%;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        padding: 15px;
+        margin-bottom: 20px;
+        width: 100%;
+        border: 2px solid #0f75bc;
+        border-radius: 5px;
+        outline: none;
+    }
+
+    input[type="submit"] {
+        padding: 15px 30px;
+        background-color: #0f75bc;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #095c91;
+    }
+</style>
+</head>
+<body>
+<header>
+    <img id="ibm-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/2560px-IBM_logo.svg.png">
+</header>
+<div id="typing-message">Gamify your IBM experience!</div>
 <body>
     <form action="/myLogin" method="post">
         User Name: <input type="text" name="username" /> <br/>
         Password: <input type="password" name="password" /> <br/>
         <input type="submit" value="Sign In" /> <br/>
 <%--        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">--%>
-        <p> or <a href="/register-form">register</a></p>
+        <p><a href="/register-form">register</a></p>
     </form>
 </body>
 </html>
