@@ -6,7 +6,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 public class CourseSession {
-    private String userId;
     private String courseName;
     private LocalDateTime startTime;
     private Long pauseTime;
@@ -21,14 +20,6 @@ public class CourseSession {
         this.startTime = startTime;
         this.pauseTime = null;
         this.pausedDuration = Duration.ZERO;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public void start() {
