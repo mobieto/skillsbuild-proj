@@ -2,11 +2,9 @@ package com.example.group14project;
 
 import com.example.group14project.domain.SkillsBuildUser;
 import com.example.group14project.domain.UserRole;
-import com.example.group14project.model.Leaderboard;
-import com.example.group14project.model.Players;
+import com.example.group14project.domain.Leaderboard;
 import com.example.group14project.repo.LeaderboardRepository;
 import com.example.group14project.repo.SkillsBuildUserRepository;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,10 +21,10 @@ public class Group14ProjectApplication implements CommandLineRunner {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private SkillsBuildUserRepository repository;
+    private SkillsBuildUserRepository skillsBuildUserRepository;
 
     @Autowired
-    private LeaderboardRepository repo;
+    private LeaderboardRepository leaderboardRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(Group14ProjectApplication.class, args);
@@ -34,42 +32,36 @@ public class Group14ProjectApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        SkillsBuildUser user1 = new SkillsBuildUser();
-        UserRole role = new UserRole("default");
-        user1.setName("guest");
-        user1.setPassword(passwordEncoder.encode("password"));
-        user1.addRole(role);
-        repository.save(user1);
 
         // Leaderboard code below
         Leaderboard leaderboard = new Leaderboard();
         leaderboard.setPlayers(new ArrayList<>());
 
-        Players player1 = new Players();
-        player1.setName("Moksh");
-        player1.setCoursesCompleted(2);
-        leaderboard.getPlayers().add(player1);
-        player1.setLeaderboard(leaderboard);
+        SkillsBuildUser user1 = new SkillsBuildUser();
+        UserRole role = new UserRole("default");
+        user1.addRole(role);
+        user1.setName("John");
+        user1.setCoursesCompleted(0);
+        user1.setPassword(passwordEncoder.encode("password"));
+        leaderboard.getPlayers().add(user1);
 
-        Players player2 = new Players();
-        player2.setName("John");
-        player2.setCoursesCompleted(3);
-        leaderboard.getPlayers().add(player2);
-        player2.setLeaderboard(leaderboard);
+        SkillsBuildUser user2 = new SkillsBuildUser();
+        user2.addRole(role);
+        user2.setName("Adam");
+        user2.setCoursesCompleted(4);
+        user2.setPassword(passwordEncoder.encode("password"));
+        leaderboard.getPlayers().add(user2);
 
-        Players player3 = new Players();
-        player3.setName("Jessica");
-        player3.setCoursesCompleted(1);
-        leaderboard.getPlayers().add(player3);
-        player3.setLeaderboard(leaderboard);
+        SkillsBuildUser user3 = new SkillsBuildUser();
+        user3.addRole(role);
+        user3.setName("Roshan");
+        user3.setCoursesCompleted(10);
+        user3.setPassword(passwordEncoder.encode("password"));
+        leaderboard.getPlayers().add(user3);
 
-        Players player4 = new Players();
-        player4.setName("Alex");
-        player4.setCoursesCompleted(8);
-        leaderboard.getPlayers().add(player4);
-        player4.setLeaderboard(leaderboard);
 
-        leaderboard.getPlayers().sort(Comparator.comparingInt(Players::getCoursesCompleted).reversed());
-        repo.save(leaderboard);
+
+        leaderboard.getPlayers().sort(Comparator.comparingInt(SkillsBuildUser::getCoursesCompleted).reversed());
+        leaderboardRepository.save(leaderboard);
     }
 }

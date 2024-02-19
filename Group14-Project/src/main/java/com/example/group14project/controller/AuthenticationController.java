@@ -1,13 +1,15 @@
 package com.example.group14project.controller;
 
+import com.example.group14project.domain.Leaderboard;
 import com.example.group14project.domain.SkillsBuildUser;
+import com.example.group14project.domain.UserRole;
+import com.example.group14project.repo.LeaderboardRepository;
 import com.example.group14project.repo.SkillsBuildUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -15,11 +17,17 @@ import java.security.Principal;
 public class AuthenticationController {
 
     @Autowired
-    private SkillsBuildUserRepository repo;
+    private SkillsBuildUserRepository skillsBuildUserRepository;
+
+    @Autowired
+    private LeaderboardRepository leaderboardRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping(value = "/success-login")
     public String successLogin(Principal principal) {
-        SkillsBuildUser user = repo.findByName(principal.getName());
+        SkillsBuildUser user = skillsBuildUserRepository.findByName(principal.getName());
         if (user.getRoles().isEmpty()) {
             return "security/denied";
         }
@@ -39,6 +47,25 @@ public class AuthenticationController {
     @RequestMapping(value = "/access-denied")
     public String accessDenied() {
         return "security/denied";
+    }
+
+    @GetMapping("/register-form")
+    public String registerForm(Model model) {
+        model.addAttribute("user", new SkillsBuildUser());
+        return "security/register";
+    }
+
+    @PostMapping("/register-form")
+    public String register(@ModelAttribute SkillsBuildUser skillsBuildUser) {
+        UserRole role = new UserRole("default");
+        skillsBuildUser.addRole(role);
+        skillsBuildUser.setPassword(passwordEncoder.encode(skillsBuildUser.getPassword()));
+        skillsBuildUser.setCoursesCompleted(0);
+        skillsBuildUserRepository.save(skillsBuildUser);
+        Leaderboard leaderboard = leaderboardRepository.findById(1);
+        leaderboard.getPlayers().add(skillsBuildUser);
+        leaderboardRepository.save(leaderboard);
+        return "security/login";
     }
 
 }

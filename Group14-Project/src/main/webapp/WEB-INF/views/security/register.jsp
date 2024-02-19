@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -82,15 +84,15 @@
 <header>
     <img id="ibm-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/2560px-IBM_logo.svg.png">
 </header>
+
 <div id="typing-message">Gamify your IBM experience!</div>
 <body>
-    <form action="/myLogin" method="post">
-        User Name: <input type="text" name="username" /> <br/>
-        Password: <input type="password" name="password" /> <br/>
-        <input type="submit" value="Sign In" /> <br/>
+    <form:form action="/register-form" method="post" modelAttribute="user">
+        User Name: <form:input type="text" name="username"  path="name"/> <br/>
+        Password: <form:input type="password" name="password" path="password"/> <br/>
+        <input type="submit" value="Register" /> <br/>
 <%--        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">--%>
-        <p><a href="/register-form">register</a></p>
-    </form>
+    </form:form>
 </body>
 </html>
 
