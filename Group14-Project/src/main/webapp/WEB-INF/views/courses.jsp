@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Course Sessions</title>
-
     <style>
         input[type="submit"] {
             background-color: #0f75bc;

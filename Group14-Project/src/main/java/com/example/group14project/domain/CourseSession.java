@@ -1,4 +1,4 @@
-package com.example.group14project.domain;
+package com.example.recordstarttime.model;
 
 import java.time.Duration;
 import java.time.Instant;
