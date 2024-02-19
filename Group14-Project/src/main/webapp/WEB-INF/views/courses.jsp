@@ -56,7 +56,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap">
 </head>
 <body>
-
+<header>
+    <img id="ibm-logo" src="${pageContext.request.contextPath}/images/logo1.png" alt="IBM Logo">
+</header>
 <div>
     <h2>Active Courses</h2>
     <ul>
