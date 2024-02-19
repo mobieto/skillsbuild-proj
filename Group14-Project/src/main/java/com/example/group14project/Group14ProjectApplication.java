@@ -3,6 +3,8 @@ package com.example.group14project;
 import com.example.group14project.domain.SkillsBuildUser;
 import com.example.group14project.domain.UserRole;
 import com.example.group14project.domain.Leaderboard;
+import com.example.group14project.domain.Badge;
+import com.example.group14project.repo.BadgeRepository;
 import com.example.group14project.repo.LeaderboardRepository;
 import com.example.group14project.repo.SkillsBuildUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class Group14ProjectApplication implements CommandLineRunner {
 
     @Autowired
     private LeaderboardRepository leaderboardRepository;
+
+    @Autowired
+    private BadgeRepository badgeRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(Group14ProjectApplication.class, args);
@@ -59,7 +64,13 @@ public class Group14ProjectApplication implements CommandLineRunner {
         user3.setPassword(passwordEncoder.encode("password"));
         leaderboard.getPlayers().add(user3);
 
+        Badge badge1 = new Badge("1 Course Complete", "Congratulations, you completed your first course!");
+        user1.awardBadge(badge1);
+        badgeRepository.save(badge1);
 
+        Badge badge2 = new Badge("5 Courses Complete", "Nice job, you completed 5 courses!");
+        user1.awardBadge(badge2);
+        badgeRepository.save(badge2);
 
         leaderboard.getPlayers().sort(Comparator.comparingInt(SkillsBuildUser::getCoursesCompleted).reversed());
         leaderboardRepository.save(leaderboard);

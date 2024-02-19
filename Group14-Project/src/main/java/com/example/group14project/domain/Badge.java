@@ -9,8 +9,7 @@ public class Badge {
 
     private String description;
 
-    @OneToOne
-    private SkillsBuildUser owner;
+    private String owner;
 
     public Badge(String name, String description) {
         this.name = name;
@@ -35,11 +34,11 @@ public class Badge {
         this.description = description;
     }
 
-    public SkillsBuildUser getOwner() {
+    public String getOwner() {
         return owner;
     }
 
-    public void setOwner(SkillsBuildUser owner) {
+    public void setOwner(String owner) {
         this.owner = owner;
     }
 

@@ -1,6 +1,8 @@
 package com.example.group14project.controller;
 
+import com.example.group14project.domain.Badge;
 import com.example.group14project.domain.Course;
+import com.example.group14project.repo.BadgeRepository;
 import com.example.group14project.repo.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,7 @@ public class DashboardController {
     public String showDashboard(Model model) {
         List<Course> courses = courseRepository.findAll();
         model.addAttribute("courses", courses);
+
         return "dashboard";
     }
 

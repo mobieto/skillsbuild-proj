@@ -62,7 +62,7 @@ public class SkillsBuildUser {
     public void awardBadge(Badge badge) {
         if (this.badges == null) this.badges = new ArrayList<Badge>();
 
-        badge.setOwner(this);
+        badge.setOwner(getName());
         this.badges.add(badge);
     }
 }
