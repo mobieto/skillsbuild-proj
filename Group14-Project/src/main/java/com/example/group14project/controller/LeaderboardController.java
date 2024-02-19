@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class ListController {
+public class LeaderboardController {
 
     @Autowired
     private LeaderboardRepository repo;
@@ -16,7 +16,7 @@ public class ListController {
     public String leaderboard(Model model){
         Iterable<Leaderboard> l = repo.findAll();
         model.addAttribute("players", l);
-        return "list";
+        return "leaderboard";
     }
 
 }
