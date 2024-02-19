@@ -114,3 +114,12 @@ body {
     color: #f7b03e;
     cursor: pointer;
 }
+a {
+    color: #0f75bc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #095c91;
+}

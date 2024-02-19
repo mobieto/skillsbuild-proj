@@ -5,6 +5,7 @@
 <body>
 <h2>Global Leaderboard</h2>
 <link rel="stylesheet" href="/leaderboardCSS.css" />
+<p><a href="/dashboard">Dashboard</a></p>
 <table>
     <thead>
     <tr>
@@ -25,7 +26,6 @@
     </c:forEach>
     </tbody>
 </table>
-<p><a href="/dashboard">Dashboard</a></p>
 </body>
 </html>
 

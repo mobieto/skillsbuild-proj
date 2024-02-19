@@ -11,32 +11,32 @@ body {
 }
 
 h2 {
-    color: #0f75bc; /* IBM Blue */
+    color: #0f75bc;
 }
 
 table {
     border-collapse: collapse;
     width: 100%;
-    margin-top: 20px; /* Add some spacing */
+    margin-top: 20px;
 }
 
 th, td {
-    border: 1px solid #0f75bc; /* IBM Blue */
+    border: 1px solid #0f75bc;
     text-align: left;
     padding: 8px;
 }
 
 th {
-    background-color: #0f75bc; /* IBM Blue */
+    background-color: #0f75bc;
     color: white;
 }
 
 a {
-    color: #0f75bc; /* IBM Blue */
+    color: #0f75bc;
     text-decoration: none;
     font-weight: bold;
 }
 
 a:hover {
-    color: #095c91; /* Darker Blue on hover */
+    color: #095c91;
 }

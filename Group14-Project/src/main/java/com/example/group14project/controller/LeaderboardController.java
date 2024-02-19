@@ -18,8 +18,8 @@ public class LeaderboardController {
     private SkillsBuildUserRepository repo;
     @GetMapping("/leaderboard")
     public String leaderboard(Model model){
-        List<SkillsBuildUser> users = repo.findAllOrderByCoursesCompletedDesc();
-        model.addAttribute("players", users);
+        List<SkillsBuildUser> l = repo.findAllOrderByCoursesCompletedDesc();
+        model.addAttribute("players", l);
         return "leaderboard";
     }
 
