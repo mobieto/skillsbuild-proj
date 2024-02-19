@@ -46,7 +46,6 @@ public class CourseController {
         activeSessions.put(courseName, new CourseSession(courseName, LocalDateTime.now()));
         return "redirect:/courses";
     }
-
     @PostMapping("/pauseSession")
     public String pauseSession(@RequestParam String courseName) {
         CourseSession session = activeSessions.get(courseName);
@@ -55,7 +54,6 @@ public class CourseController {
         }
         return "redirect:/courses";
     }
-
     @PostMapping("/resumeSession")
     public String resumeSession(@RequestParam String courseName) {
         CourseSession session = activeSessions.get(courseName);
@@ -64,7 +62,6 @@ public class CourseController {
         }
         return "redirect:/courses";
     }
-
     @PostMapping("/addCourse")
     public String addCourse(@RequestParam String newCourse) {
         if (!activeSessions.containsKey(newCourse)) {
