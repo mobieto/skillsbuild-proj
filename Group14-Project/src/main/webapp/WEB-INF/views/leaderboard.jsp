@@ -15,21 +15,20 @@
     </thead>
     <tbody>
     <c:set var="rank" value="1" />
-    <c:forEach items="${players}" var="leaderboard">
-        <c:forEach items="${leaderboard.getPlayers()}" var="player">
-            <tr>
-                <td>${rank}</td>
-                <td>${player.name}</td>
-                <td>${player.coursesCompleted}</td>
-            </tr>
-            <c:set var="rank" value="${rank + 1}" />
-        </c:forEach>
+    <c:forEach items="${players}" var="player">
+        <tr>
+            <td>${rank}</td>
+            <td>${player.name}</td>
+            <td>${player.coursesCompleted}</td>
+        </tr>
+        <c:set var="rank" value="${rank + 1}" />
     </c:forEach>
     </tbody>
 </table>
 <p><a href="/dashboard">Dashboard</a></p>
 </body>
 </html>
+
 
 
 
