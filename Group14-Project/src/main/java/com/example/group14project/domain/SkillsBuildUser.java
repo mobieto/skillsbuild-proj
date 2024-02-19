@@ -7,6 +7,7 @@ import java.util.List;
 
 @Entity
 public class SkillsBuildUser {
+
     @Id
     private String name;
     private String password;
@@ -14,8 +15,21 @@ public class SkillsBuildUser {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<UserRole> userRoles = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Badge> badges;
+
+    @ManyToOne()
+    private Leaderboard leaderboard;
+
+    public int getCoursesCompleted() {
+        return coursesCompleted;
+    }
+
+    public void setCoursesCompleted(int coursesCompleted) {
+        this.coursesCompleted = coursesCompleted;
+    }
+
+    private int coursesCompleted;
 
     public String getName() {
         return name;
