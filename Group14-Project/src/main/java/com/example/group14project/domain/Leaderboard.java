@@ -1,4 +1,4 @@
-package com.example.group14project.model;
+package com.example.group14project.domain;
 
 import jakarta.persistence.*;
 

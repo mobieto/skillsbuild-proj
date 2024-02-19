@@ -1,6 +1,6 @@
 package com.example.group14project.controller;
 
-import com.example.group14project.model.Leaderboard;
+import com.example.group14project.domain.Leaderboard;
 import com.example.group14project.repo.LeaderboardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,6 +1,6 @@
 package com.example.group14project.controller;
 
-import com.example.group14project.model.Players;
+import com.example.group14project.domain.Players;
 import com.example.group14project.repo.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

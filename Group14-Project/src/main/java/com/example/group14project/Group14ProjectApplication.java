@@ -2,11 +2,10 @@ package com.example.group14project;
 
 import com.example.group14project.domain.SkillsBuildUser;
 import com.example.group14project.domain.UserRole;
-import com.example.group14project.model.Leaderboard;
-import com.example.group14project.model.Players;
+import com.example.group14project.domain.Leaderboard;
+import com.example.group14project.domain.Players;
 import com.example.group14project.repo.LeaderboardRepository;
 import com.example.group14project.repo.SkillsBuildUserRepository;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
