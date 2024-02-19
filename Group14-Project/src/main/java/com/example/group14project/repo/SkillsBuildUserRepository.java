@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface SkillsBuildUserRepository extends CrudRepository<SkillsBuildUser, String> {
     public SkillsBuildUser findByName(String name);
-    @Query("SELECT u FROM SkillsBuildUser u ORDER BY u.coursesCompleted DESC")
+    @Query("SELECT user FROM SkillsBuildUser user ORDER BY user.coursesCompleted DESC")
     List<SkillsBuildUser> findAllOrderByCoursesCompletedDesc();
 }
