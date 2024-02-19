@@ -31,8 +31,8 @@ public class CourseController {
     }
 
     @PostMapping("/startSession")
-    public String startSession(@RequestParam String courseName, @RequestParam String userId) {
-        activeSessions.put(courseName, createCourseSession(courseName, userId));
+    public String startSession(@RequestParam String courseName) {
+        activeSessions.put(courseName, new CourseSession(courseName, LocalDateTime.now()));
         return "redirect:/courses";
     }
 
@@ -55,18 +55,10 @@ public class CourseController {
     }
 
     @PostMapping("/addCourse")
-    public String addCourse(@RequestParam String newCourse, @RequestParam String userId) {
+    public String addCourse(@RequestParam String newCourse) {
         if (!activeSessions.containsKey(newCourse)) {
-            activeSessions.put(newCourse, createCourseSession(newCourse, userId));
+            activeSessions.put(newCourse, new CourseSession(newCourse, LocalDateTime.now()));
         }
         return "redirect:/courses";
     }
-
-    // Helper method to create a new CourseSession
-    private CourseSession createCourseSession(String courseName, String userId) {
-        CourseSession courseSession = new CourseSession(courseName, LocalDateTime.now());
-        courseSession.setUserId(userId);
-        return courseSession;
-    }
 }
-

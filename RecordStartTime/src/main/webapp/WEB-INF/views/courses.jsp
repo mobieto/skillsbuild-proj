@@ -6,25 +6,30 @@
     <meta charset="UTF-8">
     <title>Course Sessions</title>
     <style>
+        input[type="submit"] {
+            background-color: #0f75bc;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
         body {
             background-color: #f4f7fc;
             font-family: 'IBM Plex Sans', sans-serif;
             margin: 0;
             padding: 0;
         }
-        header, footer {
-            background-color: #132c33;
-            color: #ffffff;
-            text-align: center;
-            padding: 10px;
-        }
+
         h2 {
             color: #132c33;
         }
+
         ul {
             list-style-type: none;
             padding: 0;
         }
+
         li {
             background-color: #ffffff;
             margin: 5px 0;
@@ -32,52 +37,86 @@
             border: 1px solid #d1d1d1;
             border-radius: 5px;
         }
+
         form {
             margin-top: 10px;
         }
-        input[type="text"], input[type="submit"] {
+
+        input[type="text"] {
             padding: 5px;
             margin: 5px;
             border: 1px solid #132c33;
             border-radius: 3px;
         }
+
+        header {
+            padding: 20px;
+            text-align: center;
+            margin: 0;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background-color: #0f75bc;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap">
 </head>
 <body>
-<h2>Active Courses</h2>
-<ul>
-    <c:forEach var="course" items="${courseList}">
-        <li>${course} - Elapsed Time: ${elapsedTimeMap[course]}</li>
-    </c:forEach>
-</ul>
-<form action="/startSession" method="post">
-    <label for="courseName">Course Name:</label>
-    <input type="text" id="courseName" name="courseName" required>
-    <input type="submit" value="Start Session">
-</form>
-<form action="/pauseSession" method="post">
-    <label for="pauseCourse">Pause Session (choose course):</label>
-    <select id="pauseCourse" name="courseName">
+<header>
+    <img id="ibm-logo" src="${pageContext.request.contextPath}/images/IBM_logo.png" alt="IBM Logo">
+</header>
+<div>
+    <h2>Active Courses</h2>
+    <ul>
         <c:forEach var="course" items="${courseList}">
-            <option value="${course}">${course}</option>
+            <li>${course} - Elapsed Time: ${elapsedTimeMap[course]}</li>
         </c:forEach>
-    </select>
-    <input type="submit" value="Pause Session">
-</form>
-<form action="/resumeSession" method="post">
-    <label for="resumeCourse">Resume Session (choose course):</label>
-    <select id="resumeCourse" name="courseName">
-        <c:forEach var="course" items="${courseList}">
-            <option value="${course}">${course}</option>
-        </c:forEach>
-    </select>
-    <input type="submit" value="Resume Session">
-</form>
-<form action="/addCourse" method="post">
-    <label for="newCourse">Add New Course:</label>
-    <input type="text" id="newCourse" name="newCourse" required>
-    <input type="submit" value="Add Course">
-</form>
+    </ul>
+    <form action="/startSession" method="post">
+        <label for="courseName">Course Name:</label>
+        <input type="text" id="courseName" name="courseName" required>
+        <input type="submit" value="Start Session">
+    </form>
+    <form action="/pauseSession" method="post">
+        <label for="pauseCourse">Pause Session (choose course):</label>
+        <select id="pauseCourse" name="courseName">
+            <c:forEach var="course" items="${courseList}">
+                <option value="${course}">${course}</option>
+            </c:forEach>
+        </select>
+        <input type="submit" value="Pause Session">
+    </form>
+    <form action="/resumeSession" method="post">
+        <label for="resumeCourse">Resume Session (choose course):</label>
+        <select id="resumeCourse" name="courseName">
+            <c:forEach var="course" items="${courseList}">
+                <option value="${course}">${course}</option>
+            </c:forEach>
+        </select>
+        <input type="submit" value="Resume Session">
+    </form>
+    <form action="/addCourse" method="post">
+        <label for="newCourse">Add New Course:</label>
+        <input type="text" id="newCourse" name="newCourse" required>
+        <input type="submit" value="Add Course">
+    </form>
+</div>
+<footer>
+    <div>
+        <h3>Follow Us</h3>
+        <p>Stay connected with us on social media:</p>
+        <ul>
+            <li><a href="https://www.instagram.com/ibm/" target="_blank">Instagram</a></li>
+            <li><a href="https://www.facebook.com/IBM/" target="_blank">Facebook</a></li>
+        </ul>
+    </div>
+</footer>
 </body>
 </html>
