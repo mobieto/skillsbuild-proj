@@ -32,7 +32,6 @@ public class CourseController {
             CourseSession session = activeSessions.get(courseName);
             elapsedTimeMap.put(courseName, session.getFormattedElapsedTime());
         }
-
         model.addAttribute("courseList", courseList);
         model.addAttribute("elapsedTimeMap", elapsedTimeMap);
 
