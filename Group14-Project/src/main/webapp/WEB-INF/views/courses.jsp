@@ -57,6 +57,15 @@
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
         }
 
+        footer {
+            background-color: #0f75bc;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
 
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap">
@@ -103,12 +112,7 @@
 </div>
 <footer>
     <div>
-        <h3>Follow Us</h3>
-        <p>Stay connected with us on social media:</p>
-        <ul>
-            <li><a href="https://www.instagram.com/ibm/" target="_blank">Instagram</a></li>
-            <li><a href="https://www.facebook.com/IBM/" target="_blank">Facebook</a></li>
-        </ul>
+
     </div>
 </footer>
 </body>
