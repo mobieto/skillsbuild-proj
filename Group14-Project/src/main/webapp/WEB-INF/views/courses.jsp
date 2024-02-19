@@ -6,7 +6,13 @@
     <meta charset="UTF-8">
     <title>Course Sessions</title>
     <style>
-
+        input[type="submit"] {
+            background-color: #0f75bc;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
 
 
         body {
