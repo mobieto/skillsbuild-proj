@@ -2,10 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
-<body>
-<h2>Global Leaderboard</h2>
 <link rel="stylesheet" href="/leaderboardCSS.css" />
-<p><a href="/dashboard">Dashboard</a></p>
+<body>
+<header>Global Leaderboard</header>
+<p>See how you stack up against the rest of the world!</p>
+<a href="/dashboard">Dashboard</a>
+
 <table>
     <thead>
     <tr>

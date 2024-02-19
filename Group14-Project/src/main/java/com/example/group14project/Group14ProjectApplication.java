@@ -75,7 +75,6 @@ public class Group14ProjectApplication implements CommandLineRunner {
         user1.awardBadge(badge2);
         badgeRepository.save(badge2);
 
-        leaderboard.getPlayers().sort(Comparator.comparingInt(SkillsBuildUser::getCoursesCompleted).reversed());
         leaderboardRepository.save(leaderboard);
     }
 }

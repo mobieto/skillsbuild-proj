@@ -16,6 +16,7 @@ public class SkillsBuildUser {
     @OneToMany(fetch = FetchType.EAGER)
     private List<Badge> badges;
 
+    //leaderboard code
     @ManyToOne
     @JoinColumn(name = "leaderboard_id")
     private Leaderboard leaderboard;
@@ -28,6 +29,7 @@ public class SkillsBuildUser {
     }
     public Leaderboard getLeaderboard() {return leaderboard;}
     public void setLeaderboard(Leaderboard leaderboard) {this.leaderboard = leaderboard;}
+    //end of leaderboard code
 
     public String getName() {
         return name;

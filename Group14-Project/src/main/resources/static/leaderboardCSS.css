@@ -10,7 +10,8 @@ body {
     min-height: 10vh;
 }
 
-h2 {
+header {
+    font-size: 35px;
     color: #0f75bc;
 }
 
