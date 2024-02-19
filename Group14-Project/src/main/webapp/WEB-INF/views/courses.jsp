@@ -112,7 +112,12 @@
 </div>
 <footer>
     <div>
-
+        <h3>Follow Us</h3>
+        <p>Stay connected with us on social media:</p>
+        <ul>
+            <li><a href="https://www.instagram.com/ibm/" target="_blank">Instagram</a></li>
+            <li><a href="https://www.facebook.com/IBM/" target="_blank">Facebook</a></li>
+        </ul>
     </div>
 </footer>
 </body>
