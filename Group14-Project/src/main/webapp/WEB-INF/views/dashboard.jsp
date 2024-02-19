@@ -28,7 +28,7 @@
         <c:forEach items="${courses}" var="course">
             <tr>
                 <td>
-                    <a href="#" id="courselink">${course.name}</a>
+                    <a href="${course.link}" id="courselink">${course.name}</a>
                 </td>
                 <td>
                         ${course.category}
