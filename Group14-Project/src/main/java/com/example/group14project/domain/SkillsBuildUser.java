@@ -11,25 +11,23 @@ public class SkillsBuildUser {
     @Id
     private String name;
     private String password;
-
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<UserRole> userRoles = new ArrayList<>();
-
     @OneToMany(fetch = FetchType.EAGER)
     private List<Badge> badges;
 
-    @ManyToOne()
+    @ManyToOne
+    @JoinColumn(name = "leaderboard_id")
     private Leaderboard leaderboard;
-
+    private int coursesCompleted;
     public int getCoursesCompleted() {
         return coursesCompleted;
     }
-
     public void setCoursesCompleted(int coursesCompleted) {
         this.coursesCompleted = coursesCompleted;
     }
-
-    private int coursesCompleted;
+    public Leaderboard getLeaderboard() {return leaderboard;}
+    public void setLeaderboard(Leaderboard leaderboard) {this.leaderboard = leaderboard;}
 
     public String getName() {
         return name;

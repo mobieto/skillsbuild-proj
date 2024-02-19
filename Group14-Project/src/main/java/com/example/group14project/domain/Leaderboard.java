@@ -10,7 +10,7 @@ public class Leaderboard {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "leaderboard", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
     private List<SkillsBuildUser> players = new ArrayList<>();
 
     public List<SkillsBuildUser> getPlayers() {return players;}

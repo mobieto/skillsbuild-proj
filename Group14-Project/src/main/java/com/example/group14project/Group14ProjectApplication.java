@@ -49,6 +49,7 @@ public class Group14ProjectApplication implements CommandLineRunner {
         user1.setCoursesCompleted(0);
         user1.setPassword(passwordEncoder.encode("password"));
         leaderboard.getPlayers().add(user1);
+        user1.setLeaderboard(leaderboard);
 
         SkillsBuildUser user2 = new SkillsBuildUser();
         user2.addRole(role);
@@ -56,6 +57,7 @@ public class Group14ProjectApplication implements CommandLineRunner {
         user2.setCoursesCompleted(4);
         user2.setPassword(passwordEncoder.encode("password"));
         leaderboard.getPlayers().add(user2);
+        user2.setLeaderboard(leaderboard);
 
         SkillsBuildUser user3 = new SkillsBuildUser();
         user3.addRole(role);
@@ -63,6 +65,7 @@ public class Group14ProjectApplication implements CommandLineRunner {
         user3.setCoursesCompleted(10);
         user3.setPassword(passwordEncoder.encode("password"));
         leaderboard.getPlayers().add(user3);
+        user3.setLeaderboard(leaderboard);
 
         Badge badge1 = new Badge("1 Course Complete", "Congratulations, you completed your first course!");
         user1.awardBadge(badge1);
