@@ -33,6 +33,7 @@ public class CourseSession {
         } else {
             System.out.println("Session is already paused.");
         }
+
     }
 
     public void resume() {
