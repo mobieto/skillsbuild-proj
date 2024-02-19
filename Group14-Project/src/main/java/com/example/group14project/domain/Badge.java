@@ -1,14 +1,10 @@
 package com.example.group14project.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Badge {
     @Id
-    private int id;
-
     private String name;
 
     private String description;
@@ -16,21 +12,12 @@ public class Badge {
     @OneToOne
     private SkillsBuildUser owner;
 
-    public Badge(int id, String name, String description) {
-        this.id = id;
+    public Badge(String name, String description) {
         this.name = name;
         this.description = description;
     }
 
     public Badge() {}
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -59,7 +46,6 @@ public class Badge {
     @Override
     public String toString() {
         return "Badge{" +
-                "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';

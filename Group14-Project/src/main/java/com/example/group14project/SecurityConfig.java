@@ -19,6 +19,7 @@ import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -29,8 +30,7 @@ public class SecurityConfig {
     @Bean
     protected SecurityFilterChain configure(HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception {
         http.authorizeHttpRequests(auth ->
-                auth.requestMatchers(mvc.pattern("/greeting")).hasRole("GUEST")
-                        .requestMatchers(mvc.pattern("/best/**")).hasRole("PREMIUM")
+                auth.requestMatchers(mvc.pattern("/register-form")).permitAll()
                         .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
                         .anyRequest().authenticated()
         ).formLogin(login -> login.loginPage("/login-form")
@@ -44,7 +44,7 @@ public class SecurityConfig {
                 .permitAll()
         ).exceptionHandling(exceptionHandler ->
                 exceptionHandler.accessDeniedPage("/access-denied")
-        );
+        ).csrf().disable();
         return http.build();
     }
 

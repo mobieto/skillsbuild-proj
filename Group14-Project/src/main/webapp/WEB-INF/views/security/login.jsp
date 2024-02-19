@@ -8,7 +8,8 @@
         User Name: <input type="text" name="username" /> <br/>
         Password: <input type="password" name="password" /> <br/>
         <input type="submit" value="Sign In" /> <br/>
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+<%--        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">--%>
+        <p> or <a href="/register-form">register</a></p>
     </form>
 </body>
 </html>

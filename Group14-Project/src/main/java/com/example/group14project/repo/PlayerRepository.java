@@ -1,6 +1,6 @@
-package leaderboard.repo;
+package com.example.group14project.repo;
 
-import leaderboard.model.Players;
+import com.example.group14project.domain.Players;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
