@@ -9,6 +9,11 @@
     <script src="/dashboardJs.js"></script>
 </head>
 <body>
+<div id="top">
+    <img src="/logo.png">
+    <p>Welcome to the dashboard page. Here you will find all available IBM SkillsBuild courses for you to access and the categories they fall under.</p>
+    <p><a href="/leaderboard">Global Leaderboard</a></p>
+</div>
 <div id="container">
     <table id="dashboard">
         <thead>
@@ -22,6 +27,8 @@
                 <p>Category</p>
                 <i class="fa-solid fa-sort" id="category_click"></i>
             </th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -33,14 +40,12 @@
                 <td>
                         ${course.category}
                 </td>
+                <td>Start</td>
+                <td><a href="/completeCourse">Complete</a></td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
-</div>
-<div id="separatepagelinks">
-    <p><a href="/leaderboard">Global Leaderboard</a></p>
-    <p><a href="/completeCourse">Complete Course</a></p>
 </div>
 </body>
 </html>
