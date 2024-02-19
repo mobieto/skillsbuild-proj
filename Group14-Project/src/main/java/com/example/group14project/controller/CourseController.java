@@ -21,7 +21,6 @@ public class CourseController {
 
     @Autowired
     private PlayerRepository repo;
-
     private final Map<String, CourseSession> activeSessions = new HashMap<>();
 
     @GetMapping("/courses")
