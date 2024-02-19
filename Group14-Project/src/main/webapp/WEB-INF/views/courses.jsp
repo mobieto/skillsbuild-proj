@@ -14,6 +14,7 @@
             cursor: pointer;
         }
 
+
         body {
             background-color: #f4f7fc;
             font-family: 'IBM Plex Sans', sans-serif;
@@ -65,12 +66,13 @@
             bottom: 0;
             width: 100%;
         }
+
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap">
 </head>
 <body>
 <header>
-    <img id="ibm-logo" src="${pageContext.request.contextPath}/images/IBM_logo.png" alt="IBM Logo">
+    <img id="ibm-logo" src="${pageContext.request.contextPath}/images/logo1.png" alt="IBM Logo">
 </header>
 <div>
     <h2>Active Courses</h2>
