@@ -4,6 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="https://www.ibm.com/content/dam/adobe-cms/default-images/favicon.svg">
     <title>Course Sessions</title>
     <style>
         input[type="submit"] {
@@ -24,6 +25,7 @@
 
         h2 {
             color: #132c33;
+            padding-left: 10px;
         }
 
         ul {
@@ -41,6 +43,7 @@
 
         form {
             margin-top: 10px;
+            padding-left: 10px;
         }
 
         input[type="text"] {
