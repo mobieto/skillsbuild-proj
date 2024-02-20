@@ -3,7 +3,7 @@
 <head>
     <title>User</title>
     <link rel="stylesheet" href="/dashboardCss.css"/>
-    <link rel="stylesheet" href="/leaderboardCSS.css" /
+    <link rel="stylesheet" href="/leaderboardCSS.css"/>
 </head>
 <body>
     <div id="top">
@@ -19,7 +19,7 @@
                 <th>Badge</th>
                 <th>Description</th>
             </thead>
-            <c:forEach items="${user.badges}" var="badge">
+            <c:forEach items="${badges}" var="badge">
                 <td>${badge.name}</td>
                 <td>${badge.description}</td>
             </c:forEach>
