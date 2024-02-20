@@ -4,6 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="https://www.ibm.com/content/dam/adobe-cms/default-images/favicon.svg">
     <title>Course Sessions</title>
     <style>
         input[type="submit"] {
@@ -17,13 +18,14 @@
 
         body {
             background-color: #f4f7fc;
-            font-family: 'IBM Plex Sans', sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
         }
 
         h2 {
             color: #132c33;
+            padding-left: 10px;
         }
 
         ul {
@@ -33,7 +35,8 @@
 
         li {
             background-color: #ffffff;
-            margin: 5px 0;
+            margin-left: 5px;
+            margin-right: 5px;
             padding: 10px;
             border: 1px solid #d1d1d1;
             border-radius: 5px;
@@ -41,6 +44,7 @@
 
         form {
             margin-top: 10px;
+            padding-left: 10px;
         }
 
         input[type="text"] {
@@ -50,16 +54,21 @@
             border-radius: 3px;
         }
 
-        header {
-            padding: 20px;
+        #dashboard {
             text-align: center;
+            margin: 10px;
+            font-size: 18px;
+        }
+
+        header {
+            padding: 10px;
             margin: 0;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 1px rgba(0, 0, 0, 0.2);
         }
 
         footer {
-            background-color: #0f75bc;
-            color: white;
+            <!--background-color: #0f75bc;-->
+            color: #0f75bc;
             text-align: center;
             padding: 10px;
             position: fixed;
@@ -67,12 +76,38 @@
             width: 100%;
         }
 
+        #logo1 {
+            width: 15%;
+            height: 10%;
+            display: block;
+            margin: 20px auto;
+            box-shadow: 0 0 20px rgb(255, 255, 255);
+        }
+        a {
+            color: #0f75bc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #095c91;
+        }
+        h3 {
+            color: #0f75bc;
+        }
+        p {
+            color: #0f75bc;
+        }
+
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap">
 </head>
 <body>
 <header>
-    <img id="ibm-logo" src="${pageContext.request.contextPath}/images/logo1.png" alt="IBM Logo">
+    <img id="logo1" src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg">
+    <div id="dashboard">
+        <a href="/dashboard">Dashboard</a>
+    </div>
 </header>
 <div>
     <h2>Active Courses</h2>
@@ -83,7 +118,7 @@
     </ul>
     <form action="/startSession" method="post">
         <label for="courseName">Course Name:</label>
-        <input type="text" id="courseName" name="courseName" required>
+        <input type="text" id="courseName" name="courseName" value="${additionalCourse}" required>
         <input type="submit" value="Start Session">
     </form>
     <form action="/pauseSession" method="post">
@@ -103,11 +138,6 @@
             </c:forEach>
         </select>
         <input type="submit" value="Resume Session">
-    </form>
-    <form action="/addCourse" method="post">
-        <label for="newCourse">Add New Course:</label>
-        <input type="text" id="newCourse" name="newCourse" required>
-        <input type="submit" value="Add Course">
     </form>
 </div>
 <footer>
