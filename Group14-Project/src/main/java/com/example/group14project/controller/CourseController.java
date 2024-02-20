@@ -26,8 +26,13 @@ public class CourseController {
     private final Map<String, CourseSession> activeSessions = new HashMap<>();
 
     @GetMapping("/courses")
-    public String showCourses(Model model) {
+    public String showCourses(@RequestParam(required = false) String newCourse, Model model) {
         List<String> courseList = new ArrayList<>(activeSessions.keySet());
+        String additionalCourse = null;
+
+        if (newCourse != null && !newCourse.isEmpty() && !courseList.contains(newCourse)) {
+            additionalCourse = newCourse;
+        }
 
         Map<String, String> elapsedTimeMap = new HashMap<>();
         for (String courseName : activeSessions.keySet()) {
@@ -37,9 +42,11 @@ public class CourseController {
 
         model.addAttribute("courseList", courseList);
         model.addAttribute("elapsedTimeMap", elapsedTimeMap);
+        model.addAttribute("additionalCourse", additionalCourse);
 
         return "courses";
     }
+
 
     @PostMapping("/startSession")
     public String startSession(@RequestParam String courseName, Model model) {

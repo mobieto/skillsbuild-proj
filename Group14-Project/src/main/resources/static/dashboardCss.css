@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
 * {
     margin: 0;
     border: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: "IBM Plex Sans";
 }
 
 html {
@@ -114,13 +116,13 @@ body {
     cursor: pointer;
 }
 
-.link2 {
+td .link2 {
     color: #0f75bc;
     text-decoration: none;
     font-weight: bold;
 }
 
-.link2 {
+td .link2 {
     color: #095c91;
     transform: scale(1.1);
 }

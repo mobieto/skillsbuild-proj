@@ -6,6 +6,7 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="/dashboardCss.css" />
     <script src="https://kit.fontawesome.com/650125ee3f.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="https://www.ibm.com/content/dam/adobe-cms/default-images/favicon.svg">
     <script src="/dashboardJs.js"></script>
 </head>
 <body>
@@ -35,13 +36,13 @@
         <c:forEach items="${courses}" var="course">
             <tr>
                 <td>
-                    <a href="${course.link}" id="courselink">${course.name}</a>
+                    <a href="${course.link}" id="courselink" target="_blank">${course.name}</a>
                 </td>
                 <td>
                         ${course.category}
                 </td>
-                <td><a href="/courses">Start</a></td>
-                <td><a href="/completeCourse">Complete</a></td>
+                <td><a href="/courses?newCourse=${course.name}" class="link2">Status</a></td>
+                <td><a href="/completeCourse" class="link2">Complete</a></td>
             </tr>
         </c:forEach>
         </tbody>
