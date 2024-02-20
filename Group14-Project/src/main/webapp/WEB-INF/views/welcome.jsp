@@ -7,6 +7,8 @@
     <title>Welcome to IBM Skillsbuild</title>
     <link rel="stylesheet" href="/welcome.css" />
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
         *{
             text-decoration: none;
         }
@@ -67,8 +69,8 @@
 
         body {
             background-color: white;
-            color: #095c91;
-            font-family: Arial, sans-serif;
+            color: #0f75bc;
+            font-family: "IBM Plex Sans", sans-serif;
             text-align: center;
             padding-top: 120px;
             margin: 0;
@@ -80,7 +82,7 @@
             height: auto;
             display: block;
             margin: 20px auto;
-            box-shadow: 0 0 15px rgb(0, 0, 0, 0.7)
+            box-shadow: 0 0 10px rgb(0, 0, 0, 0.5)
         }
 
 
@@ -92,19 +94,40 @@
 
         .btn {
             display: inline-block;
-            padding: 10px 20px;
-            margin: 10px;
-            background-color: white;
-            color: #095c91;
+            padding: 0.35rem;
+            background-color: #0f75bc;
+            color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 4px;
             transition: background-color 0.3s ease;
+            border: 1px black;
+            margin-left: 0.35rem;
         }
 
         .btn:hover {
-            font-weight: bold;
+            transform: scale(1.05);
         }
 
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        footer{
+            display: block;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .login {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login p{
+            color: #095c91;
+        }
 
  /*
     </style>
@@ -116,7 +139,7 @@
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="/register-form">Login</a><li>
+                    <li><a href="/login-form">Login</a><li>
                 </ul>
             </div>
         </div>
@@ -131,8 +154,14 @@
 
 </div>
 <footer>
-    <a href="#" >Get Started with Courses</a>
-    <a href="/register-form" class="btn">Login</a>
+    <div class="login">
+        <p>Register to get started with courses -</p>
+        <a href="/register-form" class="btn">Register</a>
+    </div>
+   <div class="login">
+       <p>Already have an account?</p>
+       <a href="/login-form" class="btn">Login</a>
+   </div>
 </footer>
 </body>
 </html>
