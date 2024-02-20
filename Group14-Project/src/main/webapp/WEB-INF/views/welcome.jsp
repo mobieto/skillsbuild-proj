@@ -132,7 +132,7 @@
 </div>
 <footer>
     <a href="#" >Get Started with Courses</a>
-    <a href="/register-form" class="btn">Login</a>
+    <a href="/login-form" class="btn">Login</a>
 </footer>
 </body>
 </html>
