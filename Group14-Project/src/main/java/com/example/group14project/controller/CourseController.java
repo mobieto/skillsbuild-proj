@@ -42,30 +42,27 @@ public class CourseController {
     }
 
     @PostMapping("/startSession")
-    public String startSession(@RequestParam String courseName) {
-        activeSessions.put(courseName, new CourseSession(courseName, LocalDateTime.now()));
+    public String startSession(@RequestParam String courseName, Model model) {
+        LocalDateTime startTime = LocalDateTime.now();
+        activeSessions.put(courseName, new CourseSession(courseName, startTime));
+        model.addAttribute("courseStartTime", startTime);
         return "redirect:/courses";
     }
     @PostMapping("/pauseSession")
-    public String pauseSession(@RequestParam String courseName) {
+    public String pauseSession(@RequestParam String courseName, Model model) {
         CourseSession session = activeSessions.get(courseName);
         if (session != null) {
             session.pause();
+            model.addAttribute("coursePauseTime", LocalDateTime.now());
         }
         return "redirect:/courses";
     }
     @PostMapping("/resumeSession")
-    public String resumeSession(@RequestParam String courseName) {
+    public String resumeSession(@RequestParam String courseName, Model model) {
         CourseSession session = activeSessions.get(courseName);
         if (session != null) {
             session.resume();
-        }
-        return "redirect:/courses";
-    }
-    @PostMapping("/addCourse")
-    public String addCourse(@RequestParam String newCourse) {
-        if (!activeSessions.containsKey(newCourse)) {
-            activeSessions.put(newCourse, new CourseSession(newCourse, LocalDateTime.now()));
+            model.addAttribute("courseResumeTime", LocalDateTime.now());
         }
         return "redirect:/courses";
     }
