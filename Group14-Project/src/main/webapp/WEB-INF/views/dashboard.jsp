@@ -6,6 +6,7 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="/dashboardCss.css" />
     <script src="https://kit.fontawesome.com/650125ee3f.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="https://www.ibm.com/content/dam/adobe-cms/default-images/favicon.svg">
     <script src="/dashboardJs.js"></script>
 </head>
 <body>

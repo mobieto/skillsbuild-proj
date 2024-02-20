@@ -87,7 +87,6 @@
             margin: 0px auto;
             box-shadow: 0 5px 10px rgb(0, 0, 0);
         }
-        }
 
 
         .container {
@@ -108,8 +107,7 @@
         }
 
         .btn:hover {
-            background-color: #white;
-            color: white;
+            font-weight: bold;
         }
 
 
@@ -119,13 +117,14 @@
 <header>
     <nav class="navbar">
         <div class="navdiv">
-            <div class="logo"><a href="#">
+            <div class="logo">
                 <ul>
                     <li><a href="/welcome.css">Home</a></li>
                     <li><a href="#">About</a></li>
-                    <li><a href="/register-form">Login</a></button>
+                    <li><a href="/register-form">Login</a></li>
                 </ul>
             </div>
+        </div>
     </nav>
 </header>
 <body>
