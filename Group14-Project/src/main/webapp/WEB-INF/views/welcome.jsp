@@ -61,32 +61,27 @@
         }
 
         button a {
-            color: white;
+            color: #095c91;
             font-weight: bold;
             font-size: 15px;
         }
 
         body {
             background-color: white;
-            color: #0040BD;
+            color: #095c91;
             font-family: Arial, sans-serif;
             text-align: center;
             padding-top: 120px;
             margin: 0;
         }
 
-
-
-
-
         #ibm-logo {
             max-width: 30%;
             padding: 20px;
             height: auto;
             display: block;
-            margin: 0px auto;
-            box-shadow: 0 5px 10px rgb(0, 0, 0);
-        }
+            margin: 20px auto;
+            box-shadow: 0 5px 10px rgb(0, 0, 0)
         }
 
 
@@ -101,7 +96,7 @@
             padding: 10px 20px;
             margin: 10px;
             background-color: white;
-            color: #0040BD;
+            color: #095c91;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s ease;
