@@ -40,8 +40,9 @@
                 <td>
                         ${course.category}
                 </td>
-                <td>Start</td>
+                <td><a href="/courses">Start</a></td>
                 <td><a href="/completeCourse">Complete</a></td>
+
             </tr>
         </c:forEach>
         </tbody>

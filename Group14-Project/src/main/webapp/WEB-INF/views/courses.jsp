@@ -55,6 +55,8 @@
             text-align: center;
             margin: 0;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            width: auto;
+            height: auto;
         }
 
         footer {
@@ -66,18 +68,29 @@
             bottom: 0;
             width: 100%;
         }
+        /*
+        logo1 {
+            width: auto;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }*/
 
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap">
 </head>
 <body>
 <header>
-    <img id="ibm-logo" src="${pageContext.request.contextPath}/images/logo1.png" alt="IBM Logo">
+    <img id="logo1" src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg">
+    <div>
+        <a href="/dashboard">Dashboard</a>
+    </div>
 </header>
+
 <div>
     <h2>Active Courses</h2>
     <ul>
-        <c:forEach var="course" items="${courseList}">
+        <c:forEach var="courses" items="${courseList}">
             <li>${course} - Elapsed Time: ${elapsedTimeMap[course]}</li>
         </c:forEach>
     </ul>
