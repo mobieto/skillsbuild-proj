@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/leaderboardCSS.css" />
 <body>
-<header>Global Leaderboard</header>
+<header>
+    <img id="ibm-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/2560px-IBM_logo.svg.png">
+    Global Leaderboard
+</header>
 <p>See how you stack up against the rest of the world!</p>
 <a href="/dashboard">Dashboard</a>
 
