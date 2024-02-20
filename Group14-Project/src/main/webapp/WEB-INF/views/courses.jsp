@@ -17,7 +17,7 @@
 
         body {
             background-color: #f4f7fc;
-            font-family: 'IBM Plex Sans', sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
         }
@@ -33,7 +33,8 @@
 
         li {
             background-color: #ffffff;
-            margin: 5px 0;
+            margin-left: 5px;
+            margin-right: 5px;
             padding: 10px;
             border: 1px solid #d1d1d1;
             border-radius: 5px;
@@ -63,8 +64,8 @@
         }
 
         footer {
-            background-color: #0f75bc;
-            color: white;
+            <!--background-color: #0f75bc;-->
+            color: #0f75bc;
             text-align: center;
             padding: 10px;
             position: fixed;
@@ -78,6 +79,21 @@
             display: block;
             margin: 20px auto;
             box-shadow: 0 0 20px rgb(255, 255, 255);
+        }
+        a {
+            color: #0f75bc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #095c91;
+        }
+        h3 {
+            color: #0f75bc;
+        }
+        p {
+            color: #0f75bc;
         }
 
     </style>
