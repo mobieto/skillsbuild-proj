@@ -67,7 +67,7 @@ public class Group14ProjectApplication implements CommandLineRunner {
         leaderboard.getPlayers().add(user3);
         user3.setLeaderboard(leaderboard);
 
-        Badge badge1 = new Badge("1 Course Complete", "Congratulations, you completed your first course!");
+        Badge badge1 = new Badge("First Course Complete", "Congratulations, you completed your first course!");
         user1.awardBadge(badge1);
         badgeRepository.save(badge1);
 
