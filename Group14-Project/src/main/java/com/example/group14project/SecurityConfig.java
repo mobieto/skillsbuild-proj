@@ -31,9 +31,10 @@ public class SecurityConfig {
     protected SecurityFilterChain configure(HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception {
         http.authorizeHttpRequests(auth ->
                 auth.requestMatchers(mvc.pattern("/register-form")).permitAll()
+                        .requestMatchers(mvc.pattern("/")).permitAll()
                         .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
                         .anyRequest().authenticated()
-        ).formLogin(login -> login.loginPage("/welcome")
+        ).formLogin(login -> login.loginPage("/login-form")
                 .loginProcessingUrl("/myLogin")
                 .defaultSuccessUrl("/success-login", true)
                 .failureUrl("/error-login")

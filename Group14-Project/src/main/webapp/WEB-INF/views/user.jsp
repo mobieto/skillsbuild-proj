@@ -20,8 +20,10 @@
                 <th>Description</th>
             </thead>
             <c:forEach items="${badges}" var="badge">
-                <td>${badge.name}</td>
-                <td>${badge.description}</td>
+                <tr>
+                    <td>${badge.name}</td>
+                    <td>${badge.description}</td>
+                </tr>
             </c:forEach>
         </table>
     </div>
