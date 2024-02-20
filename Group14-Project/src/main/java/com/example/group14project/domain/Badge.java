@@ -14,6 +14,7 @@ public class Badge {
     @ManyToMany(mappedBy = "badges")
     private List<SkillsBuildUser> usersAwarded;
 
+    private String owner;
 
     public Badge(String name, String description) {
         this.name = name;
@@ -36,6 +37,14 @@ public class Badge {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     @Override
