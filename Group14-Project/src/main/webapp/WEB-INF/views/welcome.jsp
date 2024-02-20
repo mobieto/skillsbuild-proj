@@ -11,7 +11,6 @@
             text-decoration: none;
         }
         .navbar {
-            background: white;
             font-family: Arial;
             padding: 50px 0;
             display: flex;
@@ -81,7 +80,7 @@
             height: auto;
             display: block;
             margin: 20px auto;
-            box-shadow: 0 5px 10px rgb(0, 0, 0)
+            box-shadow: 0 0 15px rgb(0, 0, 0, 0.7)
         }
 
 
@@ -115,7 +114,7 @@
         <div class="navdiv">
             <div class="logo">
                 <ul>
-                    <li><a href="/welcome.css">Home</a></li>
+                    <li><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="/register-form">Login</a><li>
                 </ul>
