@@ -124,3 +124,12 @@ body {
     color: #095c91;
     transform: scale(1.1);
 }
+
+.center {
+    margin: auto;
+    margin-top: 30px;
+    width: 50%;
+    border: 3px solid #0f75bc;
+    padding: 10px;
+
+}

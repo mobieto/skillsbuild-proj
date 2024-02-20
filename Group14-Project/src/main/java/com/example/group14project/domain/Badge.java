@@ -2,6 +2,8 @@ package com.example.group14project.domain;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Badge {
     @Id
@@ -9,7 +11,9 @@ public class Badge {
 
     private String description;
 
-    private String owner;
+    @ManyToMany(mappedBy = "badges")
+    private List<SkillsBuildUser> usersAwarded;
+
 
     public Badge(String name, String description) {
         this.name = name;
@@ -32,14 +36,6 @@ public class Badge {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getOwner() {
-        return owner;
-    }
-
-    public void setOwner(String owner) {
-        this.owner = owner;
     }
 
     @Override

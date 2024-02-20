@@ -7,5 +7,4 @@ import java.util.List;
 public interface BadgeRepository extends CrudRepository<Badge, String> {
     Badge findByName(String name);
 
-    List<Badge> findByOwner(String name);
 }
