@@ -50,13 +50,16 @@
             border-radius: 3px;
         }
 
-        header {
-            padding: 20px;
+        #dashboard {
             text-align: center;
+            margin: 10px;
+            font-size: 18px;
+        }
+
+        header {
+            padding: 10px;
             margin: 0;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-            width: auto;
-            height: auto;
+            box-shadow: 0 5px 1px rgba(0, 0, 0, 0.2);
         }
 
         footer {
@@ -68,13 +71,14 @@
             bottom: 0;
             width: 100%;
         }
-        /*
-        logo1 {
-            width: auto;
-            height: auto;
+
+        #logo1 {
+            width: 15%;
+            height: 10%;
             display: block;
             margin: 20px auto;
-        }*/
+            box-shadow: 0 0 20px rgb(255, 255, 255);
+        }
 
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap">
@@ -82,7 +86,7 @@
 <body>
 <header>
     <img id="logo1" src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg">
-    <div>
+    <div id="dashboard">
         <a href="/dashboard">Dashboard</a>
     </div>
 </header>
