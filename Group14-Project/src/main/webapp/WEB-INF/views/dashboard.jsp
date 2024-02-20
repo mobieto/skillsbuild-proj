@@ -35,13 +35,13 @@
         <c:forEach items="${courses}" var="course">
             <tr>
                 <td>
-                    <a href="${course.link}" id="courselink">${course.name}</a>
+                    <a href="${course.link}" id="courselink" target="_blank">${course.name}</a>
                 </td>
                 <td>
                         ${course.category}
                 </td>
-                <td><a href="/courses">Start</a></td>
-                <td><a href="/completeCourse">Complete</a></td>
+                <td><a href="/courses?newCourse=${course.name}" class="link2">Status</a></td>
+                <td><a href="/completeCourse" class="link2">Complete</a></td>
             </tr>
         </c:forEach>
         </tbody>

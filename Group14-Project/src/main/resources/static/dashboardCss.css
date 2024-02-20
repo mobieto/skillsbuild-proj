@@ -114,13 +114,13 @@ body {
     cursor: pointer;
 }
 
-.link2 {
+td .link2 {
     color: #0f75bc;
     text-decoration: none;
     font-weight: bold;
 }
 
-.link2 {
+td .link2 {
     color: #095c91;
     transform: scale(1.1);
 }

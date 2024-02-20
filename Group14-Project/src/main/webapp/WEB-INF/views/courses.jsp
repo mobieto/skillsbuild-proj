@@ -99,7 +99,7 @@
     </ul>
     <form action="/startSession" method="post">
         <label for="courseName">Course Name:</label>
-        <input type="text" id="courseName" name="courseName" required>
+        <input type="text" id="courseName" name="courseName" value="${additionalCourse}" required>
         <input type="submit" value="Start Session">
     </form>
     <form action="/pauseSession" method="post">
