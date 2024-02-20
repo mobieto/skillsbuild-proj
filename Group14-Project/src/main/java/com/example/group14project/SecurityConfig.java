@@ -33,7 +33,7 @@ public class SecurityConfig {
                 auth.requestMatchers(mvc.pattern("/register-form")).permitAll()
                         .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
                         .anyRequest().authenticated()
-        ).formLogin(login -> login.loginPage("/login-form")
+        ).formLogin(login -> login.loginPage("/welcome")
                 .loginProcessingUrl("/myLogin")
                 .defaultSuccessUrl("/success-login", true)
                 .failureUrl("/error-login")
