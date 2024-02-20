@@ -13,7 +13,7 @@ body {
 header {
     font-size: 35px;
     color: #0f75bc;
-    padding: 20px;
+    padding: 0;
     text-align: center;
     margin: 0;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);

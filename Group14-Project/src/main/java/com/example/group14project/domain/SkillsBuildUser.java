@@ -13,8 +13,16 @@ public class SkillsBuildUser {
     private String password;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<UserRole> userRoles = new ArrayList<>();
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Badge> badges;
+
+    public List<Badge> getBadges() {
+        return badges;
+    }
+
+    public void setBadges(List<Badge> badges) {
+        this.badges = badges;
+    }
 
     //leaderboard code
     @ManyToOne
@@ -61,8 +69,6 @@ public class SkillsBuildUser {
 
     public void awardBadge(Badge badge) {
         if (this.badges == null) this.badges = new ArrayList<Badge>();
-
-        badge.setOwner(getName());
         this.badges.add(badge);
     }
 }
