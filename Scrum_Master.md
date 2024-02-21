@@ -11,7 +11,7 @@ Conclusion:
 - Some implementation of the full webapp decided to be started during the lab on 14th feb.
 
 Sprint 1 - 12th February 2024  
-Scrum Master: David Orimoyegun 
+Scrum Master: David Orimoyegun
 Details:
 - Met group on monday in the library to discuss progress and necessary final touches.
 - Confirmed the progress of members in the group and agreed to have certain things completed by the time of the lab on the 14th.
