@@ -10,6 +10,16 @@ Conclusion:
 - Everyone joined the meeting and everyone has a role to complete. Decided date for all work to be done is 16th feb.  
 - Some implementation of the full webapp decided to be started during the lab on 14th feb.
 
+Sprint 1 - 12th February 2024  
+Scrum Master: David Orimoyegun 
+Details:
+- Met group on monday in the library to discuss progress and necessary final touches.
+- Confirmed the progress of members in the group and agreed to have certain things completed by the time of the lab on the 14th.
+- Discussed necessary UI tweaks during the lab and began to merge everybodys work into the main folder.  
+
+Conclusion:  
+- The implementation went well, we made sure to rectify any bugs as we progressed.
+
 Sprint 1 - 19th February 2024.  
 Scrum Master: Priyanka Agheda.   
 Details:   
