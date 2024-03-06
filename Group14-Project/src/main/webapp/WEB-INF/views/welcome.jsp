@@ -10,158 +10,176 @@
         @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
         *{
-            text-decoration: none;
+            margin: 0;
+            padding-right: 0;
+            box-sizing: border-box;
+            font-family: "IBM Plex Sans", sans-serif;
+            list-style-type: none;
         }
-        .navbar {
-            font-family: Arial;
-            padding: 50px 0;
+        body {
+            height: 100vh;
+            background:#081b29;
+            display: flex;
+            color: #ffffff;
+            align-items: center;
+            padding-top: 120px;
+
+        }
+        .header {
+            background: transparent;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 1000;
+            padding: 20px 100px;
+            z-index: 100;
         }
 
-        .navdiv {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-left: 1000px;
-        }
-
-        .logo a {
-            font-size: 25px;
-            font-weight: 600;
-            color: black;
-        }
-
-        li {
-            list-style: none;
-            display: inline-block;
-        }
-
-        li a {
-            color: black;
-            font-size: 10px;
-            font-weight: normal;
-            margin-right: 25px;
-        }
-
-        button {
-            background-color: black;
-            margin-left: 10px;
-            border-radius: 10px;
-            padding: 10px;
-            width: 90px;
-        }
-
-        button a {
-            color: #095c91;
-            font-weight: bold;
-            font-size: 15px;
-        }
-
-        body {
-            background-color: white;
-            color: #0f75bc;
-            font-family: "IBM Plex Sans", sans-serif;
-            text-align: center;
-            padding-top: 120px;
-            margin: 0;
-        }
-
-        #ibm-logo {
-            max-width: 30%;
-            padding: 20px;
-            height: auto;
-            display: block;
-            margin: 20px auto;
-            box-shadow: 0 0 10px rgb(0, 0, 0, 0.5)
-        }
-
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-
-        .btn {
-            display: inline-block;
-            padding: 0.35rem;
-            background-color: #0f75bc;
+        .logo {
+            font-size: 32px;
             color: white;
             text-decoration: none;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-            border: 1px black;
-            margin-left: 0.35rem;
+            font-weight: 700;
+            font: "IBM Plex Sans", sans-serif;
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-        }
-
-        .btn:active {
-            transform: scale(0.95);
-        }
-
-        footer{
-            display: block;
+        .navbar {
+            list-style-type: none;
+            display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
+            padding: 0;
+        }
+
+        .navbar li {
+            margin: 0 20px;
+        }
+
+        .navbar a {
+            font-size: 18px;
+            color: white;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            color: #00abf0;
+            transition: .3s;
+        }
+
+        button{
+            border:none;
+            background: #3ddbd9;
+            padding: 12px 30px;
+            border-radius: 30px;
+            color: white;
+            font-weight: bold;
+            font-size: 15px;
+            transition: .4s;
+        }
+        button:hover{
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+        .home{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+
+        }
+
+        .home-content {
+            background: transparent;
+            max-width: 600px;
+            padding: 0 20%;
+        }
+
+        .home-content h1 {
+            font-size: 40px ;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 10px #3ddbd9, 0 0 20px #3ddbd9, 0 0 30px #3ddbd9;
+            padding-bottom: 30px;
+
+        }
+
+        .home-content h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #00abf0;
+        }
+
+        .home-content p {
+            font-size: 16px;
         }
 
         .login {
-            display: flex;
+            margin-top: 10px ;
             align-items: center;
+        }
+        .btn {
+            margin-top: 10px;
+            display: inline-flex;
             justify-content: center;
+            align-items: center;
+            width: 150px;
+            height: 100%;
+            background: #3ddbd9;
+            padding: 5px 30px;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: 0.4s;
+
         }
 
-        .login p{
-            color: #095c91;
+        .btn:hover {
+            transform: scale(1.2);
+            cursor: pointer;
         }
 
- /*
+
+
+
     </style>
 </head>
-<header>
+
+<body>
+<header class="header">
+    <a href="#" class="logo">IBM</a>
     <nav class="navbar">
-        <div class="navdiv">
-            <div class="logo">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="/login-form">Login</a><li>
-                </ul>
-            </div>
-        </div>
+        <ul>
+            <li><a href="#">Home</a></li>
+        </ul>
+        <button><a href="/login-form" class="button">Login</a></button>
     </nav>
 </header>
-<body>
-<img id="ibm-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/2560px-IBM_logo.svg.png">
-<div class="container">
-    <h1>Welcome to IBM SkillsBuild</h1>
-    <p>Get started with our courses and unlock your potential.</p>
-    <p>Login to enroll in our courses and accelerate your career.</p>
-
-</div>
-<footer>
+<section class="home">
+    <div class ="home-content">
+        <h1>Welcome to IBM SkillsBuild</h1>
+        <h3>Get started with our courses and unlock your potential.</h3>
+        <p>Login to enroll in our courses and accelerate your career.</p>
     <div class="login">
-        <p>Register to get started with courses -</p>
+        <p>Register to get started with courses</p>
         <a href="/register-form" class="btn">Register</a>
     </div>
-   <div class="login">
-       <p>Already have an account?</p>
-       <a href="/login-form" class="btn">Login</a>
-   </div>
-</footer>
+    <div class="login">
+        <p>Already have an account?</p>
+        <a href="/login-form" class="btn">Login</a>
+    </div>
+    <div class="home-sm">
+        <a href="https://www.instagram.com/ibm/"><i class='bx bxl-instagram'></i></a>
+        <a href="https://www.facebook.com/IBM/"><i class='bx bxl-instagram'></i></a>
+
+
+
+</section>
+
 </body>
 </html>

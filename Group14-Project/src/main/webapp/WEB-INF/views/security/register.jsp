@@ -52,9 +52,14 @@
 
     form {
         text-align: center;
-        margin-top: 50px;
-        max-width: 400px;
-        width: 100%;
+        margin-top: 100px;
+        max-width: 600px;
+        padding: 40px;
+        padding-left: 5px;
+        width: 90%;
+        display: block;
+        margin: 20px auto;
+        box-shadow: 0 0 10px rgb(0, 0, 0, 0.5)
     }
 
     input[type="text"],

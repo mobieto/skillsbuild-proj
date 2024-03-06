@@ -50,9 +50,14 @@
 
     form {
         text-align: center;
-        margin-top: 50px;
-        max-width: 400px;
-        width: 100%;
+        margin-top: 100px;
+        max-width: 600px;
+        padding: 40px;
+        padding-left: 5px;
+        width: 90%;
+        display: block;
+        margin: 20px auto;
+        box-shadow: 0 0 10px rgb(0, 0, 0, 0.5)
     }
 
     input[type="text"],
@@ -87,8 +92,8 @@
 <div id="typing-message">Gamify your IBM experience!</div>
 <body>
     <form action="/myLogin" method="post">
-        User Name: <input type="text" name="username" /> <br/>
-        Password: <input type="password" name="password" /> <br/>
+         User Name: <input type="text" name="username" /> <br/>
+         Password: <input type="password" name="password" /> <br/>
         <input type="submit" value="Sign In" /> <br/>
 <%--        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">--%>
         <p><a href="/register-form">register</a></p>
