@@ -28,4 +28,14 @@ Details:
 - Further discuessed the next steps
 
 Conclusion:
--We have decided to have a zoom call on the 20th of February in order to create the demo recording. 
+- We have decided to have a zoom call on the 20th of February in order to create the demo recording. 
+
+Sprint 2 - 6th March 2024  
+Scrum Master: injae Lee  
+Details:
+- Met group at 11am to discuss which to choose from the list of user stories for the Sprint 2 project.
+- During the lab session, we check the list selected by our group with supervisor. 
+
+Conclusion:  
+- Everyone decided which list to do and started coding.
+
