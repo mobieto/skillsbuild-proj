@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to IBM Skillsbuild</title>
     <link rel="stylesheet" href="/welcome.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
@@ -17,7 +19,7 @@
             list-style-type: none;
         }
         body {
-            height: 100vh;
+            height: 80vh;
             background:#081b29;
             display: flex;
             color: #ffffff;
@@ -84,12 +86,6 @@
             transform: scale(1.2);
             cursor: pointer;
         }
-        .home{
-            height: 100vh;
-            display: flex;
-            align-items: center;
-
-        }
 
         .home-content {
             background: transparent;
@@ -143,12 +139,30 @@
             transform: scale(1.2);
             cursor: pointer;
         }
+        .home-sm {
+            position: absolute;
+            bottom: 40px;
+            width: 120px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .home-sm a {
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border: 2px solid #00abf0;
+            background: transparent;
+            border-radius: 50%;
+            font-size: 20px;
+            color: #00abf0;
+            text-decoration: none;
 
-
-
+        }
 
     </style>
-</head>
 
 <body>
 <header class="header">
@@ -173,11 +187,10 @@
         <p>Already have an account?</p>
         <a href="/login-form" class="btn">Login</a>
     </div>
-    <div class="home-sm">
+        <div class="home-sm">
         <a href="https://www.instagram.com/ibm/"><i class='bx bxl-instagram'></i></a>
-        <a href="https://www.facebook.com/IBM/"><i class='bx bxl-instagram'></i></a>
-
-
+        <a href="https://www.facebook.com/IBM/"><i class='bx bxl-facebook-circle'></i></a>
+        </div>
 
 </section>
 
