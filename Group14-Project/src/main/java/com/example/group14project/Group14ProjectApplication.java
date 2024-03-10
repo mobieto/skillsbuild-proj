@@ -7,6 +7,7 @@ import com.example.group14project.domain.Badge;
 import com.example.group14project.repo.BadgeRepository;
 import com.example.group14project.repo.LeaderboardRepository;
 import com.example.group14project.repo.SkillsBuildUserRepository;
+import com.example.group14project.service.BadgeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -29,7 +30,7 @@ public class Group14ProjectApplication implements CommandLineRunner {
     private LeaderboardRepository leaderboardRepository;
 
     @Autowired
-    private BadgeRepository badgeRepository;
+    private BadgeService badgeService;
 
     public static void main(String[] args) {
         SpringApplication.run(Group14ProjectApplication.class, args);
@@ -37,7 +38,6 @@ public class Group14ProjectApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
         // Leaderboard code below
         Leaderboard leaderboard = new Leaderboard();
         leaderboard.setPlayers(new ArrayList<>());
@@ -68,12 +68,10 @@ public class Group14ProjectApplication implements CommandLineRunner {
         user3.setLeaderboard(leaderboard);
 
         Badge badge1 = new Badge("First Course Complete", "Congratulations, you completed your first course!");
-        user1.awardBadge(badge1);
-        badgeRepository.save(badge1);
+        badgeService.awardBadgeToUser(user1, badge1);
 
         Badge badge2 = new Badge("5 Courses Complete", "Nice job, you completed 5 courses!");
-        user1.awardBadge(badge2);
-        badgeRepository.save(badge2);
+        badgeService.awardBadgeToUser(user1, badge2);
 
         leaderboardRepository.save(leaderboard);
     }

@@ -16,16 +16,17 @@ public class SkillsBuildUser {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Badge> badges;
 
-    public List<Badge> getBadges() {
-        return badges;
-    }
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<SkillsBuildUser> friends;
 
-    public void setBadges(List<Badge> badges) {
-        this.badges = badges;
-    }
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<SkillsBuildUser> outgoingFriendRequests;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<SkillsBuildUser> incomingFriendRequests;
 
     //leaderboard code
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "leaderboard_id")
     private Leaderboard leaderboard;
     private int coursesCompleted;
@@ -67,10 +68,35 @@ public class SkillsBuildUser {
         this.userRoles.add(role);
     }
 
-    public void awardBadge(Badge badge) {
-        if (this.badges == null) this.badges = new ArrayList<Badge>();
+    public List<SkillsBuildUser> getFriends() {
+        return friends;
+    }
 
-        badge.setOwner(getName());
-        this.badges.add(badge);
+    public void setFriends(List<SkillsBuildUser> friends) {
+        this.friends = friends;
+    }
+
+    public List<SkillsBuildUser> getOutgoingFriendRequests() {
+        return outgoingFriendRequests;
+    }
+
+    public void setOutgoingFriendRequests(List<SkillsBuildUser> outgoingFriendRequests) {
+        this.outgoingFriendRequests = outgoingFriendRequests;
+    }
+
+    public List<SkillsBuildUser> getIncomingFriendRequests() {
+        return incomingFriendRequests;
+    }
+
+    public void setIncomingFriendRequests(List<SkillsBuildUser> incomingFriendRequests) {
+        this.incomingFriendRequests = incomingFriendRequests;
+    }
+
+    public List<Badge> getBadges() {
+        return badges;
+    }
+
+    public void setBadges(List<Badge> badges) {
+        this.badges = badges;
     }
 }
