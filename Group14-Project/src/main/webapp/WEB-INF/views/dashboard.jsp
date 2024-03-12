@@ -15,6 +15,7 @@
     <p>Welcome to the dashboard page. Here you will find all available IBM SkillsBuild courses for you to access and the categories they fall under.</p>
     <p><a href="/leaderboard">Global Leaderboard</a> <a href="/user">User Page</a></p>
 </div>
+<h2>All Courses</h2>
 <div id="container">
     <table id="dashboard">
         <thead>
@@ -28,8 +29,8 @@
                 <p>Category</p>
                 <i class="fa-solid fa-sort" id="category_click"></i>
             </th>
-            <th></th>
-            <th></th>
+            <th> <p>Status</p></th>
+            <th> <p>Complete</p></th>
         </tr>
         </thead>
         <tbody>
@@ -48,5 +49,24 @@
         </tbody>
     </table>
 </div>
+<h3>Completed Courses</h3>
+<div id="container2">
+    <table id="dashboard2">
+        <thead>
+        <tr>
+            <th>
+                <p>Course</p>
+            </th>
+
+            <th>
+                <p>Category</p>
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+    </table>
+</div>
 </body>
 </html>
+

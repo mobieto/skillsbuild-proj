@@ -43,12 +43,19 @@ body {
     display: flex;
     justify-content: center;
 }
+#container2 {
+    grid-area: container;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 #dashboard {
     border-collapse: collapse;
     width:97%;
     margin: 1.5rem 0;
 }
+
 
 #dashboard th, #dashboard td {
     text-align: left;
@@ -106,6 +113,64 @@ body {
     background-color: #e8e8e8;
 }
 
+#dashboard2 {
+    border-collapse: collapse;
+    width:97%;
+    margin: 1.5rem 0;
+}
+#dashboard2 th, #dashboard td {
+    text-align: left;
+    padding: 8px;
+}
+
+#dashboard2 th {
+    background-color: #0f75bc;
+    color: white;
+    align-items: center;
+}
+
+#dashboard2 th p {
+    display: inline-block;
+
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+#dashboard2 th i {
+    display: inline-block;
+    align-items: center;
+    padding-left: 5px;
+    font-size: 0.75rem;
+}
+
+#dashboard2 th i:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#dashboard2 th i:active {
+    transform: scale(0.95);
+}
+
+
+#dashboard2 th:first-child {
+    border-top-left-radius: 5px;
+}
+
+#dashboard2 th:last-child {
+    border-top-right-radius: 5px;
+}
+
+#dashboard2 tr {
+    transition: 0.05s ease;
+    user-select: none;
+}
+
+#dashboard2 tr:nth-child(even) {
+    background-color: #d1f5fd;
+}
+
+
 #courselink {
     text-decoration: none;
     color: inherit;
@@ -121,6 +186,10 @@ td .link2 {
     text-decoration: none;
     font-weight: bold;
 }
+td .link2:hover {
+    color: #f7b03e;
+    cursor: pointer;
+}
 
 td .link2 {
     color: #095c91;
@@ -135,3 +204,4 @@ td .link2 {
     padding: 10px;
 
 }
+
