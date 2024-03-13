@@ -70,5 +70,12 @@ public class CourseService {
             }
         }
     }
+    public void completeCourse(String courseName) {
+        Course course = courseRepository.findByName(courseName);
 
+        if (course != null) {
+            course.setStatus("completed");
+            courseRepository.save(course);
+        }
+    }
 }

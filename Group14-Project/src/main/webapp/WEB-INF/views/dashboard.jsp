@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <head>
@@ -43,7 +43,10 @@
                         ${course.category}
                 </td>
                 <td><a href="/courses?newCourse=${course.name}" class="link2">Timer</a></td>
-                <td><a href="/completeCourse" class="link2">Complete</a></td>
+                <td>
+                    <a href="/completeCourse?courseName=${course.name}&courseStatus=${course.status}" class="link2">Complete</a>
+                    <input type="hidden" name="courseStatus" value="${course.status}" />
+                </td>
             </tr>
         </c:forEach>
         </tbody>
@@ -71,4 +74,5 @@
 </div>
 </body>
 </html>
+
 
