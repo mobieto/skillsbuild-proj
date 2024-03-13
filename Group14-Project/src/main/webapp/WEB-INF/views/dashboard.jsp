@@ -52,26 +52,6 @@
         </tbody>
     </table>
 </div>
-<h3>Completed Courses</h3>
-<div id="container2">
-    <table id="dashboard2">
-        <thead>
-        <tr>
-            <th>
-                <p>Course</p>
-            </th>
-
-            <th>
-                <p>Category</p>
-            </th>
-            <th></th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-</div>
 </body>
 </html>
 
