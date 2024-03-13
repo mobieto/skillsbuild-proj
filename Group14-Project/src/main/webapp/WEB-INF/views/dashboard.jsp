@@ -29,7 +29,7 @@
                 <p>Category</p>
                 <i class="fa-solid fa-sort" id="category_click"></i>
             </th>
-            <th> <p>Status</p></th>
+            <th> <p>Timer</p></th>
             <th> <p>Complete</p></th>
         </tr>
         </thead>
@@ -42,7 +42,7 @@
                 <td>
                         ${course.category}
                 </td>
-                <td><a href="/courses?newCourse=${course.name}" class="link2">Status</a></td>
+                <td><a href="/courses?newCourse=${course.name}" class="link2">Timer</a></td>
                 <td><a href="/completeCourse" class="link2">Complete</a></td>
             </tr>
         </c:forEach>
