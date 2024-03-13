@@ -41,10 +41,10 @@ public class FriendService {
         SkillsBuildUser sender = skillsBuildUserRepository.findByName(senderName);
         SkillsBuildUser receiver = skillsBuildUserRepository.findByName(receiverName);
 
-        sender.getOutgoingFriendRequests().add(receiver);
-        receiver.getIncomingFriendRequests().add(sender);
-        sender.getFriends().remove(receiver);
-        receiver.getFriends().remove(sender);
+        sender.getOutgoingFriendRequests().remove(receiver);
+        receiver.getIncomingFriendRequests().remove(sender);
+        sender.getFriends().add(receiver);
+        receiver.getFriends().add(sender);
 
         skillsBuildUserRepository.save(sender);
         skillsBuildUserRepository.save(receiver);

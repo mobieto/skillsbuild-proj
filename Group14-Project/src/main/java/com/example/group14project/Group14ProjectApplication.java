@@ -8,6 +8,7 @@ import com.example.group14project.repo.BadgeRepository;
 import com.example.group14project.repo.LeaderboardRepository;
 import com.example.group14project.repo.SkillsBuildUserRepository;
 import com.example.group14project.service.BadgeService;
+import com.example.group14project.service.FriendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -31,6 +32,9 @@ public class Group14ProjectApplication implements CommandLineRunner {
 
     @Autowired
     private BadgeService badgeService;
+
+    @Autowired
+    private FriendService friendService;
 
     public static void main(String[] args) {
         SpringApplication.run(Group14ProjectApplication.class, args);
@@ -74,5 +78,8 @@ public class Group14ProjectApplication implements CommandLineRunner {
         badgeService.awardBadgeToUser(user1, badge2);
 
         leaderboardRepository.save(leaderboard);
+
+        friendService.sendFriendRequest("John", "Adam");
+        friendService.acceptFriendRequest("John", "Adam");
     }
 }

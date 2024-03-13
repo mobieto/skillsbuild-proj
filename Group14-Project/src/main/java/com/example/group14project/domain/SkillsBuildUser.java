@@ -29,6 +29,7 @@ public class SkillsBuildUser {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "leaderboard_id")
     private Leaderboard leaderboard;
+
     private int coursesCompleted;
     public int getCoursesCompleted() {
         return coursesCompleted;
