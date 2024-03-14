@@ -37,8 +37,6 @@ public class CourseService {
             Document document = Jsoup.connect(url).get();
             Elements options = document.select(selector1);
 
-
-
             for (Element option:options) {
                 String linkHref = option.select("a").attr("href");
                 Elements category = option.select(selector3);
@@ -68,14 +66,6 @@ public class CourseService {
             } else {
                 courseRepository.save(course);
             }
-        }
-    }
-    public void completeCourse(String courseName) {
-        Course course = courseRepository.findByName(courseName);
-
-        if (course != null) {
-            course.setStatus("completed");
-            courseRepository.save(course);
         }
     }
 }

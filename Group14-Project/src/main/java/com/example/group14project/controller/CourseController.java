@@ -83,7 +83,7 @@ public class CourseController {
     private CourseService courseService;
 
     @GetMapping("/completeCourse")
-    public String completeCourse(@RequestParam String courseName,@RequestParam String courseStatus) {
+    public String completeCourse(@RequestParam String courseName) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String playerName = authentication.getName();
         SkillsBuildUser player = repo.findByName(playerName);
@@ -91,13 +91,11 @@ public class CourseController {
         if (player != null) {
             player.setCoursesCompleted(player.getCoursesCompleted() + 1);
             repo.save(player);
-
             Course course = courseRepository.findByName(courseName);
             if (course != null) {
-                course.setStatus(courseStatus);
+                course.setStatus("completed");
                 courseRepository.save(course);
                 courseRepository.delete(course);
-                courseService.completeCourse(courseName);
             }
         }
         return "redirect:/dashboard";
