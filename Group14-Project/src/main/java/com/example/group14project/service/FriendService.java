@@ -2,10 +2,9 @@ package com.example.group14project.service;
 
 import com.example.group14project.domain.SkillsBuildUser;
 import com.example.group14project.repo.SkillsBuildUserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class FriendService {
@@ -13,15 +12,23 @@ public class FriendService {
     private SkillsBuildUserRepository skillsBuildUserRepository;
 
     // Send friend request, add to sender's outgoing friend requests and to receiver's incoming friend requests
-    public void sendFriendRequest(String senderName, String receiverName) {
+    public String sendFriendRequest(String senderName, String receiverName) {
         SkillsBuildUser sender = skillsBuildUserRepository.findByName(senderName);
         SkillsBuildUser receiver = skillsBuildUserRepository.findByName(receiverName);
+
+        if (receiverName.equals(senderName)) { return "You can't add yourself :D"; }
+
+        if (receiver == null) { return "We couldn't find that user, please try again."; }
+
+        if (receiver.getFriends().contains(sender)) { return "That user is already your friend."; }
 
         sender.getOutgoingFriendRequests().add(receiver);
         receiver.getIncomingFriendRequests().add(sender);
 
         skillsBuildUserRepository.save(sender);
         skillsBuildUserRepository.save(receiver);
+
+        return "Success! Your friend request to %s was sent.".formatted(receiverName);
     }
 
     // Remove from sender's outgoing friend requests and receiver's incoming friend requests
@@ -51,7 +58,7 @@ public class FriendService {
     }
 
     // Remove friend from user's friends list
-    public void removeFriend(String userName, String friendName) {
+    public String removeFriend(String userName, String friendName) {
         SkillsBuildUser user = skillsBuildUserRepository.findByName(userName);
         SkillsBuildUser friend = skillsBuildUserRepository.findByName(friendName);
 
@@ -60,5 +67,7 @@ public class FriendService {
 
         skillsBuildUserRepository.save(user);
         skillsBuildUserRepository.save(friend);
+
+        return "Success! %s is no longer your friend.".formatted(friendName);
     }
 }

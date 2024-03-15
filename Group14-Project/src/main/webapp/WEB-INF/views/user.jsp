@@ -26,5 +26,15 @@
                 </tr>
             </c:forEach>
         </table>
+        <br>
+        <h2>Add a friend</h2>
+        <br>
+        <form action="/sendFriendRequest" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <input type="submit" value="Add Friend">
+        </form>
+        <br>
+        <p>${friendRequestResult}</p>
     </div>
 </body>
