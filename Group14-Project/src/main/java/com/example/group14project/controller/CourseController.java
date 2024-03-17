@@ -91,11 +91,11 @@ public class CourseController {
         if (player != null) {
             player.setCoursesCompleted(player.getCoursesCompleted() + 1);
             repo.save(player);
+            player = repo.findByName(playerName);
             Course course = courseRepository.findByName(courseName);
             if (course != null) {
-                course.setStatus("completed");
-                courseRepository.save(course);
-                courseRepository.delete(course);
+                player.getCourseCompletedList().add(course);
+                repo.save(player);
             }
         }
         return "redirect:/dashboard";

@@ -15,22 +15,19 @@ public class SkillsBuildUser {
     private List<UserRole> userRoles = new ArrayList<>();
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Badge> badges;
-
     @ManyToMany(fetch = FetchType.EAGER)
     private List<SkillsBuildUser> friends;
-
     @ManyToMany(fetch = FetchType.EAGER)
     private List<SkillsBuildUser> outgoingFriendRequests;
-
     @ManyToMany(fetch = FetchType.EAGER)
     private List<SkillsBuildUser> incomingFriendRequests;
-
-    //leaderboard code
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "leaderboard_id")
     private Leaderboard leaderboard;
-
     private int coursesCompleted;
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Course> courseCompletedList;
+
     public int getCoursesCompleted() {
         return coursesCompleted;
     }
@@ -99,5 +96,13 @@ public class SkillsBuildUser {
 
     public void setBadges(List<Badge> badges) {
         this.badges = badges;
+    }
+
+    public List<Course> getCourseCompletedList() {
+        return courseCompletedList;
+    }
+
+    public void setCourseCompletedList(List<Course> courseCompletedList) {
+        this.courseCompletedList = courseCompletedList;
     }
 }

@@ -30,7 +30,6 @@ public class Course{
 
     }
 
-
     public String getName() {
         return name;
     }
