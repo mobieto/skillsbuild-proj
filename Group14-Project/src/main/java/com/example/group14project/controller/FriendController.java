@@ -32,4 +32,22 @@ public class FriendController {
 
         return "redirect:/user";
     }
+
+    @PostMapping("/acceptFriendRequest")
+    private String acceptFriendRequest(@RequestParam String username, Principal principal, RedirectAttributes redirectAttributes) {
+        String resultMessage = friendService.acceptFriendRequest(username, principal.getName());
+
+        redirectAttributes.addFlashAttribute("acceptFriendRequestResult", resultMessage);
+
+        return "redirect:/user";
+    }
+
+    @PostMapping("/removeFriendRequest")
+    private String removeFriendRequest(@RequestParam String username, Principal principal, RedirectAttributes redirectAttributes) {
+        String resultMessage = friendService.removeFriendRequest(principal.getName(), username);
+
+        redirectAttributes.addFlashAttribute("removeFriendRequestResult", resultMessage);
+
+        return "redirect:/user";
+    }
 }
