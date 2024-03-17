@@ -25,9 +25,6 @@ public class Group14ProjectApplication implements CommandLineRunner {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private SkillsBuildUserRepository skillsBuildUserRepository;
-
-    @Autowired
     private LeaderboardRepository leaderboardRepository;
 
     @Autowired

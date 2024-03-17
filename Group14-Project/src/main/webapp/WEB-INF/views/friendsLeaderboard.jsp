@@ -6,7 +6,7 @@
     <body>
         <header>
             <img id="ibm-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/2560px-IBM_logo.svg.png">
-            Global Leaderboard
+            Friends Leaderboard
         </header>
         <p>See how you stack up against your friends!</p>
         <a href="/dashboard">Dashboard</a>
@@ -31,5 +31,10 @@
                 </c:forEach>
             </tbody>
         </table>
+        <c:choose>
+            <c:when test="${players.size() <= 1}">
+                <p style="margin-top: 1.2rem">Invite some friends and see who can reach rank 1!</p>
+            </c:when>
+        </c:choose>
     </body>
 </html>
