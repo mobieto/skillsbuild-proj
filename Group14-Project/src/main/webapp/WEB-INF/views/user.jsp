@@ -13,6 +13,11 @@
         <p style="display: flex; flex-direction: row; gap: 3rem"><a href="/leaderboard">Global Leaderboard</a><a href="/dashboard">Courses Dashboard</a><a href="/friends-leaderboard">Friends Leaderboard</a></p>
     </div>
 
+    <div id="progress">
+        <div>Course Completion Progress: ${percentage}%</div>
+        <div class="progress-bar" style="width: ${percentage}%;"></div>
+    </div>
+
     <div class="center">
         <h3>Username: ${user.name}</h3>
         <p>Number of courses completed: ${user.coursesCompleted}</p>

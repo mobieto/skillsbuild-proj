@@ -93,9 +93,12 @@ public class CourseController {
             repo.save(player);
             player = repo.findByName(playerName);
             Course course = courseRepository.findByName(courseName);
+
             if (course != null) {
                 player.getCourseCompletedList().add(course);
                 repo.save(player);
+                course.setStatus("completed");
+                courseRepository.save(course);
             }
         }
         return "redirect:/dashboard";
