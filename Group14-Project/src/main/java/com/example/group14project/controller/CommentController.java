@@ -18,6 +18,6 @@ public class CommentController {
     public String submitComment(CourseComment comment, Model model) {
         model.addAttribute("submittedComment", comment);
 
-        return "commentConfirmation";
+        return "commentForm";
     }
 }
