@@ -82,6 +82,11 @@
         .rating-text {
             font-size: 14px;
         }
+        a {
+            color: #0f75bc;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -118,7 +123,7 @@
         <% } %>
     </div>
 
-    <form action="/comment" id="commentForm" method="post">
+    <form id="commentForm" action="/comment" method="post">
         <label for="courseName">Course Name:</label><br>
         <input type="text" id="courseName" name="courseName" required><br>
         <label for="rating">Rating (1-5):</label><br>
