@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.text.DecimalFormat;
 import java.util.*;
 
 import java.util.List;
@@ -29,13 +30,10 @@ public class DashboardController {
     @GetMapping("/dashboard")
     public String showDashboard(Model model) {
         List<Course> courses = courseRepository.findAll();
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String playerName = authentication.getName();
         SkillsBuildUser player = repo.findByName(playerName);
-
         Set<Course> playerCompletedCourses = new HashSet<>(player.getCourseCompletedList());
-
         Iterator<Course> it = courses.iterator();
         while (it.hasNext()) {
             Course course = it.next();
@@ -43,9 +41,16 @@ public class DashboardController {
                 it.remove();
             }
         }
-
         model.addAttribute("courses", courses);
 
+        //progress bar code
+        List<Course> completedCourses = courseRepository.findByStatus("completed");
+        int completedCount = completedCourses.size();
+        double totalCourses = 73;
+        double percentage = (double) completedCount / totalCourses * 100;
+        DecimalFormat df = new DecimalFormat("#.##");
+        String Percentage = df.format(percentage);
+        model.addAttribute("percentage", Percentage);
         return "dashboard";
     }
 }
