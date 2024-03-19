@@ -16,9 +16,8 @@
     <p style="display: flex; flex-direction: row; gap: 3rem"><a href="/leaderboard">Global Leaderboard</a> <a href="/user">User Page</a> <a href="/friends-leaderboard">Friends Leaderboard</a></p>
 </div>
 <div id="progress">
-    <h2>Progress</h2>
     <div>Course Completion Progress: ${percentage}%</div>
-    <div class="progress-bar" style="width: ${percentage}%;"></div>
+    <!--<div class="progress-bar" style="width: ${percentage}%;"></div>-->
 </div>
 
 <div id="container">
