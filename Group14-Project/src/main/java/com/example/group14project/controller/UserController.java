@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.security.Principal;
+import java.text.DecimalFormat;
 import java.util.List;
 
 @Controller
@@ -38,7 +39,9 @@ public class UserController {
         int completedCount = completedCourses.size();
         double totalCourses = 73;
         double percentage = (double) completedCount / totalCourses * 100;
-        model.addAttribute("percentage", percentage);
+        DecimalFormat df = new DecimalFormat("#.##");
+        String Percentage = df.format(percentage);
+        model.addAttribute("percentage", Percentage);
         return "user";
     }
 }
