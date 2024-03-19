@@ -1,3 +1,5 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.example.group14project.domain.CourseComment" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -42,7 +44,7 @@
             height: 100px;
         }
         input[type="submit"] {
-            background-color: #4CAF50;
+            background-color: #0f75bc;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -51,55 +53,72 @@
             float: right;
         }
         input[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: #0f75bc;
         }
-        .confirmationMessage {
-            margin-top: 20px;
+        header {
+            padding: 10px;
+            margin: 0;
+            box-shadow: 0 5px 1px rgba(0, 0, 0, 0.2);
         }
-        .comment {
-            border-bottom: 1px solid #ccc;
+        #dashboard {
+            text-align: center;
+            margin: 10px;
+            text-decoration: none;
+            color: inherit;
+        }
+        .comment-container {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc; /* Add a border to separate comments */
             padding-bottom: 10px;
-            margin-bottom: 10px;
         }
-        .comment h3 {
+        .name-text {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .comment-text {
+            font-size: 16px;
             margin-bottom: 5px;
         }
+        .rating-text {
+            font-size: 14px;
+        }
+
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#commentForm').submit(function(e) {
-                e.preventDefault();
-
-                var formData = $(this).serialize();
-
-                $.post('/comment', formData, function(response) {
-                    var newComment = '<div class="comment">';
-                    newComment += '<h3>Course Name: ' + $('#courseName').val() + '</h3>';
-                    newComment += '<p>Comment: ' + $('#comment').val() + '</p>';
-                    newComment += '<p>Rating: ' + $('#rating').val() + '</p>';
-                    newComment += '</div>';
-
-                    $('#confirmationMessage').append(newComment);
-
-                    $('#courseName').val('');
-                    $('#rating').val('');
-                    $('#comment').val('');
-
-                    $('#confirmationMessage').show();
-                });
-            });
-        });
-    </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap">
 </head>
 <body>
+<header>
+    <div id="dashboard">
+        <a href="/dashboard">Dashboard</a>
+    </div>
+</header>
 <div class="container">
     <h2>Leave a Comment and Rating</h2>
     <div id="confirmationMessage" style="margin-top: 20px;">
 
     </div>
 
-    <form id="commentForm" method="post">
+    <h3>Comments</h3>
+    <div>
+        <% for (CourseComment comment : (List<CourseComment>) request.getAttribute("submittedComments")) { %>
+        <div class="comment-container">
+            <div>
+                <div class="name-text">
+                    <p>Course Name: <%= comment.getCourseName() %></p>
+                </div>
+                <div class="rating-text">
+                    <p>Rating: <%= comment.getRating() %></p>
+                </div>
+                <div class="comment-text">
+                    <p>Comment: <%= comment.getComment() %></p>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+
+    <form action="/comment" id="commentForm" method="post">
         <label for="courseName">Course Name:</label><br>
         <input type="text" id="courseName" name="courseName" required><br>
         <label for="rating">Rating (1-5):</label><br>
