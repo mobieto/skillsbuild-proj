@@ -13,7 +13,7 @@
 <div id="top">
     <img src="/logo.png">
     <p>Welcome to the dashboard page. Here you will find all available IBM SkillsBuild courses for you to access and the categories they fall under.</p>
-    <p style="display: flex; flex-direction: row; gap: 3rem"><a href="/leaderboard">Global Leaderboard</a> <a href="/user">User Page</a> <a href="/friends-leaderboard">Friends Leaderboard</a></p>
+    <p style="display: flex; flex-direction: row; gap: 3rem"><a href="/leaderboard">Global Leaderboard</a> <a href="/user">User Page</a> <a href="/friends-leaderboard">Friends Leaderboard</a><a href="/comment">Comment</a></p>
 </div>
 <h2>All Courses</h2>
 <div id="container">
