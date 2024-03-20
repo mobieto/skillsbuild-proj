@@ -88,6 +88,13 @@
             text-decoration: none;
             font-weight: bold;
         }
+        #logo1 {
+            width: 15%;
+            height: 10%;
+            display: block;
+            margin: 20px auto;
+            box-shadow: 0 0 20px rgb(255, 255, 255);
+        }
 
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -95,6 +102,7 @@
 </head>
 <body>
 <header>
+    <img id="logo1" src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg">
     <div id="dashboard">
         <a href="/dashboard">Dashboard</a>
     </div>
