@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.text.DecimalFormat;
 import java.util.*;
-
+import java.util.Random;
 import java.util.List;
 
 
@@ -45,14 +45,22 @@ public class DashboardController {
 
 
         //progress bar code
+        List<Course> Courses = courseRepository.findAll();
         List<Course> completedCourses = courseRepository.findByStatus("completed");
+        DecimalFormat df = new DecimalFormat("0.00");
         int completedCount = completedCourses.size();
-        double totalCourses = 73;
+        double totalCourses = Courses.size();
         double percentage = (double) completedCount / totalCourses * 100;
-        DecimalFormat df = new DecimalFormat("#.##");
         String Percentage = df.format(percentage);
         model.addAttribute("percentage", Percentage);
-        return "dashboard";
 
+        // course progress bars
+        Random random = new Random();
+        for (Course course : courses) {
+            double coursePercent = random.nextDouble() * 100;
+            String percentageCompleted = df.format(coursePercent);
+            course.setPercentageCompleted(Double.parseDouble(percentageCompleted));
+        }
+            return "dashboard";
     }
 }
