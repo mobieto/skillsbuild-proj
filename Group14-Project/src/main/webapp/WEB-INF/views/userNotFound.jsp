@@ -14,6 +14,6 @@
     <div class="center">
         <p>404.</p>
         <br>
-        <p>Hm, that page doesn't exist.</p>
+        <p>Hm, that user doesn't exist.</p>
     </div>
 </body>

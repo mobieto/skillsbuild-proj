@@ -7,6 +7,9 @@ import java.util.List;
 @Entity
 public class Badge {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private long id;
+
     private String name;
 
     private String description;

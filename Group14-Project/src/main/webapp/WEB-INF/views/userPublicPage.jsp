@@ -9,12 +9,39 @@
 <body>
     <div id="top">
         <img src="/logo.png">
-        <p>User profile</p>
-        <p style="display: flex; flex-direction: row; gap: 3rem"><a href="/leaderboard">Global Leaderboard</a><a href="/dashboard">Courses Dashboard</a><a href="/friends-leaderboard">Friends Leaderboard</a></p>
+        <p>User Profile</p>
+        <p style="display: flex; flex-direction: row; gap: 3rem"><a href="/leaderboard">Global Leaderboard</a><a href="/user">My Profile</a><a href="/dashboard">Courses</a><a href="/friends-leaderboard">Friends Leaderboard</a></p>
     </div>
 
     <div class="center">
-        <h3>Username: ${user.name}</h3>
+        <div style="display: flex; flex-direction: row; gap: 1rem">
+            <h3>Username: ${user.getName()}</h3>
+            <c:choose>
+                <c:when test="${principalFriends.contains(user.getName())}">
+                    <form action="/removeFriend?username=${user.getName()}&redirectTo=${user.getName()}" method="post">
+                        <input type="submit" value="Unfriend">
+                    </form>
+                </c:when>
+
+                <c:when test="${principalOutgoingRequests.contains(user.getName())}">
+                    <form action="/removeFriendRequest?username=${user.getName()}&redirectTo=${user.getName()}" method="post">
+                        <input type="submit" value="Remove Friend Request">
+                    </form>
+                </c:when>
+
+                <c:when test="${principalIncomingRequests.contains(user.getName())}">
+                    <form action="/acceptFriendRequest?username=${user.getName()}&redirectTo=${user.getName()}" method="post">
+                        <input type="submit" value="Accept Friend Request">
+                    </form>
+                </c:when>
+
+                <c:otherwise>
+                    <form action="/sendFriendRequest?username=${user.getName()}&redirectTo=${user.getName()}" method="post">
+                        <input type="submit" value="Add Friend">
+                    </form>
+                </c:otherwise>
+            </c:choose>
+        </div>
         <p>Number of courses completed: ${user.coursesCompleted}</p>
         <table>
             <thead>
@@ -23,8 +50,8 @@
             </thead>
             <c:forEach items="${badges}" var="badge">
                 <tr>
-                    <td>${badge.name}</td>
-                    <td>${badge.description}</td>
+                    <td>${badge.getName()}</td>
+                    <td>${badge.getDescription()}</td>
                 </tr>
             </c:forEach>
         </table>
@@ -34,22 +61,41 @@
                 <c:forEach items="${user.getFriends()}" var="friend">
                     <li style="margin-bottom: 0.6rem">
                         <div style="display: flex; flex-direction: row; gap: 0.8rem">
-                            <a href="/users/${friend.getName()}">${friend.getName()}</a>
+                            <c:choose>
+                                <c:when test="${friend.getName().equals(principal.getName())}">
+                                    <a href="/user">${friend.getName()}</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="/users/${friend.getName()}">${friend.getName()}</a>
+                                </c:otherwise>
+                            </c:choose>
+
                             <c:choose>
                                 <c:when test="${
                                     !friend.getName().equals(principal.getName()) &&
-                                    !commonFriends.contains(friend.getName())
+                                    !principalFriends.contains(friend.getName()) &&
+                                    !principalOutgoingRequests.contains(friend.getName()) &&
+                                    !principalIncomingRequests.contains(friend.getName())
                                 }">
-                                    <form action="/sendFriendRequest?username=${friend.getName()}" method="post">
-                                        <input type="submit" value="Add friend">
+                                    <form action="/sendFriendRequest?username=${friend.getName()}&redirectTo=${user.getName()}" method="post">
+                                        <input type="submit" value="Add Friend">
                                     </form>
                                 </c:when>
-                                <c:when test="${friend.getName().equals(principal.getName())}"><p>(You)</p></c:when>
-                                <c:otherwise>(Friend)</c:otherwise>
+
+                                <c:when test="${principalFriends.contains(friend.getName())}">
+                                    <form action="/removeFriend?username=${friend.getName()}&redirectTo=${user.getName()}" method="post">
+                                        <input type="submit" value="Unfriend">
+                                    </form>
+                                </c:when>
+
+                                <c:when test="${friend.getName().equals(principal.getName())}">
+                                    <p>(You)</p>
+                                </c:when>
                             </c:choose>
                         </div>
                     </li>
                 </c:forEach>
+
                 <c:choose>
                     <c:when test="${user.getFriends().size() == 0}">
                         <li>Nothing here :(</li>
@@ -57,5 +103,8 @@
                 </c:choose>
             </ul>
         </div>
+        <p style="margin-top: 1rem; font-size: 0.8rem; color: #e03641;">
+            ${friendRequestResult} ${removeFriendResult} ${acceptFriendRequestResult} ${removeFriendRequestResult}
+        </p>
     </div>
 </body>

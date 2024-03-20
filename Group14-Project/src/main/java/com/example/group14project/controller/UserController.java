@@ -17,6 +17,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 public class UserController {
@@ -53,7 +54,7 @@ public class UserController {
         SkillsBuildUser user = repository.findByName(username);
         SkillsBuildUser principalUser = repository.findByName(principal.getName());
 
-        if (user == null) { return "notFound"; }
+        if (user == null) { return "userNotFound"; }
 
         List<Badge> playerBadges = badgeRepository.findByOwner(user.getName());
 
@@ -62,16 +63,14 @@ public class UserController {
 
         if (principal.getName().equals(user.getName())) { return "user"; }
 
-        List<String> commonFriends = new ArrayList<>();
-
-        for (SkillsBuildUser friend : user.getFriends()) {
-            if (principalUser.getFriends().stream().anyMatch(o -> o.getName().equals(friend.getName()))) {
-                commonFriends.add(friend.getName());
-            }
-        }
+        List<String> principalFriends = principalUser.getFriends().stream().map(SkillsBuildUser::getName).toList();
+        List<String> principalOutgoingRequests = principalUser.getOutgoingFriendRequests().stream().map(SkillsBuildUser::getName).toList();
+        List<String> principalIncomingRequests = principalUser.getIncomingFriendRequests().stream().map(SkillsBuildUser::getName).toList();
 
         model.addAttribute("principal", principalUser);
-        model.addAttribute("commonFriends", commonFriends);
+        model.addAttribute("principalFriends", principalFriends);
+        model.addAttribute("principalOutgoingRequests", principalOutgoingRequests);
+        model.addAttribute("principalIncomingRequests", principalIncomingRequests);
 
         return "userPublicPage";
     }

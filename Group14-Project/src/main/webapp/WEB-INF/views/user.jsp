@@ -9,8 +9,8 @@
 <body>
     <div id="top">
         <img src="/logo.png">
-        <p>Welcome to the user page. Here you will find your stats and badges, along with other account info</p>
-        <p style="display: flex; flex-direction: row; gap: 3rem"><a href="/leaderboard">Global Leaderboard</a><a href="/dashboard">Courses Dashboard</a><a href="/friends-leaderboard">Friends Leaderboard</a></p>
+        <p>Welcome to your profile. Here you will find your stats and badges, along with other account info</p>
+        <p style="display: flex; flex-direction: row; gap: 3rem"><a href="/leaderboard">Global Leaderboard</a><a href="/dashboard">Courses</a><a href="/friends-leaderboard">Friends Leaderboard</a></p>
     </div>
 
     <div class="progress" style="width: 50%;">
@@ -34,18 +34,12 @@
                 </tr>
             </c:forEach>
         </table>
-        <h3 style="margin-top: 3rem; margin-bottom: 0.5rem">Add a friend</h3>
-        <form action="/sendFriendRequest" method="post">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <input type="submit" value="Add Friend">
-        </form>
         <div class="friend-list" style="margin-top: 3rem">
             <h3 style="margin-bottom: 0.5rem">Your friends</h3>
             <ul>
                 <c:forEach items="${user.getFriends()}" var="friend">
-                    <li style="margin-bottom: 1rem">
-                        <div style="display: flex; flex-direction: row; gap: 1rem">
+                    <li style="margin-bottom: 0.6rem">
+                        <div style="display: flex; flex-direction: row; gap: 0.8rem">
                             <a href="/users/${friend.getName()}">${friend.getName()}</a>
                             <form action="/removeFriend?username=${friend.getName()}" method="post">
                                 <input type="submit" value="Unfriend">
@@ -60,6 +54,12 @@
                 </c:choose>
             </ul>
         </div>
+        <h3 style="margin-top: 3rem; margin-bottom: 0.5rem">Add a friend</h3>
+        <form action="/sendFriendRequest" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <input type="submit" value="Add Friend">
+        </form>
         <h3 style="margin-top: 3rem; margin-bottom: 0.5rem">Friend requests</h3>
         <div class="friend-requests-list" style="display: flex; flex-direction: row; gap: 10rem;">
             <div style="display: flex; flex-direction: column">
@@ -69,7 +69,7 @@
                     <c:forEach items="${user.getIncomingFriendRequests()}" var="friend">
                         <li style="margin-bottom: 1rem">
                             <div style="display: flex; flex-direction: row; gap: 1rem">
-                                <p>${friend.getName()}</p>
+                                <a href="/users/${friend.getName()}">${friend.getName()}</a>
                                 <form action="/acceptFriendRequest?username=${friend.getName()}" method="post">
                                     <input type="submit" value="Accept">
                                 </form>
@@ -86,7 +86,7 @@
                     <c:forEach items="${user.getOutgoingFriendRequests()}" var="friend">
                         <li style="margin-bottom: 1rem">
                             <div style="display: flex; flex-direction: row; gap: 1rem">
-                                <p>${friend.getName()}</p>
+                                <a href="/users/${friend.getName()}">${friend.getName()}</a>
                                 <form action="/removeFriendRequest?username=${friend.getName()}" method="post">
                                     <input type="submit" value="Remove">
                                 </form>
