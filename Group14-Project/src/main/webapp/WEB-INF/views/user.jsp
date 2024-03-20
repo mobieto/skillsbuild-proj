@@ -13,9 +13,10 @@
         <p style="display: flex; flex-direction: row; gap: 3rem"><a href="/leaderboard">Global Leaderboard</a><a href="/dashboard">Courses Dashboard</a><a href="/friends-leaderboard">Friends Leaderboard</a></p>
     </div>
 
-    <div id="progress">
-        <div>Course Completion Progress: ${percentage}%</div>
-        <div class="progress-bar" style="width: ${percentage}%;"></div>
+    <div class="progress" style="width: 50%;">
+        <div class="progress-bar" role="progressbar" style="width: ${percentage}%;"
+             aria-valuenow="${percentage}" aria-valuemin="0" aria-valuemax="100"> ${percentage}%
+        </div>
     </div>
 
     <div class="center">
