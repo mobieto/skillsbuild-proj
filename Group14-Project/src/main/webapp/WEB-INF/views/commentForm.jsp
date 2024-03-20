@@ -134,8 +134,8 @@
         <label for="rating">Rating (1-5):</label><br>
         <input type="number" id="rating" name="rating" min="1" max="5" required><br>
         <label for="comment">Comment:</label><br>
-        <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br>
-        <div id="commentError" style="color: red; display: none;">Please enter a comment.</div>
+        <textarea id="comment" name="comment" rows="4" cols="50" required></textarea><br>
+        <div id="commentError" style="color: red; display: none;">Fill out this field</div>
         <input type="submit" value="Submit">
     </form>
 </div>
