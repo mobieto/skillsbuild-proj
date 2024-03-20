@@ -88,20 +88,13 @@
             text-decoration: none;
             font-weight: bold;
         }
-        #logo1 {
-            width: 15%;
-            height: 10%;
-            display: block;
-            margin: 20px auto;
-            box-shadow: 0 0 20px rgb(255, 255, 255);
-        }
+
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap">
 </head>
 <body>
 <header>
-    <img id="logo1" src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg">
     <div id="dashboard">
         <a href="/dashboard">Dashboard</a>
     </div>
@@ -131,7 +124,7 @@
         <% } %>
     </div>
 
-    <form id="commentForm" action="/comment" method="post">
+    <form id="commentForm" action="/comment" method="post" onsubmit="return validateForm()">
         <label for="courseName">Course Name:</label><br>
         <select id="courseName" name="courseName" required>
             <% for (Course course : (List<Course>) request.getAttribute("courses")) { %>
@@ -142,8 +135,20 @@
         <input type="number" id="rating" name="rating" min="1" max="5" required><br>
         <label for="comment">Comment:</label><br>
         <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br>
+        <div id="commentError" style="color: red; display: none;">Please enter a comment.</div>
         <input type="submit" value="Submit">
     </form>
 </div>
+
+<script>
+    function validateForm() {
+        var comment = document.getElementById("comment").value;
+        if (comment.trim() === "") {
+            document.getElementById("commentError").style.display = "block";
+            return false; // Prevent form submission
+        }
+        return true; // Allow form submission
+    }
+</script>
 </body>
 </html>
