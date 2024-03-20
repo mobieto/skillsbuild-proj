@@ -3,7 +3,6 @@
 <head>
     <title>User</title>
     <link rel="stylesheet" href="/dashboardCss.css"/>
-    <link rel="stylesheet" href="/leaderboardCSS.css"/>
 </head>
 
 <body>
@@ -46,7 +45,7 @@
                 <c:forEach items="${user.getFriends()}" var="friend">
                     <li style="margin-bottom: 1rem">
                         <div style="display: flex; flex-direction: row; gap: 1rem">
-                            <p>${friend.getName()}</p>
+                            <a href="/${friend.getName()}">${friend.getName()}</a>
                             <form action="/removeFriend?username=${friend.getName()}" method="post">
                                 <input type="submit" value="Unfriend">
                             </form>

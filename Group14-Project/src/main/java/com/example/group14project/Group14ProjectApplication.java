@@ -78,5 +78,7 @@ public class Group14ProjectApplication implements CommandLineRunner {
 
         friendService.sendFriendRequest("John", "Adam");
         friendService.acceptFriendRequest("John", "Adam");
+        friendService.sendFriendRequest("Roshan", "Adam");
+        friendService.acceptFriendRequest("Roshan", "Adam");
     }
 }

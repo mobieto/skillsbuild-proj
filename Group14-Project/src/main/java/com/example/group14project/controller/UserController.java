@@ -10,10 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.security.Principal;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -43,5 +46,33 @@ public class UserController {
         String Percentage = df.format(percentage);
         model.addAttribute("percentage", Percentage);
         return "user";
+    }
+
+    @GetMapping("/{username}")
+    public String userPublicPage(@PathVariable String username, Model model, Principal principal) {
+        SkillsBuildUser user = repository.findByName(username);
+        SkillsBuildUser principalUser = repository.findByName(principal.getName());
+
+        if (user == null) { return "notFound"; }
+
+        List<Badge> playerBadges = badgeRepository.findByOwner(principal.getName());
+
+        model.addAttribute("user", user);
+        model.addAttribute("badges", playerBadges);
+
+        if (principal.getName().equals(user.getName())) { return "user"; }
+
+        List<String> commonFriends = new ArrayList<>();
+
+        for (SkillsBuildUser friend : user.getFriends()) {
+            if (principalUser.getFriends().stream().anyMatch(o -> o.getName().equals(friend.getName()))) {
+                commonFriends.add(friend.getName());
+            }
+        }
+
+        model.addAttribute("principal", principalUser);
+        model.addAttribute("commonFriends", commonFriends);
+
+        return "userPublicPage";
     }
 }
