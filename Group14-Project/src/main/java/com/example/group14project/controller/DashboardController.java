@@ -43,6 +43,7 @@ public class DashboardController {
         }
         model.addAttribute("courses", courses);
 
+
         //progress bar code
         List<Course> completedCourses = courseRepository.findByStatus("completed");
         int completedCount = completedCourses.size();
@@ -52,5 +53,6 @@ public class DashboardController {
         String Percentage = df.format(percentage);
         model.addAttribute("percentage", Percentage);
         return "dashboard";
+
     }
 }
