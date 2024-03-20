@@ -11,6 +11,15 @@ public class Course{
 
     private String category;
     private String status;
+    private double percentageCompleted;
+
+    public double getPercentageCompleted() {
+        return percentageCompleted;
+    }
+
+    public void setPercentageCompleted(double percentageCompleted) {
+        this.percentageCompleted = percentageCompleted;
+    }
 
     public String getStatus() {
         return status;
