@@ -3,6 +3,7 @@
 <head>
     <title>User</title>
     <link rel="stylesheet" href="/dashboardCss.css"/>
+    <link rel="stylesheet" href="/leaderboardCss.css"/>
 </head>
 
 <body>
@@ -31,9 +32,9 @@
             <h3 style="margin-bottom: 0.5rem">Friends</h3>
             <ul>
                 <c:forEach items="${user.getFriends()}" var="friend">
-                    <li>
-                        <div style="display: flex; flex-direction: row; gap: 0.7rem">
-                            <p>${friend.getName()}</p>
+                    <li style="margin-bottom: 0.6rem">
+                        <div style="display: flex; flex-direction: row; gap: 0.8rem">
+                            <a href="/users/${friend.getName()}">${friend.getName()}</a>
                             <c:choose>
                                 <c:when test="${
                                     !friend.getName().equals(principal.getName()) &&
@@ -44,7 +45,7 @@
                                     </form>
                                 </c:when>
                                 <c:when test="${friend.getName().equals(principal.getName())}"><p>(You)</p></c:when>
-                                <c:otherwise>(Your friend)</c:otherwise>
+                                <c:otherwise>(Friend)</c:otherwise>
                             </c:choose>
                         </div>
                     </li>
