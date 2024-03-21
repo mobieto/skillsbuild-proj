@@ -64,11 +64,11 @@
         <h3 style="margin-top: 3rem; margin-bottom: 0.5rem">Friend requests</h3>
         <div class="friend-requests-list" style="display: flex; flex-direction: row; gap: 10rem;">
             <div style="display: flex; flex-direction: column">
-                <h4>Incoming</h4>
+                <h4 style="margin-bottom: 0.6rem">Incoming</h4>
                 <br>
                 <ul>
                     <c:forEach items="${user.getIncomingFriendRequests()}" var="friend">
-                        <li style="margin-bottom: 1rem">
+                        <li style="margin-bottom: 0.8rem">
                             <div style="display: flex; flex-direction: row; gap: 1rem">
                                 <a href="/users/${friend.getName()}">${friend.getName()}</a>
                                 <form action="/acceptFriendRequest?username=${friend.getName()}" method="post">
@@ -81,11 +81,11 @@
             </div>
 
             <div style="display: flex; flex-direction: column">
-                <h4>Outgoing</h4>
+                <h4 style="margin-bottom: 0.6rem">Outgoing</h4>
                 <br>
                 <ul>
                     <c:forEach items="${user.getOutgoingFriendRequests()}" var="friend">
-                        <li style="margin-bottom: 1rem">
+                        <li style="margin-bottom: 0.8rem">
                             <div style="display: flex; flex-direction: row; gap: 1rem">
                                 <a href="/users/${friend.getName()}">${friend.getName()}</a>
                                 <form action="/removeFriendRequest?username=${friend.getName()}" method="post">
