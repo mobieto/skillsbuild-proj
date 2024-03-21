@@ -202,7 +202,14 @@ td .link2 {
     border: 3px solid #0f75bc;
     padding: 10px;
 }
-
+.P {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #0f75bc;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 10px;
+}
 .progress {
     width: 75%;
     height: 20px;
