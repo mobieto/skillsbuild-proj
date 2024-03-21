@@ -11,13 +11,13 @@ public class Course{
 
     private String category;
     private String status;
-    private double percentageCompleted;
+    private String percentageCompleted;
 
-    public double getPercentageCompleted() {
+    public String getPercentageCompleted() {
         return percentageCompleted;
     }
 
-    public void setPercentageCompleted(double percentageCompleted) {
+    public void setPercentageCompleted(String percentageCompleted) {
         this.percentageCompleted = percentageCompleted;
     }
 

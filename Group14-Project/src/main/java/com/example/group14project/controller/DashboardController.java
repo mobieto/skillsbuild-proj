@@ -57,10 +57,13 @@ public class DashboardController {
         // course progress bars
         Random random = new Random();
         for (Course course : courses) {
-            double coursePercent = random.nextDouble() * 100;
-            String percentageCompleted = df.format(coursePercent);
-            course.setPercentageCompleted(Double.parseDouble(percentageCompleted));
+            if (course.getPercentageCompleted() == null) {
+                double coursePercent = random.nextDouble() * 100;
+                String percentageCompleted = df.format(coursePercent);
+                course.setPercentageCompleted(percentageCompleted);
+                courseRepository.save(course);
+            }
         }
-            return "dashboard";
+        return "dashboard";
     }
 }
