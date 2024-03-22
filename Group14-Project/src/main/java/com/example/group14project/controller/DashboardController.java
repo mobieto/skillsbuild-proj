@@ -47,7 +47,7 @@ public class DashboardController {
         //progress bar code
         List<Course> Courses = courseRepository.findAll();
         List<Course> completedCourses = courseRepository.findByStatus("completed");
-        DecimalFormat df = new DecimalFormat("0.00");
+        DecimalFormat df = new DecimalFormat("0");
         int completedCount = completedCourses.size();
         double totalCourses = Courses.size();
         double percentage = (double) completedCount / totalCourses * 100;
