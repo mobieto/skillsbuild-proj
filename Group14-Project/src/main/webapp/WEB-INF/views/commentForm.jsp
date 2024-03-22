@@ -45,11 +45,12 @@
 
     <form id="commentForm" action="/comment" method="post" onsubmit="return validateForm()">
         <label for="courseName">Course Name:</label><br>
-        <select id="courseName" name="courseName" required>
+        <select id="courseName" name="courseName" required style="padding: 5px;" margin: auto;">
             <% for (Course course : (List<Course>) request.getAttribute("courses")) { %>
             <option value="<%= course.getName() %>"><%= course.getName() %></option>
             <% } %>
         </select><br>
+        <div style="margin-top: 23px;"></div>
         <label for="rating">Rating (1-5):</label><br>
         <input type="number" id="rating" name="rating" min="1" max="5" required><br>
         <label for="comment">Comment:</label><br>
