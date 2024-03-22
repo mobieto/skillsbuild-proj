@@ -26,7 +26,7 @@
     <div class="progress" style="width: 75%;">
         <div class="progress-bar" style="width: ${percentage}%;"
              aria-valuenow="${percentage}" aria-valuemin="0" aria-valuemax="100">
-            ${percentage}%
+            <span style="visibility: hidden;">${percentage}%</span>
         </div>
     </div>
 <h3 style="text-align: center;
