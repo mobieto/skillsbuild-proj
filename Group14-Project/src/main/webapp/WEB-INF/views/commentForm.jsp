@@ -18,10 +18,10 @@
         <a href="/dashboard">Dashboard</a>
     </div>
 </header>
-<div class="container">
-    <h2>Leave a Comment and Rating</h2>
-    <div id="confirmationMessage" style="margin-top: 20px;">
+<div class="container" >
 
+    <h2 style="text-align: center;">Leave a Comment and Rating</h2>
+    <div id="confirmationMessage" style="margin-top: 20px; text-align: center;">
     </div>
 
     <h3>Comments</h3>
