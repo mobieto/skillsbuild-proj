@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
     <script src="scripts.js"></script>
@@ -19,6 +20,7 @@
         <a href="/user">My Profile</a>
         <a href="/friends-leaderboard">Friends Leaderboard</a>
         <a href="/comment">Comment</a></p>
+        <a href="/goals">Course Goals</a>
 </div>
 <div class="P" style="text-align: center;">
     <h2>Course Completion Progress</h2>
