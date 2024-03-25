@@ -111,7 +111,8 @@ public class CourseController {
                 if(courseSession.getEndGoal() != null && LocalDateTime.now().isBefore(courseSession.getEndGoal())) {
                     badgeService.awardBadgeToUser(player, courseSession.getBadge());
                 }
-
+                int courseExpWorth = 100;
+                player.addExp(courseExpWorth);
                 userRepository.save(player);
                 course.setStatus("completed");
                 courseRepository.save(course);

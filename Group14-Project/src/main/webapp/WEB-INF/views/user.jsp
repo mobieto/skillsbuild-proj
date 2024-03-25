@@ -26,8 +26,10 @@
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;">${percentage}%</h3>
+        <h9> Level: ${level}</h9>
+        <h10> Exp: ${exp}</h10>
 
-    <div class="center">
+        <div class="center">
         <h3>Username: ${user.name}</h3>
         <p>Number of courses completed: ${user.coursesCompleted}</p>
         <table>
