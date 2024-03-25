@@ -16,38 +16,38 @@ public class FriendController {
     private FriendService friendService;
 
     @PostMapping("/sendFriendRequest")
-    private String sendFriendRequest(@RequestParam String username, Principal principal, RedirectAttributes redirectAttributes) {
+    private String sendFriendRequest(@RequestParam String username, @RequestParam(required = false) String redirectTo, Principal principal, RedirectAttributes redirectAttributes) {
         String resultMessage = friendService.sendFriendRequest(principal.getName(), username);
 
         redirectAttributes.addFlashAttribute("friendRequestResult", resultMessage);
 
-        return "redirect:/user";
+        return "redirect:/user" + (redirectTo != null ? "s/%s".formatted(redirectTo) : "");
     }
 
     @PostMapping("/removeFriend")
-    private String removeFriend(@RequestParam String username, Principal principal, RedirectAttributes redirectAttributes) {
+    private String removeFriend(@RequestParam String username, @RequestParam(required = false) String redirectTo, Principal principal, RedirectAttributes redirectAttributes) {
         String resultMessage = friendService.removeFriend(principal.getName(), username);
 
         redirectAttributes.addFlashAttribute("removeFriendResult", resultMessage);
 
-        return "redirect:/user";
+        return "redirect:/user" + (redirectTo != null ? "s/%s".formatted(redirectTo) : "");
     }
 
     @PostMapping("/acceptFriendRequest")
-    private String acceptFriendRequest(@RequestParam String username, Principal principal, RedirectAttributes redirectAttributes) {
+    private String acceptFriendRequest(@RequestParam String username, @RequestParam(required = false) String redirectTo, Principal principal, RedirectAttributes redirectAttributes) {
         String resultMessage = friendService.acceptFriendRequest(username, principal.getName());
 
         redirectAttributes.addFlashAttribute("acceptFriendRequestResult", resultMessage);
 
-        return "redirect:/user";
+        return "redirect:/user" + (redirectTo != null ? "s/%s".formatted(redirectTo) : "");
     }
 
     @PostMapping("/removeFriendRequest")
-    private String removeFriendRequest(@RequestParam String username, Principal principal, RedirectAttributes redirectAttributes) {
+    private String removeFriendRequest(@RequestParam String username, @RequestParam(required = false) String redirectTo, Principal principal, RedirectAttributes redirectAttributes) {
         String resultMessage = friendService.removeFriendRequest(principal.getName(), username);
 
         redirectAttributes.addFlashAttribute("removeFriendRequestResult", resultMessage);
 
-        return "redirect:/user";
+        return "redirect:/user" + (redirectTo != null ? "s/%s".formatted(redirectTo) : "");
     }
 }

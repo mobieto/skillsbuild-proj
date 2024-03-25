@@ -44,6 +44,8 @@ public class FriendService {
 
         if (userExistsInList(sender.getOutgoingFriendRequests(), receiver)) { return "You already have a pending friend request to %s.".formatted(receiver.getName()); }
 
+        if (userExistsInList(sender.getIncomingFriendRequests(), receiver)) { return this.acceptFriendRequest(senderName, receiverName); }
+
         sender.getOutgoingFriendRequests().add(receiver);
         receiver.getIncomingFriendRequests().add(sender);
 

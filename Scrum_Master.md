@@ -39,3 +39,12 @@ Details:
 Conclusion:  
 - Everyone decided which list to do and started coding.
 
+Sprint 2 - 20th March 2024  
+Scrum Master: Dylan Corbishley  
+Details:
+- Met group at 11am and discussed how each member was progressing with their assigned user story
+- Checked everyone's progress
+- Continued to work on our user stories as a group
+
+Conclusion:
+- User stories for sprint 2 are progressing well and each member is happy with their work and the next steps to take

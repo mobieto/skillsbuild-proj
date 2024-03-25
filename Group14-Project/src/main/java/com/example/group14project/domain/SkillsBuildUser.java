@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class SkillsBuildUser {
@@ -27,6 +28,41 @@ public class SkillsBuildUser {
     private int coursesCompleted;
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Course> courseCompletedList;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<CourseSession> activeCourseList;
+
+    public List<CourseSession> getActiveCourseList() {
+        return activeCourseList;
+    }
+
+    public void addActiveCourse(CourseSession courseSession) {
+        this.activeCourseList.add(courseSession);
+    }
+
+    public void removeActiveCourse(CourseSession courseSession) {
+        this.activeCourseList.remove(courseSession);
+    }
+
+    public void removeActiveCourse(String courseSessionName) {
+        //bad for a whole host of reasons but should work for now (user shouldnt start same course twice)
+        for(CourseSession courseSession : this.activeCourseList) {
+            if (Objects.equals(courseSession.getCourseName(), courseSessionName)) {
+                removeActiveCourse(courseSession);
+                return;
+            }
+        }
+    }
+
+    public CourseSession getActiveCourse(String courseSessionName) {
+        //bad for a whole host of reasons but should work for now (user shouldnt start same course twice)
+        for(CourseSession courseSession : this.activeCourseList) {
+            if (Objects.equals(courseSession.getCourseName(), courseSessionName)) {
+                return courseSession;
+            }
+        }
+        return null;
+    }
 
     public int getCoursesCompleted() {
         return coursesCompleted;
@@ -105,4 +141,31 @@ public class SkillsBuildUser {
     public void setCourseCompletedList(List<Course> courseCompletedList) {
         this.courseCompletedList = courseCompletedList;
     }
+    // Levels code
+    private int totalExp;
+
+    public SkillsBuildUser() {
+        this.totalExp = 0;
+    }
+
+    public void addExp(int exp) {
+        this.totalExp += exp;
+    }
+
+    public int getCurrentLevel() {
+        return 1 + totalExp / 200;
+    }
+
+    public int getExpToNextLevel() {
+        return 200 - (totalExp % 200);
+    }
+
+    public int getTotalExp() {
+        return totalExp;
+    }
+
+    public void setTotalExp(int totalExp) {
+        this.totalExp = totalExp;
+    }
+
 }

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.text.DecimalFormat;
 import java.util.*;
-
+import java.util.Random;
 import java.util.List;
 
 
@@ -34,23 +34,31 @@ public class DashboardController {
         String playerName = authentication.getName();
         SkillsBuildUser player = repo.findByName(playerName);
         Set<Course> playerCompletedCourses = new HashSet<>(player.getCourseCompletedList());
-        Iterator<Course> it = courses.iterator();
-        while (it.hasNext()) {
-            Course course = it.next();
-            if (playerCompletedCourses.contains(course)) {
-                it.remove();
-            }
-        }
+        courses.removeIf(playerCompletedCourses::contains);
         model.addAttribute("courses", courses);
+        model.addAttribute("completed_courses", player.getCourseCompletedList());
+
 
         //progress bar code
+        List<Course> Courses = courseRepository.findAll();
         List<Course> completedCourses = courseRepository.findByStatus("completed");
+        DecimalFormat df = new DecimalFormat("0");
         int completedCount = completedCourses.size();
-        double totalCourses = 73;
+        double totalCourses = Courses.size();
         double percentage = (double) completedCount / totalCourses * 100;
-        DecimalFormat df = new DecimalFormat("#.##");
         String Percentage = df.format(percentage);
         model.addAttribute("percentage", Percentage);
+
+        // course progress bars
+        Random random = new Random();
+        for (Course course : courses) {
+            if (course.getPercentageCompleted() == null) {
+                double coursePercent = random.nextDouble() * 100;
+                String percentageCompleted = df.format(coursePercent);
+                course.setPercentageCompleted(percentageCompleted);
+                courseRepository.save(course);
+            }
+        }
         return "dashboard";
     }
 }

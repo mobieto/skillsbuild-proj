@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 @Service
 public class BadgeService {
+
     @Autowired
     private BadgeRepository badgeRepository;
 
@@ -19,7 +20,6 @@ public class BadgeService {
 
         badge.setOwner(user.getName());
         user.getBadges().add(badge);
-
         badgeRepository.save(badge);
     }
 }
