@@ -141,4 +141,31 @@ public class SkillsBuildUser {
     public void setCourseCompletedList(List<Course> courseCompletedList) {
         this.courseCompletedList = courseCompletedList;
     }
+    // Levels code
+    private int totalExp;
+
+    public SkillsBuildUser() {
+        this.totalExp = 0;
+    }
+
+    public void addExp(int exp) {
+        this.totalExp += exp;
+    }
+
+    public int getCurrentLevel() {
+        return 1 + totalExp / 200;
+    }
+
+    public int getExpToNextLevel() {
+        return 200 - (totalExp % 200);
+    }
+
+    public int getTotalExp() {
+        return totalExp;
+    }
+
+    public void setTotalExp(int totalExp) {
+        this.totalExp = totalExp;
+    }
+
 }

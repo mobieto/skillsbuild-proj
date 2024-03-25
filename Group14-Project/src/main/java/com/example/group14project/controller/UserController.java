@@ -46,6 +46,12 @@ public class UserController {
         DecimalFormat df = new DecimalFormat("#.##");
         String Percentage = df.format(percentage);
         model.addAttribute("percentage", Percentage);
+
+        int level = user.getCurrentLevel();
+        model.addAttribute("level", level);
+        float exp = user.getTotalExp();
+        model.addAttribute("exp", exp);
+
         return "user";
     }
 
