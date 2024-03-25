@@ -47,7 +47,7 @@ public class Group14ProjectApplication implements CommandLineRunner {
         UserRole role = new UserRole("default");
         user1.addRole(role);
         user1.setName("John");
-        user1.setCoursesCompleted(5);
+        user1.setCoursesCompleted(0);
         user1.setPassword(passwordEncoder.encode("password"));
         leaderboard.getPlayers().add(user1);
         user1.setLeaderboard(leaderboard);
