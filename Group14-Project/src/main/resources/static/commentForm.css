@@ -56,7 +56,9 @@ header {
     margin: 10px;
     text-decoration: none;
     color: inherit;
-}
+}#dashboard a:hover {
+     color: #f7b03e;
+ }
 .comment-container {
     margin-bottom: 20px;
     border-bottom: 1px solid #ccc;
