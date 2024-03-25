@@ -2,9 +2,7 @@ package com.example.group14project.domain;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class SkillsBuildUser {
@@ -31,6 +29,9 @@ public class SkillsBuildUser {
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<CourseSession> activeCourseList;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Map<String, CourseSession> activeSessions = new HashMap<>();
 
     public List<CourseSession> getActiveCourseList() {
         return activeCourseList;
@@ -166,6 +167,14 @@ public class SkillsBuildUser {
 
     public void setTotalExp(int totalExp) {
         this.totalExp = totalExp;
+    }
+
+    public Map<String, CourseSession> getActiveSessions() {
+        return activeSessions;
+    }
+
+    public void setActiveSessions(Map<String, CourseSession> activeSessions) {
+        this.activeSessions = activeSessions;
     }
 
 }

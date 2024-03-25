@@ -39,6 +39,7 @@
     margin-bottom: 10px;">${percentage}%</h3>
 
 <div id="container">
+    <h2>Incomplete Courses</h2>
     <table id="dashboard">
         <thead>
         <tr>
@@ -79,6 +80,40 @@
         </c:forEach>
         </tbody>
     </table>
-</div>
-</body>
+
+            <h2>Completed Courses</h2>
+            <table id="completed_dashboard">
+                <thead>
+                    <tr>
+                        <th>
+                            <p>Course</p>
+                            <i class="fa-solid fa-sort-down" id="completed_course_click"></i>
+                        </th>
+                        <th>
+                            <p>Category</p>
+                            <i class="fa-solid fa-sort" id="completed_category_click"></i>
+                        </th>
+                        <th>
+                            <p>Completion Time</p>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${completed_courses}" var="course">
+                        <tr>
+                            <td>
+                                <a href="${course.link}" id="completed_courselink" target="_blank">${course.name}</a>
+                            </td>
+                            <td>
+                                    ${course.category}
+                            </td>
+                            <td>
+                                    ${course.completedTime}
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
+    </body>
 </html>

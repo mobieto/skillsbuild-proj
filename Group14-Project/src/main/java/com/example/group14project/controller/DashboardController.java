@@ -37,6 +37,7 @@ public class DashboardController {
         courses.removeIf(playerCompletedCourses::contains);
         model.addAttribute("courses", courses);
         model.addAttribute("completed_courses", player.getCourseCompletedList());
+        model.addAttribute("active_Sessions", player.getActiveSessions());
 
 
         //progress bar code
