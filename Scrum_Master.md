@@ -49,8 +49,8 @@ Details:
 Conclusion:
 - User stories for sprint 2 are progressing well and each member is happy with their work and the next steps to take
 
-Sprint 2 - 25th March 2024
-Scrum Master: Mobin Hosseini
+Sprint 2 - 25th March 2024  
+Scrum Master: Mobin Hosseini  
 Details:
 - Met group at 1pm to go over final commits and ensure everyone was on track to finish their user stories
 - Discussed next steps to take to ensure second sprint finishes smoothly
