@@ -62,16 +62,6 @@
         <input type="submit" value="Submit">
     </form>
 </div>
-
-<script>
-    function validateForm() {
-        var comment = document.getElementById("comment").value;
-        if (comment.trim() === "") {
-            document.getElementById("commentError").style.display = "block";
-            return false; // Prevent form submission
-        }
-        return true; // Allow form submission
-    }
-</script>
+<script src="/commentForm.js"></script>
 </body>
 </html>
