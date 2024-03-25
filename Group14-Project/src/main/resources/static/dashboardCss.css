@@ -236,3 +236,12 @@ td .link2 {
     background-color: #0f75bc;
     transition: width 0.3s ease;
 }
+#top a {
+    font-family: Arial, sans-serif;
+    color: #0f75bc;
+    text-decoration: none;
+}
+
+#top a:hover {
+    color: #f7b03e;
+}
