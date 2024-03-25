@@ -117,6 +117,9 @@
         .footer h3, .footer p {
             margin: 5px 0;
         }
+        #dashboard a:hover {
+             color: #f7b03e;
+         }
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap">
 </head>

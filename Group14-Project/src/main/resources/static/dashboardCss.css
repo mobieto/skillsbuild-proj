@@ -245,3 +245,11 @@ td .link2 {
 #top a:hover {
     color: #f7b03e;
 }
+.U-progress {
+    width: 75%;
+    height: 20px;
+    margin-left: auto;
+    overflow: hidden;
+    background-color: #ddd;
+    border-radius: 5px;
+}

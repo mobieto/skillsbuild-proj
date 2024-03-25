@@ -51,7 +51,7 @@
                 <p>Category</p>
                 <i class="fa-solid fa-sort" id="category_click"></i>
             </th>
-            <th> <p>Timer</p></th>
+            <th> <p>Start</p></th>
             <th> <p>Progress</p></th>
             <th> <p>Complete</p></th>
         </tr>
@@ -65,7 +65,7 @@
                 <td>
                         ${course.category}
                 </td>
-                <td><a href="/courses?newCourse=${course.name}" class="link2">Timer</a></td>
+                <td><a href="/courses?newCourse=${course.name}" class="link2">Start</a></td>
                 <td><div class="mini-progress">
                     <div class="mini-progress-bar" style="width:${course.percentageCompleted}%;"></div>
                 </div>
