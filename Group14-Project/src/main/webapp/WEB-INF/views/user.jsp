@@ -11,23 +11,27 @@
         <img src="/logo.png">
         <p>Welcome to your profile. Here you will find your stats and badges, along with other account info</p>
         <p style="display: flex; flex-direction: row; gap: 3rem"><a href="/leaderboard">Global Leaderboard</a><a href="/dashboard">Courses</a><a href="/friends-leaderboard">Friends Leaderboard</a></p>
+        <div class="P" style="text-align: center;">
+            <h2>Experience Points To Next Level</h2>
+        </div>
+        <div class="progress" style="width: 75%;">
+            <div class="progress-bar" style="width: ${(exp % 200) / 2}%;"
+                 aria-valuenow="${(exp % 200) / 2}" aria-valuemin="0" aria-valuemax="100">
+                <span style="visibility: hidden;">${exp % 200}</span>
+            </div>
+        </div>
+        <h3 style="text-align: center;
+    font-family: Arial, sans-serif;
+    color: #0f75bc;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;">${exp % 200} / 200</h3>
+
         <div class="center">
         <h3>Username: ${user.name}</h3>
         <p>Number of courses completed: ${user.coursesCompleted}</p>
             <h9> Level: ${level}</h9>
-            <div style="text-align: right;">
-                <p style="font-size: 15px;">Experience Points To Next Level</p>
-            </div>
-            <div class="U-progress" style="width: 32%;">
-                <div class="progress-bar" style="width: ${(exp % 500) / 5}%;"
-                     aria-valuenow="${(exp % 500) / 5}" aria-valuemin="0" aria-valuemax="100">
-                    <span style="visibility: hidden;">${exp % 500}</span>
-                </div>
-            </div>
-            <p style="text-align: right;
-    font-size: 15px;
-    margin-bottom: 10px;">${exp % 500} / 500</p>
-            <table>
+        <table>
             <thead>
                 <th>Badge</th>
                 <th>Description</th>
@@ -39,6 +43,27 @@
                 </tr>
             </c:forEach>
         </table>
+            <div class="bio-section" style="margin-top: 20px;">
+                <h3>Biography</h3>
+                <p> add input here</p>
+                <style>
+                    .bio-section {
+                        padding: 15px;
+                        background-color: #f0f0f0;
+                        border-radius: 5px;
+                        font-family: Arial, sans-serif;
+                    }
+
+                    .bio-section h3 {
+                        color: #0f75bc;
+                    }
+
+                    .bio-section p {
+                        text-align: justify;
+                        line-height: 1.6;
+                    }
+                </style>
+            </div>
         <div class="friend-list" style="margin-top: 3rem">
             <h3 style="margin-bottom: 0.5rem">Your friends</h3>
             <ul>
@@ -106,4 +131,23 @@
             ${friendRequestResult} ${removeFriendResult} ${acceptFriendRequestResult} ${removeFriendRequestResult}
         </p>
     </div>
+        <form action="userProfile" method="get">
+            <button type="submit" id="editButton">Edit Profile</button>
+        </form>
+        <style>
+        #editButton {
+        background-color: #0f75bc;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+        }
+
+        #editButton:hover {
+        transform: scale(1.2);
+        }
+        </style>
+
 </body>

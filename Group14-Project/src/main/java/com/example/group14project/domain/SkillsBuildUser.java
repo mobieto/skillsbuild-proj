@@ -24,6 +24,15 @@ public class SkillsBuildUser {
     @JoinColumn(name = "leaderboard_id")
     private Leaderboard leaderboard;
     private int coursesCompleted;
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Course> courseCompletedList;
 

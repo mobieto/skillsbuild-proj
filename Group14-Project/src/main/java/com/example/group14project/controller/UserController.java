@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
 import java.text.DecimalFormat;
@@ -53,6 +55,21 @@ public class UserController {
         model.addAttribute("exp", exp);
 
         return "user";
+    }
+    @GetMapping("/userProfile")
+    public String editUserProfile(Principal principal, Model model) {
+        SkillsBuildUser user = repository.findByName(principal.getName());
+        if (user == null) {
+            return "redirect:/error";
+        }
+        model.addAttribute("user", user);
+        return "userProfile";
+    }
+    @PostMapping("/user/saveEdit")
+    public String saveUserProfile(@ModelAttribute("user") SkillsBuildUser user) {
+
+        repository.save(user);
+        return "redirect:/user";
     }
 
     @GetMapping("/users/{username}")
