@@ -39,8 +39,8 @@ Details:
 Conclusion:  
 - Everyone decided which list to do and started coding.
 
-Sprint 2 - 20th March 2024
-Scrum Master: Dylan Corbishley
+Sprint 2 - 20th March 2024  
+Scrum Master: Dylan Corbishley  
 Details:
 - Met group at 11am and discussed how each member was progressing with their assigned user story
 - Checked everyone's progress
