@@ -12,12 +12,13 @@
         font-family: 'Arial', sans-serif;
         margin: 0;
         padding: 10px;
-        background-color: #ffffff;
+        background:#081b29;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         min-height: 10vh;
+        color: white;
     }
 
     header {
@@ -32,7 +33,6 @@
         height: auto;
         display: block;
         margin: 20px auto;
-        box-shadow: 0 0 20px rgb(255, 255, 255);
     }
 
     #typing-message {
@@ -59,7 +59,7 @@
         width: 90%;
         display: block;
         margin: 20px auto;
-        box-shadow: 0 0 10px rgb(0, 0, 0, 0.5)
+        box-shadow: 0 0 20px rgb(255, 255, 255);
     }
 
     input[type="text"],

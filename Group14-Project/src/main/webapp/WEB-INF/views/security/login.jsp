@@ -8,9 +8,10 @@
 <style>
     body {
         font-family: 'Arial', sans-serif;
+        color: white;
         margin: 0;
         padding: 10px;
-        background-color: #ffffff;
+        background:#081b29;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -30,7 +31,6 @@
         height: auto;
         display: block;
         margin: 20px auto;
-        box-shadow: 0 0 20px rgb(255, 255, 255);
     }
 
     #typing-message {
@@ -57,7 +57,7 @@
         width: 90%;
         display: block;
         margin: 20px auto;
-        box-shadow: 0 0 10px rgb(0, 0, 0, 0.5)
+        box-shadow: 0 0 20px rgb(255, 255, 255);
     }
 
     input[type="text"],
@@ -96,7 +96,7 @@
          Password: <input type="password" name="password" /> <br/>
         <input type="submit" value="Sign In" /> <br/>
 <%--        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">--%>
-        <p><a href="/register-form">register</a></p>
+        <p><a href="/register-form">Register</a></p>
     </form>
 </body>
 </html>
