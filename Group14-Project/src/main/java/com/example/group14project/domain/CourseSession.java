@@ -24,6 +24,8 @@ public class CourseSession {
 
     private Long pauseTime;
     private Duration pausedDuration;
+    private LocalDateTime endTime;
+    private String totalTime;
 
     public CourseSession() {
         this.pausedDuration = Duration.ZERO;
@@ -47,7 +49,6 @@ public class CourseSession {
         } else {
             System.out.println("Session is already paused.");
         }
-
     }
 
     public void resume() {
@@ -87,10 +88,39 @@ public class CourseSession {
         }
     }
 
+    public void stop() {
+        if (startTime != null && pauseTime == null) {
+            endTime = LocalDateTime.now();
+            Duration elapsedTime = calculateElapsedTime();
+
+            long hours = elapsedTime.toHours();
+            long minutes = elapsedTime.toMinutesPart();
+            long seconds = elapsedTime.toSecondsPart();
+
+            totalTime = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+            System.out.println("Session stopped at: " + endTime);
+        } else {
+            System.out.println("Session cannot be stopped at this time.");
+        }
+    }
+
+    public String getTotalTime() {
+        return totalTime;
+    }
+
+    public boolean isSessionStarted() {
+        return startTime != null;
+    }
+
+    public boolean isSessionPaused() {
+        return pauseTime != null;
+    }
+
     public void reset() {
         startTime = null;
         pauseTime = null;
         pausedDuration = Duration.ZERO;
+        endTime = null;
     }
 
     public String getCourseName() {
