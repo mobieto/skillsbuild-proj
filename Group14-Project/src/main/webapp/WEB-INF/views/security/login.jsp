@@ -45,7 +45,7 @@
     }
     form {
         text-align: center;
-        margin-top: 100px;
+        margin-top: 50px;
         max-width: 600px;
         padding: 40px;
         padding-left: 5px;
@@ -58,10 +58,12 @@
     input[type="password"] {
         padding: 15px;
         margin-bottom: 20px;
-        width: calc(100% - 30px);
+        width: 100%;
         border: 2px solid #0f75bc;
         border-radius: 5px;
         outline: none;
+        align-items: center;
+        justify-content: center;
     }
     input[type="submit"],
     .register-button {
@@ -75,6 +77,8 @@
         text-decoration: none;
         width: calc(25% - 30px);
         font-size: 16px;
+        align-items: center;
+        justify-content: center;
     }
     input[type="submit"]:hover,
     .register-button:hover {
@@ -92,7 +96,7 @@
 </header>
 <div id="typing-message">Gamify your IBM experience!</div>
 <body>
-    <form action="/myLogin" method="post">
+    <form action="/myLogin" method="post" style="align-items: center;">
          User Name: <input type="text" name="username" /> <br/>
          Password: <input type="password" name="password" /> <br/>
         <input type="submit" value="Sign In" /> <br/><br/>
