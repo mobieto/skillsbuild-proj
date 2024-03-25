@@ -34,14 +34,9 @@ public class DashboardController {
         String playerName = authentication.getName();
         SkillsBuildUser player = repo.findByName(playerName);
         Set<Course> playerCompletedCourses = new HashSet<>(player.getCourseCompletedList());
-        Iterator<Course> it = courses.iterator();
-        while (it.hasNext()) {
-            Course course = it.next();
-            if (playerCompletedCourses.contains(course)) {
-                it.remove();
-            }
-        }
+        courses.removeIf(playerCompletedCourses::contains);
         model.addAttribute("courses", courses);
+        model.addAttribute("completed_courses", player.getCourseCompletedList());
 
 
         //progress bar code
