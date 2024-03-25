@@ -15,8 +15,9 @@
             border: none;
             cursor: pointer;
         }
-
-
+        input[type="submit"]:hover {
+            background-color: #095c91;
+        }
         body {
             background-color: #f4f7fc;
             font-family: 'Arial', sans-serif;
