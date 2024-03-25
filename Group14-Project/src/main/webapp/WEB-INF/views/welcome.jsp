@@ -26,6 +26,7 @@
             align-items: center;
             padding-top: 120px;
 
+
         }
         .header {
             background: transparent;
@@ -86,6 +87,8 @@
             transform: scale(1.2);
             cursor: pointer;
         }
+
+
 
         .home-content {
             background: transparent;
@@ -161,10 +164,22 @@
             text-decoration: none;
 
         }
+        #ibm-logo {
+            position: fixed;
+            right: 30px;
+            padding-right: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40%;
+
+        }
+
+
+
 
     </style>
 
-<body>
+<img>
 <header class="header">
     <a href="#" class="logo">IBM</a>
     <nav class="navbar">
@@ -174,6 +189,7 @@
         <button><a href="/login-form" class="button">Login</a></button>
     </nav>
 </header>
+<img id="ibm-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/2560px-IBM_logo.svg.png">
 <section class="home">
     <div class ="home-content">
         <h1>Welcome to IBM SkillsBuild</h1>
