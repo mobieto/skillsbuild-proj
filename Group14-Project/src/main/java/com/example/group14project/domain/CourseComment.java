@@ -1,9 +1,16 @@
 package com.example.group14project.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class CourseComment {
+    @Id
     private String courseName;
     private int rating;
     private String comment;
+
+    private String name;
 
     public String getCourseName() {
         return courseName;
@@ -27,5 +34,13 @@ public class CourseComment {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

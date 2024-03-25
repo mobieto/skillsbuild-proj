@@ -10,12 +10,13 @@
     <link rel="stylesheet" href="/commentForm.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap">
+    <script src="/commentForm.js"></script>
 </head>
 <body>
 <header>
     <img id="logo1" src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg">
     <div id="dashboard">
-        <a href="/dashboard">Dashboard</a>
+        <a href="/dashboard">Course</a>
     </div>
 </header>
 <div class="container" >
@@ -30,6 +31,9 @@
         <div class="comment-container">
             <div>
                 <div class="name-text">
+                    <p>Username: <%= comment.getName() %></p>
+                </div>
+                <div class="course-name-text">
                     <p>Course Name: <%= comment.getCourseName() %></p>
                 </div>
                 <div class="rating-text">
@@ -60,8 +64,8 @@
         <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br>
         <div id="commentError" style="color: red; display: none;">Please enter a comment.</div>
         <input type="submit" value="Submit">
+        <input type="hidden" id="username" name="username">
     </form>
 </div>
-<script src="/commentForm.js"></script>
 </body>
 </html>

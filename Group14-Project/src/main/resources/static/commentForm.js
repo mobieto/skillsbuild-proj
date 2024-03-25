@@ -6,3 +6,17 @@ function validateForm() {
     }
     return true; // Allow form submission
 }
+
+document.getElementById('commentForm').addEventListener('submit', function(event) {
+    var usernameField = document.getElementById('username');
+    var username = "<%= request.getUserPrincipal().getName() %>";
+    if (usernameField) {
+        usernameField.value = username;
+    } else {
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'username';
+        input.value = username;
+        document.getElementById('commentForm').appendChild(input);
+    }
+});
