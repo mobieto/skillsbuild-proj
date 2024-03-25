@@ -61,26 +61,38 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${courses}" var="course">
-            <tr>
-                <td>
-                    <a href="${course.link}" id="courselink" target="_blank">${course.name}</a>
-                </td>
-                <td>
-                        ${course.category}
-                </td>
-                <td><a href="/courses?newCourse=${course.name}" class="link2">Timer</a></td>
-                <td><div class="mini-progress">
-                    <div class="mini-progress-bar" style="width:${course.percentageCompleted}%;"></div>
-                </div>
-                        ${course.percentageCompleted}%
-                </td>
-                <td>
-                    <a href="/completeCourse?courseName=${course.name}&courseStatus=${course.status}" class="link2">Complete</a>
-                    <input type="hidden" name="courseStatus" value="${course.status}" />
-                </td>
-            </tr>
-        </c:forEach>
+            <c:forEach items="${courses}" var="course">
+                <tr>
+                    <td>
+                        <a href="${course.link}" id="courselink" target="_blank">${course.name}</a>
+                    </td>
+                    <td>
+                            ${course.category}
+                    </td>
+                    <td><a href="/courses?newCourse=${course.name}" class="link2">Timer</a></td>
+                    <td><div class="mini-progress">
+                        <div class="mini-progress-bar" style="width:${course.percentageCompleted}%;"></div>
+                    </div>
+                            ${course.percentageCompleted}%
+                    </td>
+                    <c:set var="isActive" value="${activeSessions.containsKey(course.name)}" />
+                    <c:set var="isPaused" value="${isActive ? activeSessions[course.name].isSessionPaused() : false}" />
+
+                    <td>
+                        <c:choose>
+                            <c:when test="${isActive and !isPaused}">
+                                <a href="/completeCourse?courseName=${course.name}&courseStatus=${course.status}" class="link2">Complete</a>
+                                <input type="hidden" name="courseStatus" value="${course.status}" />
+                            </c:when>
+                            <c:otherwise>
+                                <span class="inactive-link">Complete</span>
+                                <input type="hidden" name="courseStatus" value="${course.status}" />
+                            </c:otherwise>
+                        </c:choose>
+                    </td>
+
+                </tr>
+            </c:forEach>
         </tbody>
     </table>
 

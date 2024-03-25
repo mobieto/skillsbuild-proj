@@ -2,6 +2,7 @@ package com.example.group14project.controller;
 
 import com.example.group14project.domain.Badge;
 import com.example.group14project.domain.Course;
+import com.example.group14project.domain.CourseSession;
 import com.example.group14project.domain.SkillsBuildUser;
 import com.example.group14project.repo.BadgeRepository;
 import com.example.group14project.repo.CourseRepository;
@@ -37,7 +38,12 @@ public class DashboardController {
         courses.removeIf(playerCompletedCourses::contains);
         model.addAttribute("courses", courses);
         model.addAttribute("completed_courses", player.getCourseCompletedList());
-        model.addAttribute("active_Sessions", player.getActiveSessions());
+        Map<String, CourseSession> activeSessions = player.getActiveSessions();
+        List<String> keys = new ArrayList<>();
+        for (Map.Entry<String, CourseSession> entry : activeSessions.entrySet()) {
+            keys.add(entry.getKey());
+        }
+        model.addAttribute("activeSessions", player.getActiveSessions());
 
 
         //progress bar code

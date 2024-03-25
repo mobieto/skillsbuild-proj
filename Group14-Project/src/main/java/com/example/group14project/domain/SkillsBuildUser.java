@@ -30,7 +30,7 @@ public class SkillsBuildUser {
     @OneToMany(cascade = CascadeType.ALL)
     private List<CourseSession> activeCourseList;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Map<String, CourseSession> activeSessions = new HashMap<>();
 
     public List<CourseSession> getActiveCourseList() {

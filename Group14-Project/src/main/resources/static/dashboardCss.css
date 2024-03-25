@@ -172,6 +172,11 @@ body {
     cursor: pointer;
 }
 
+.inactive-link {
+    color: #999;
+    cursor: not-allowed;
+}
+
 td .link2 {
     color: #0f75bc;
     text-decoration: none;
