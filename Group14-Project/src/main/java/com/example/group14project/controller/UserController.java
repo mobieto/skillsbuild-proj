@@ -49,7 +49,7 @@ public class UserController {
 
         int level = user.getCurrentLevel();
         model.addAttribute("level", level);
-        float exp = user.getTotalExp();
+        int exp = user.getTotalExp();
         model.addAttribute("exp", exp);
 
         return "user";
