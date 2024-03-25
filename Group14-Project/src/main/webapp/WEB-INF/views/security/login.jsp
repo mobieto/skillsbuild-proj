@@ -18,21 +18,18 @@
         justify-content: center;
         min-height: 10vh;
     }
-
     header {
         padding: 20px;
         text-align: center;
         margin: 0;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     }
-
     #ibm-logo {
         max-width: 30%;
         height: auto;
         display: block;
         margin: 20px auto;
     }
-
     #typing-message {
         overflow: hidden;
         white-space: nowrap;
@@ -42,12 +39,10 @@
         animation: typing 10s steps(100);
         color: #0f75bc;
     }
-
     @keyframes typing {
         from { width: 0 }
         to { width: 100% }
     }
-
     form {
         text-align: center;
         margin-top: 100px;
@@ -59,18 +54,17 @@
         margin: 20px auto;
         box-shadow: 0 0 20px rgb(255, 255, 255);
     }
-
     input[type="text"],
     input[type="password"] {
         padding: 15px;
         margin-bottom: 20px;
-        width: 100%;
+        width: calc(100% - 30px);
         border: 2px solid #0f75bc;
         border-radius: 5px;
         outline: none;
     }
-
-    input[type="submit"] {
+    input[type="submit"],
+    .register-button {
         padding: 15px 30px;
         background-color: #0f75bc;
         color: white;
@@ -78,11 +72,18 @@
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s;
+        text-decoration: none;
+        width: calc(25% - 30px);
+        font-size: 16px;
     }
-
-    input[type="submit"]:hover {
+    input[type="submit"]:hover,
+    .register-button:hover {
         background-color: #095c91;
     }
+    .register-button {
+        margin-top: 10px;
+    }
+
 </style>
 </head>
 <body>
@@ -94,9 +95,9 @@
     <form action="/myLogin" method="post">
          User Name: <input type="text" name="username" /> <br/>
          Password: <input type="password" name="password" /> <br/>
-        <input type="submit" value="Sign In" /> <br/>
+        <input type="submit" value="Sign In" /> <br/><br/>
 <%--        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">--%>
-        <p><a href="/register-form">Register</a></p>
+        <a href="/register-form" class="register-button">Register</a>
     </form>
 </body>
 </html>
