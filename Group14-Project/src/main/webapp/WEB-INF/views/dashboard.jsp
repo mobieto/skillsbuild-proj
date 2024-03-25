@@ -15,12 +15,12 @@
 <div id="top">
     <img src="/logo.png">
     <p>Welcome to the dashboard page. Here you will find all available IBM SkillsBuild courses for you to access and the categories they fall under.</p>
-    <p style="display: flex; flex-direction: row; gap: 3rem">
+    <p style="display: flex; flex-direction: row; gap: 2rem">
         <a href="/leaderboard">Global Leaderboard</a>
         <a href="/user">My Profile</a>
         <a href="/friends-leaderboard">Friends Leaderboard</a>
-        <a href="/comment">Comment</a></p>
-        <a href="/goals">Course Goals</a>
+        <a href="/comment">Comment</a>
+        <a href="/goals">Course Goals</a></p>
 </div>
 <div class="P" style="text-align: center;">
     <h2>Course Completion Progress</h2>
@@ -39,7 +39,10 @@
     margin-bottom: 10px;">${percentage}%</h3>
 
 <div id="container">
-    <h2>Incomplete Courses</h2>
+    <div id="selector">
+        <button class="btn active" id="incomplete">Incomplete</button>
+        <button class="btn" id="complete">Complete</button>
+    </div>
     <table id="dashboard">
         <thead>
         <tr>
@@ -81,8 +84,7 @@
         </tbody>
     </table>
 
-            <h2>Completed Courses</h2>
-            <table id="completed_dashboard">
+            <table id="completed_dashboard" class="hidden">
                 <thead>
                     <tr>
                         <th>
