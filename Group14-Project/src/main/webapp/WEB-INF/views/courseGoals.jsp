@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.group14project.domain.CourseComment" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,32 +30,6 @@
             margin-bottom: 5px;
             font-weight: bold;
         }
-        input[type="text"],
-        input[type="number"],
-        textarea {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        textarea {
-            resize: vertical;
-            height: 100px;
-        }
-        input[type="submit"] {
-            background-color: #0f75bc;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            float: right;
-        }
-        input[type="submit"]:hover {
-            background-color: #0f75bc;
-        }
         header {
             padding: 10px;
             margin: 0;
@@ -72,6 +47,27 @@
             font-weight: bold;
         }
 
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #0f75bc;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            max-width: 140px;
+        }
+
+        .button:hover {
+            background-color: #095d91;
+        }
+
+        .buttonContainer {
+            display: flex;
+            justify-content: space-around;
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap">
@@ -83,7 +79,22 @@
         </div>
     </header>
     <div class="container">
-        <h2>Add a goal to your courses</h2>
+        <h1>Add a goal to your courses</h1>
+        <div>
+            <c:forEach var="course" items="${activeCourses}">
+                <div>
+                    <h2>${course.courseName}</h2>
+                    <c:if test="${course.endGoal != null}">
+                        <p>Your current goal is to finish the course before: ${course.getFormattedendGoal()}</p>
+                    </c:if>
+                    <div class="buttonContainer">
+                        <a href="/addGoal?courseName=${course.courseName}&goal=2" class="button">15 Days (Bronze badge)</a>
+                        <a href="/addGoal?courseName=${course.courseName}&goal=1" class="button">10 Days (Silver badge)</a>
+                        <a href="/addGoal?courseName=${course.courseName}&goal=0" class="button">2 Days (Gold badge)</a>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
     </div>
 </body>
 </html>

@@ -1,10 +1,12 @@
 package com.example.group14project.controller;
 
+import com.example.group14project.domain.Badge;
 import com.example.group14project.domain.Course;
 import com.example.group14project.domain.CourseSession;
 import com.example.group14project.domain.SkillsBuildUser;
 import com.example.group14project.repo.CourseRepository;
 import com.example.group14project.repo.SkillsBuildUserRepository;
+import com.example.group14project.service.BadgeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.example.group14project.service.CourseService;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +28,7 @@ import java.util.Map;
 public class CourseController {
 
     @Autowired
-    private SkillsBuildUserRepository repo;
+    private SkillsBuildUserRepository userRepository;
     @Autowired
     private CourseRepository courseRepository;
     private final Map<String, CourseSession> activeSessions = new HashMap<>();
@@ -54,10 +57,15 @@ public class CourseController {
 
 
     @PostMapping("/startSession")
-    public String startSession(@RequestParam String courseName, Model model) {
+    public String startSession(@RequestParam String courseName, Model model, Principal principal) {
         LocalDateTime startTime = LocalDateTime.now();
-        activeSessions.put(courseName, new CourseSession(courseName, startTime));
+        CourseSession courseSession = new CourseSession(courseName, startTime);
+        activeSessions.put(courseName, courseSession);
         model.addAttribute("courseStartTime", startTime);
+
+        SkillsBuildUser user = userRepository.findByName(principal.getName());
+        user.addActiveCourse(courseSession);
+        userRepository.save(user);
         return "redirect:/courses";
     }
     @PostMapping("/pauseSession")
@@ -82,21 +90,29 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
+    @Autowired
+    private BadgeService badgeService;
+
     @GetMapping("/completeCourse")
     public String completeCourse(@RequestParam String courseName) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String playerName = authentication.getName();
-        SkillsBuildUser player = repo.findByName(playerName);
+        SkillsBuildUser player = userRepository.findByName(playerName);
 
         if (player != null) {
             player.setCoursesCompleted(player.getCoursesCompleted() + 1);
-            repo.save(player);
-            player = repo.findByName(playerName);
+            userRepository.save(player);
             Course course = courseRepository.findByName(courseName);
-
+            CourseSession courseSession = player.getActiveCourse(courseName);
             if (course != null) {
                 player.getCourseCompletedList().add(course);
-                repo.save(player);
+                player.removeActiveCourse(courseName);
+
+                if(courseSession.getEndGoal() != null && LocalDateTime.now().isBefore(courseSession.getEndGoal())) {
+                    badgeService.awardBadgeToUser(player, courseSession.getBadge());
+                }
+
+                userRepository.save(player);
                 course.setStatus("completed");
                 courseRepository.save(course);
             }
