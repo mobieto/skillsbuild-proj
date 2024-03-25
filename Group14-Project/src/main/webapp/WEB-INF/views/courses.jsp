@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="https://www.ibm.com/content/dam/adobe-cms/default-images/favicon.svg">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Course Sessions</title>
     <style>
         input[type="submit"] {
@@ -65,17 +66,6 @@
             margin: 0;
             box-shadow: 0 5px 1px rgba(0, 0, 0, 0.2);
         }
-
-        footer {
-            <!--background-color: #0f75bc;-->
-            color: #0f75bc;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
         #logo1 {
             width: 15%;
             height: 10%;
@@ -88,9 +78,8 @@
             text-decoration: none;
             font-weight: bold;
         }
-
         a:hover {
-            color: #095c91;
+            color: #0f75bc
         }
         h3 {
             color: #0f75bc;
@@ -98,7 +87,36 @@
         p {
             color: #0f75bc;
         }
-
+        .home-sm {
+            display: flex;
+            justify-content: center;
+        }
+        .home-sm a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border: 2px solid #0f75bc;
+            background: transparent;
+            border-radius: 50%;
+            font-size: 20px;
+            color: #00abf0;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+        .home-sm a:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        .footer {
+            color: #0f75bc;
+            text-align: center;
+            padding: 155px 10px 10px;
+        }
+        .footer h3, .footer p {
+            margin: 5px 0;
+        }
     </style>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap">
 </head>
@@ -141,13 +159,13 @@
     </form>
 </div>
 <footer>
-    <div>
+    <div class ="footer">
         <h3>Follow Us</h3>
         <p>Stay connected with us on social media:</p>
-        <ul>
-            <li><a href="https://www.instagram.com/ibm/" target="_blank">Instagram</a></li>
-            <li><a href="https://www.facebook.com/IBM/" target="_blank">Facebook</a></li>
-        </ul>
+    </div>
+    <div class="home-sm">
+        <a href="https://www.instagram.com/ibm/"><i class='bx bxl-instagram'></i></a>
+        <a href="https://www.facebook.com/IBM/"><i class='bx bxl-facebook-circle'></i></a>
     </div>
 </footer>
 </body>
