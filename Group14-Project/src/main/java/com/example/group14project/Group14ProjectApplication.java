@@ -75,12 +75,14 @@ public class Group14ProjectApplication implements CommandLineRunner {
         Badge badge3 = new Badge("First Course Complete", "Congratulations, you completed your first course!");
         Badge badge4 = new Badge("5 Courses Complete", "Nice job, you completed 5 courses!");
         Badge badge5 = new Badge("First Course Complete", "Congratulations, you completed your first course!");
+        Badge badge6 = new Badge("New Level Reached", "You reached the next level!");
 
         badgeService.awardBadgeToUser(user1, badge1);
         badgeService.awardBadgeToUser(user1, badge2);
         badgeService.awardBadgeToUser(user3, badge3);
         badgeService.awardBadgeToUser(user3, badge4);
         badgeService.awardBadgeToUser(user2, badge5);
+        badgeService.awardBadgeToUser(user1, badge6);
         leaderboardRepository.save(leaderboard);
 
         friendService.sendFriendRequest("John", "Adam");
