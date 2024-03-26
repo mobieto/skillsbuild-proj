@@ -10,6 +10,16 @@
     <link rel="stylesheet" href="/commentForm.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap">
+    <script>
+        function validateForm() {
+            var comment = document.getElementById("comment").value;
+            if (comment.trim() === "") {
+                document.getElementById("commentError").style.display = "block";
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 <body>
 <header>
