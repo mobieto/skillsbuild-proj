@@ -245,3 +245,12 @@ th {
 #uploadProfileImageButton:hover {
     transform: scale(1.05);
 }
+a {
+    color: #0f75bc;
+    text-decoration: none;
+    transition: color 0.3s;
+    margin: 0 10px;
+}
+a:hover {
+    color: #f7b03e;
+}
