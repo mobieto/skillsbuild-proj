@@ -168,7 +168,7 @@ public class SkillsBuildUser {
     }
 
     public int getCurrentLevel() {
-        return 1 + totalExp / 200;
+        return 1 + totalExp / 500;
     }
 
     public int getTotalExp() {

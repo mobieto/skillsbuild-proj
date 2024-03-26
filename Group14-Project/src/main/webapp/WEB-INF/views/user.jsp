@@ -19,13 +19,13 @@
     <div class="P">
         <h2>Experience Points To Next Level</h2>
     </div>
-    <div class="progress">
-        <div class="progress-bar" style="width: ${(exp % 200) / 2}%;"
-             aria-valuenow="${(exp % 200) / 2}" aria-valuemin="0" aria-valuemax="100">
-            <span style="visibility: hidden;">${exp % 200}</span>
+    <div class="progress" style="width: 50%;">
+        <div class="progress-bar" style="width: ${(exp % 500) / 5}%;"
+             aria-valuenow="${(exp % 500) / 5}" aria-valuemin="0" aria-valuemax="100">
+            <span style="visibility: hidden;">${exp % 500}</span>
         </div>
     </div>
-    <h3 class="special">${exp % 200} / 200</h3>
+    <h3 class="special">${exp % 500} / 500</h3>
     <div id="editform">
             <button id="editButton">Edit Profile</button>
             <button id="saveButton" style="display: none;">Save Changes</button>
