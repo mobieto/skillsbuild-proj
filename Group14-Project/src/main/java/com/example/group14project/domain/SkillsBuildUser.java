@@ -42,6 +42,14 @@ public class SkillsBuildUser {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Map<String, CourseSession> activeSessions = new HashMap<>();
 
+    @Column(length = 110000000)
+    private String profilePictureBase64;
+
+    private String alias;
+    private String bio;
+
+    private byte[] profilePicture;
+
     public List<CourseSession> getActiveCourseList() {
         return activeCourseList;
     }
@@ -55,7 +63,6 @@ public class SkillsBuildUser {
     }
 
     public void removeActiveCourse(String courseSessionName) {
-        //bad for a whole host of reasons but should work for now (user shouldnt start same course twice)
         for(CourseSession courseSession : this.activeCourseList) {
             if (Objects.equals(courseSession.getCourseName(), courseSessionName)) {
                 removeActiveCourse(courseSession);
@@ -65,7 +72,6 @@ public class SkillsBuildUser {
     }
 
     public CourseSession getActiveCourse(String courseSessionName) {
-        //bad for a whole host of reasons but should work for now (user shouldnt start same course twice)
         for(CourseSession courseSession : this.activeCourseList) {
             if (Objects.equals(courseSession.getCourseName(), courseSessionName)) {
                 return courseSession;
@@ -82,7 +88,6 @@ public class SkillsBuildUser {
     }
     public Leaderboard getLeaderboard() {return leaderboard;}
     public void setLeaderboard(Leaderboard leaderboard) {this.leaderboard = leaderboard;}
-    //end of leaderboard code
 
     public String getName() {
         return name;
@@ -151,7 +156,7 @@ public class SkillsBuildUser {
     public void setCourseCompletedList(List<Course> courseCompletedList) {
         this.courseCompletedList = courseCompletedList;
     }
-    // Levels code
+
     private int totalExp;
 
     public SkillsBuildUser() {
@@ -163,7 +168,7 @@ public class SkillsBuildUser {
     }
 
     public int getCurrentLevel() {
-        return 1 + totalExp / 500;
+        return 1 + totalExp / 200;
     }
 
     public int getTotalExp() {
@@ -180,6 +185,30 @@ public class SkillsBuildUser {
 
     public void setActiveSessions(Map<String, CourseSession> activeSessions) {
         this.activeSessions = activeSessions;
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getProfilePictureBase64() {
+        return profilePictureBase64;
+    }
+
+    public void setProfilePictureBase64(String profilePictureBase64) {
+        this.profilePictureBase64 = profilePictureBase64;
     }
 
 }
