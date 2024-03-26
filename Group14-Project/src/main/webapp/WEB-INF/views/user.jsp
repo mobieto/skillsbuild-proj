@@ -36,16 +36,13 @@
                 <div id="imageContainer">
                     <img src="data:image/png;base64,${user.profilePictureBase64}" alt="Profile Image" id="profileImage">
                 </div>
-                <form action="/uploadProfileImage" method="post" enctype="multipart/form-data" id="uploadForm">
-                    <input type="file" name="profileImageFile" id="profileImageFile">
-                    <button type="submit" id="uploadProfileImageButton">Upload Image (max: 1MB)</button>
-                </form>
+                <input type="file" name="profileImageFile" id="profileImageFile" style="display: none;">
             </div>
             <div class="user-info">
                 <h3>${user.name}</h3>
                 <p>Alias:
                     <span id="alias">${user.alias}</span>
-                    <input id="aliasInput" placeholder="${user.alias}">
+                    <input id="aliasInput" value="${user.alias}">
                 </p>
                 <p>Number of courses completed: ${user.coursesCompleted}</p>
                 <p>Level: ${level}</p>

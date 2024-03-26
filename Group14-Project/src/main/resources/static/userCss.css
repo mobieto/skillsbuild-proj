@@ -218,6 +218,7 @@ th {
     overflow: hidden;
     max-width: 180px;
     position: relative;
+    width: 100%;
 }
 
 .profile-image-container img {
