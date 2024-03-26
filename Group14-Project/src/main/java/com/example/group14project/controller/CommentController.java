@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import com.example.group14project.domain.Course;
@@ -29,7 +30,8 @@ public class CommentController {
     }
 
     @PostMapping("/comment")
-    public String submitComment(CourseComment comment) {
+    public String submitComment(CourseComment comment, Principal principal) {
+        comment.setName(principal.getName());
         submittedComments.add(comment);
         return "redirect:/comment";
     }

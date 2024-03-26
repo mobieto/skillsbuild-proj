@@ -7,16 +7,18 @@ import com.example.group14project.repo.CourseRepository;
 import com.example.group14project.repo.SkillsBuildUserRepository;
 import com.example.group14project.repo.BadgeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.security.Principal;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -54,6 +56,21 @@ public class UserController {
 
         return "user";
     }
+    @GetMapping("/userProfile")
+    public String editUserProfile(Principal principal, Model model) {
+        SkillsBuildUser user = repository.findByName(principal.getName());
+        if (user == null) {
+            return "redirect:/error";
+        }
+        model.addAttribute("user", user);
+        return "userProfile";
+    }
+    @PostMapping("/user/saveEdit")
+    public String saveUserProfile(@ModelAttribute("user") SkillsBuildUser user) {
+
+        repository.save(user);
+        return "redirect:/user";
+    }
 
     @GetMapping("/users/{username}")
     public String userPublicPage(@PathVariable String username, Model model, Principal principal) {
@@ -80,4 +97,48 @@ public class UserController {
 
         return "userPublicPage";
     }
+
+    @PostMapping("/saveProfile")
+    public ResponseEntity<String> saveProfile(@RequestBody SkillsBuildUser profileData, Principal principal, Model model) {
+        SkillsBuildUser user = repository.findByName(principal.getName());
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
+
+        user.setAlias(profileData.getAlias());
+        user.setBio(profileData.getBio());
+
+        repository.save(user);
+
+        return ResponseEntity.ok("Profile saved successfully");
+    }
+
+    private static final String UPLOAD_DIR = "uploads/";
+
+    @PostMapping("/uploadProfileImage")
+    public ResponseEntity<?> handleImageUpload(@RequestParam("profileImageFile") MultipartFile file, Principal principal) {
+        if (file.isEmpty()) {
+            return ResponseEntity.badRequest().body("Please select an image file.");
+        }
+
+        System.out.println("Received file: " + file.getOriginalFilename());
+
+        try {
+            byte[] imageData = file.getBytes();
+
+            String base64Image = Base64.getEncoder().encodeToString(imageData);
+
+            SkillsBuildUser user = repository.findByName(principal.getName());
+            user.setProfilePictureBase64(base64Image);
+            repository.save(user);
+
+            return ResponseEntity.ok().body("image uploaded successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to upload image. Please try again later.");
+        }
+    }
+
 }
+

@@ -9,7 +9,10 @@
     Global Leaderboard
 </header>
 <p>See how you stack up against the rest of the world!</p>
-<p style="display: flex; flex-direction: row; gap: 3rem"><a href="/user">My Profile</a><a href="/dashboard">Courses</a><a href="/friends-leaderboard">Friends Leaderboard</a></p>
+<p style="display: flex; flex-direction: row; gap: 3rem">
+    <a href="/user">My Profile</a>
+    <a href="/dashboard">Courses</a>
+    <a href="/friends-leaderboard">Friends Leaderboard</a></p>
 
 <table>
     <thead>

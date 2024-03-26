@@ -2,39 +2,61 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <head>
     <title>User</title>
-    <link rel="stylesheet" href="/dashboardCss.css"/>
-    <link rel="stylesheet" href="/leaderboardCss.css"/>
+    <link rel="stylesheet" href="/userCss.css" />
+    <script src="/userJs.js"></script>
 </head>
 
 <body>
     <div id="top">
         <img src="/logo.png">
         <p>Welcome to your profile. Here you will find your stats and badges, along with other account info</p>
-        <p style="display: flex; flex-direction: row; gap: 3rem"><a href="/leaderboard">Global Leaderboard</a><a href="/dashboard">Courses</a><a href="/friends-leaderboard">Friends Leaderboard</a></p>
-        <div class="P" style="text-align: center;">
-            <h2>Experience Points To Next Level</h2>
+        <p>
+            <a href="/leaderboard">Global Leaderboard</a>
+            <a href="/dashboard">Courses</a>
+            <a href="/friends-leaderboard">Friends Leaderboard</a>
+        </p>
+    </div>
+    <div class="P">
+        <h2>Experience Points To Next Level</h2>
+    </div>
+    <div class="progress" style="width: 50%;">
+        <div class="progress-bar" style="width: ${(exp % 500) / 5}%;"
+             aria-valuenow="${(exp % 500) / 5}" aria-valuemin="0" aria-valuemax="100">
+            <span style="visibility: hidden;">${exp % 500}</span>
         </div>
-        <div class="progress" style="width: 75%;">
-            <div class="progress-bar" style="width: ${(exp % 200) / 2}%;"
-                 aria-valuenow="${(exp % 200) / 2}" aria-valuemin="0" aria-valuemax="100">
-                <span style="visibility: hidden;">${exp % 200}</span>
+    </div>
+    <h3 class="special">${exp % 500} / 500</h3>
+    <div id="editform">
+            <button id="editButton">Edit Profile</button>
+            <button id="saveButton" style="display: none;">Save Changes</button>
+    </div>
+    <div class="center">
+        <div class="profile-info">
+            <div class="profile-image-container">
+                <div id="imageContainer">
+                    <img src="data:image/png;base64,${user.profilePictureBase64}" alt="Profile Image" id="profileImage">
+                </div>
+                <form action="/uploadProfileImage" method="post" enctype="multipart/form-data" id="uploadForm">
+                    <input type="file" name="profileImageFile" id="profileImageFile">
+                    <button type="submit" id="uploadProfileImageButton">Upload Image (max: 1MB)</button>
+                </form>
+            </div>
+            <div class="user-info">
+                <h3>${user.name}</h3>
+                <p>Alias:
+                    <span id="alias">${user.alias}</span>
+                    <input id="aliasInput" placeholder="${user.alias}">
+                </p>
+                <p>Number of courses completed: ${user.coursesCompleted}</p>
+                <p>Level: ${level}</p>
             </div>
         </div>
-        <h3 style="text-align: center;
-    font-family: Arial, sans-serif;
-    color: #0f75bc;
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;">${exp % 200} / 200</h3>
-
-        <div class="center">
-        <h3>Username: ${user.name}</h3>
-        <p>Number of courses completed: ${user.coursesCompleted}</p>
-            <h9> Level: ${level}</h9>
         <table>
             <thead>
-                <th>Badge</th>
-                <th>Description</th>
+                <tr>
+                    <th>Badge</th>
+                    <th>Description</th>
+                </tr>
             </thead>
             <c:forEach items="${badges}" var="badge">
                 <tr>
@@ -43,12 +65,17 @@
                 </tr>
             </c:forEach>
         </table>
-        <div class="friend-list" style="margin-top: 3rem">
-            <h3 style="margin-bottom: 0.5rem">Your friends</h3>
+        <div class="bio-section">
+            <h3>Bio</h3>
+            <p id="preBio">${user.bio}</p>
+            <textarea id="bioInput" rows="4" cols="50">${user.bio}</textarea>
+        </div>
+        <div class="friend-list">
+            <h3>Your friends</h3>
             <ul>
                 <c:forEach items="${user.getFriends()}" var="friend">
-                    <li style="margin-bottom: 0.6rem">
-                        <div style="display: flex; flex-direction: row; gap: 0.8rem">
+                    <li>
+                        <div  class="friend-list-sub">
                             <a href="/users/${friend.getName()}">${friend.getName()}</a>
                             <form action="/removeFriend?username=${friend.getName()}" method="post">
                                 <input type="submit" value="Unfriend">
@@ -63,21 +90,21 @@
                 </c:choose>
             </ul>
         </div>
-        <h3 style="margin-top: 3rem; margin-bottom: 0.5rem">Add a friend</h3>
+        <h3 class="special2">Add a friend</h3>
         <form action="/sendFriendRequest" method="post">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <input type="submit" value="Add Friend">
         </form>
-        <h3 style="margin-top: 3rem; margin-bottom: 0.5rem">Friend requests</h3>
-        <div class="friend-requests-list" style="display: flex; flex-direction: row; gap: 10rem;">
-            <div style="display: flex; flex-direction: column">
-                <h4 style="margin-bottom: 0.6rem">Incoming</h4>
+        <h3 class="special2">Friend requests</h3>
+        <div class="friend-requests-list">
+            <div id="special3">
+                <h4>Incoming</h4>
                 <br>
                 <ul>
                     <c:forEach items="${user.getIncomingFriendRequests()}" var="friend">
-                        <li style="margin-bottom: 0.8rem">
-                            <div style="display: flex; flex-direction: row; gap: 1rem">
+                        <li>
+                            <div class="special4">
                                 <a href="/users/${friend.getName()}">${friend.getName()}</a>
                                 <form action="/acceptFriendRequest?username=${friend.getName()}" method="post">
                                     <input type="submit" value="Accept">
@@ -87,14 +114,13 @@
                     </c:forEach>
                 </ul>
             </div>
-
-            <div style="display: flex; flex-direction: column">
-                <h4 style="margin-bottom: 0.6rem">Outgoing</h4>
+            <div class="special5">
+                <h4>Outgoing</h4>
                 <br>
                 <ul>
                     <c:forEach items="${user.getOutgoingFriendRequests()}" var="friend">
-                        <li style="margin-bottom: 0.8rem">
-                            <div style="display: flex; flex-direction: row; gap: 1rem">
+                        <li>
+                            <div>
                                 <a href="/users/${friend.getName()}">${friend.getName()}</a>
                                 <form action="/removeFriendRequest?username=${friend.getName()}" method="post">
                                     <input type="submit" value="Remove">
@@ -111,3 +137,5 @@
         </p>
     </div>
 </body>
+
+

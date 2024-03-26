@@ -9,8 +9,10 @@
             Friends Leaderboard
         </header>
         <p>See how you stack up against your friends!</p>
-        <p style="display: flex; flex-direction: row; gap: 3rem"><a href="/leaderboard">Global Leaderboard</a><a href="/user">My Profile</a><a href="/dashboard">Courses</a></p>
-
+        <p style="display: flex; flex-direction: row; gap: 3rem">
+            <a href="/user">My Profile</a>
+            <a href="/dashboard">Courses</a>
+            <a href="/leaderboard">Global Leaderboard</a></p>
         <table>
             <thead>
                 <tr>

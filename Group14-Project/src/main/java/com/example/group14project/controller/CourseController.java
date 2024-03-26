@@ -31,11 +31,13 @@ public class CourseController {
     private SkillsBuildUserRepository userRepository;
     @Autowired
     private CourseRepository courseRepository;
-    private final Map<String, CourseSession> activeSessions = new HashMap<>();
 
     @GetMapping("/courses")
     public String showCourses(@RequestParam(required = false) String newCourse, Model model) {
-        List<String> courseList = new ArrayList<>(activeSessions.keySet());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String playerName = authentication.getName();
+        SkillsBuildUser player = userRepository.findByName(playerName);
+        List<String> courseList = new ArrayList<>(player.getActiveSessions().keySet());
         String additionalCourse = null;
 
         if (newCourse != null && !newCourse.isEmpty() && !courseList.contains(newCourse)) {
@@ -43,8 +45,8 @@ public class CourseController {
         }
 
         Map<String, String> elapsedTimeMap = new HashMap<>();
-        for (String courseName : activeSessions.keySet()) {
-            CourseSession session = activeSessions.get(courseName);
+        for (String courseName : player.getActiveSessions().keySet()) {
+            CourseSession session = player.getActiveSessions().get(courseName);
             elapsedTimeMap.put(courseName, session.getFormattedElapsedTime());
         }
 
@@ -58,32 +60,38 @@ public class CourseController {
 
     @PostMapping("/startSession")
     public String startSession(@RequestParam String courseName, Model model, Principal principal) {
+        SkillsBuildUser player = userRepository.findByName(SecurityContextHolder.getContext().getAuthentication().getName());
         LocalDateTime startTime = LocalDateTime.now();
         CourseSession courseSession = new CourseSession(courseName, startTime);
-        activeSessions.put(courseName, courseSession);
+        player.getActiveSessions().put(courseName, courseSession);
         model.addAttribute("courseStartTime", startTime);
 
         SkillsBuildUser user = userRepository.findByName(principal.getName());
         user.addActiveCourse(courseSession);
         userRepository.save(user);
+        userRepository.save(player);
         return "redirect:/courses";
     }
     @PostMapping("/pauseSession")
     public String pauseSession(@RequestParam String courseName, Model model) {
-        CourseSession session = activeSessions.get(courseName);
+        SkillsBuildUser player = userRepository.findByName(SecurityContextHolder.getContext().getAuthentication().getName());
+        CourseSession session = player.getActiveSessions().get(courseName);
         if (session != null) {
             session.pause();
             model.addAttribute("coursePauseTime", LocalDateTime.now());
         }
+        userRepository.save(player);
         return "redirect:/courses";
     }
     @PostMapping("/resumeSession")
     public String resumeSession(@RequestParam String courseName, Model model) {
-        CourseSession session = activeSessions.get(courseName);
+        SkillsBuildUser player = userRepository.findByName(SecurityContextHolder.getContext().getAuthentication().getName());
+        CourseSession session = player.getActiveSessions().get(courseName);
         if (session != null) {
             session.resume();
             model.addAttribute("courseResumeTime", LocalDateTime.now());
         }
+        userRepository.save(player);
         return "redirect:/courses";
     }
 
@@ -95,29 +103,34 @@ public class CourseController {
 
     @GetMapping("/completeCourse")
     public String completeCourse(@RequestParam String courseName) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String playerName = authentication.getName();
-        SkillsBuildUser player = userRepository.findByName(playerName);
+        SkillsBuildUser player = userRepository.findByName(SecurityContextHolder.getContext().getAuthentication().getName());
+        CourseSession session = player.getActiveSessions().get(courseName);
 
-        if (player != null) {
-            player.setCoursesCompleted(player.getCoursesCompleted() + 1);
-            userRepository.save(player);
-            Course course = courseRepository.findByName(courseName);
-            CourseSession courseSession = player.getActiveCourse(courseName);
-            if (course != null) {
-                player.getCourseCompletedList().add(course);
-                player.removeActiveCourse(courseName);
 
-                if(courseSession.getEndGoal() != null && LocalDateTime.now().isBefore(courseSession.getEndGoal())) {
-                    badgeService.awardBadgeToUser(player, courseSession.getBadge());
-                }
-                int courseExpWorth = 100;
-                player.addExp(courseExpWorth);
-                userRepository.save(player);
-                course.setStatus("completed");
-                courseRepository.save(course);
+        player.setCoursesCompleted(player.getCoursesCompleted() + 1);
+        userRepository.save(player);
+        Course course = courseRepository.findByName(courseName);
+        CourseSession courseSession = player.getActiveCourse(courseName);
+
+        if (course != null) {
+            if (session != null) {
+                session.stop();
+                course.setCompletedTime(session.getTotalTime());
+                player.getActiveSessions().remove(courseName);
             }
+            player.getCourseCompletedList().add(course);
+            player.removeActiveCourse(courseName);
+
+            if(courseSession.getEndGoal() != null && LocalDateTime.now().isBefore(courseSession.getEndGoal())) {
+                badgeService.awardBadgeToUser(player, courseSession.getBadge());
+            }
+            int courseExpWorth = 100;
+            player.addExp(courseExpWorth);
+            userRepository.save(player);
+            course.setStatus("completed");
+            courseRepository.save(course);
         }
+
         return "redirect:/dashboard";
     }
 }

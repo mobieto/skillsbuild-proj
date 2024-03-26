@@ -1,10 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const table = document.getElementById('dashboard');
+    const dashboardTable = document.getElementById('dashboard');
+    const completedDashboardTable = document.getElementById('completed_dashboard');
     const courseSortIcon = document.getElementById('course_click');
     const categorySortIcon = document.getElementById('category_click');
+    const completedCourseSortIcon = document.getElementById('completed_course_click');
+    const completedCategorySortIcon = document.getElementById('completed_category_click');
 
-    let currentlySortedColumn = 'course';
-    let isAscending = true;
+    let currentlySortedColumnDashboard = 'course';
+    let currentlySortedColumnCompletedDashboard = 'course';
+    let isAscendingDashboard = true;
+    let isAscendingCompletedDashboard = true;
 
     function updateSortIcon(sortIcon, isAscending) {
         sortIcon.classList.remove('fa-sort', 'fa-sort-up', 'fa-sort-down');
@@ -16,22 +21,42 @@ document.addEventListener('DOMContentLoaded', () => {
         sortIcon.classList.add('fa-sort');
     }
 
-    function handleSortClick(sortIcon, sortBy) {
+    function handleSortClick(sortIcon, sortBy, table) {
+        let isAscending;
+        let currentlySortedColumn;
+
+        if (table === dashboardTable) {
+            isAscending = isAscendingDashboard;
+            currentlySortedColumn = currentlySortedColumnDashboard;
+            currentlySortedColumnDashboard = sortBy;
+        } else {
+            isAscending = isAscendingCompletedDashboard;
+            currentlySortedColumn = currentlySortedColumnCompletedDashboard;
+            currentlySortedColumnCompletedDashboard = sortBy;
+        }
+
         if (currentlySortedColumn !== sortBy) isAscending = true;
         else isAscending = !isAscending;
 
-        currentlySortedColumn = sortBy;
+        if (table === dashboardTable) {
+            isAscendingDashboard = isAscending;
+            resetSortIcon(courseSortIcon);
+            resetSortIcon(categorySortIcon);
+        } else {
+            isAscendingCompletedDashboard = isAscending;
+            resetSortIcon(completedCourseSortIcon);
+            resetSortIcon(completedCategorySortIcon);
+        }
 
-        resetSortIcon(courseSortIcon);
-        resetSortIcon(categorySortIcon);
         updateSortIcon(sortIcon, isAscending);
 
-        sortTableRows(sortBy);
+        sortTableRows(sortBy, isAscending, table);
     }
 
-    function sortTableRows(sortBy) {
+    function sortTableRows(sortBy, isAscending, table) {
         const rows = Array.from(table.querySelectorAll('tbody tr'));
-        const colIndex = sortBy === 'course' ? courseSortIcon.parentElement.cellIndex : categorySortIcon.parentElement.cellIndex;
+        const sortIcon = table === dashboardTable ? document.getElementById('course_click') : document.getElementById('completed_course_click');
+        const colIndex = sortBy === 'course' ? sortIcon.parentElement.cellIndex : sortIcon.parentElement.cellIndex + 1; // Adjusted column index for category
 
         const sortedRows = rows.sort((a, b) => {
             const valueA = a.cells[colIndex].textContent.trim().toLowerCase();
@@ -44,6 +69,25 @@ document.addEventListener('DOMContentLoaded', () => {
         sortedRows.forEach(row => tbody.appendChild(row));
     }
 
-    courseSortIcon.addEventListener('click', () => handleSortClick(courseSortIcon, 'course'));
-    categorySortIcon.addEventListener('click', () => handleSortClick(categorySortIcon, 'category'));
+    courseSortIcon.addEventListener('click', () => handleSortClick(courseSortIcon, 'course', dashboardTable));
+    categorySortIcon.addEventListener('click', () => handleSortClick(categorySortIcon, 'category', dashboardTable));
+    completedCourseSortIcon.addEventListener('click', () => handleSortClick(completedCourseSortIcon, 'course', completedDashboardTable));
+    completedCategorySortIcon.addEventListener('click', () => handleSortClick(completedCategorySortIcon, 'category', completedDashboardTable));
+
+    function showIncomplete() {
+        document.getElementById("incomplete").classList.add("active");
+        document.getElementById("complete").classList.remove("active");
+        document.getElementById("dashboard").classList.remove("hidden");
+        document.getElementById("completed_dashboard").classList.add("hidden");
+    }
+
+    function showComplete() {
+        document.getElementById("complete").classList.add("active");
+        document.getElementById("incomplete").classList.remove("active");
+        document.getElementById("completed_dashboard").classList.remove("hidden");
+        document.getElementById("dashboard").classList.add("hidden");
+    }
+
+    document.getElementById("incomplete").addEventListener("click", showIncomplete);
+    document.getElementById("complete").addEventListener("click", showComplete);
 });
