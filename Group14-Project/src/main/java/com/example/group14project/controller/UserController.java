@@ -121,8 +121,6 @@ public class UserController {
             return ResponseEntity.badRequest().body("Please select an image file.");
         }
 
-        System.out.println("Received file: " + file.getOriginalFilename());
-
         try {
             byte[] imageData = file.getBytes();
 
