@@ -7,19 +7,24 @@ import com.example.group14project.repo.CourseRepository;
 import com.example.group14project.repo.SkillsBuildUserRepository;
 import com.example.group14project.repo.BadgeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
 
 import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
+
 
 @Controller
 public class UserController {
@@ -56,6 +61,7 @@ public class UserController {
 
         return "user";
     }
+
     @GetMapping("/userProfile")
     public String editUserProfile(Principal principal, Model model) {
         SkillsBuildUser user = repository.findByName(principal.getName());
@@ -65,26 +71,37 @@ public class UserController {
         model.addAttribute("user", user);
         return "userProfile";
     }
-    @PostMapping("/user/saveEdit")
-    public String saveUserProfile(@ModelAttribute("user") SkillsBuildUser user) {
 
-        repository.save(user);
+    @PostMapping("/user/saveEdit")
+    public String saveUserProfile(@ModelAttribute("user") SkillsBuildUser updatedUser, Principal principal) {
+        SkillsBuildUser existingUser = repository.findByName(principal.getName());
+        if (existingUser == null) {
+            return "redirect:/error";
+        }
+        existingUser.setDob(updatedUser.getDob());
+
+        repository.save(existingUser);
         return "redirect:/user";
     }
+
 
     @GetMapping("/users/{username}")
     public String userPublicPage(@PathVariable String username, Model model, Principal principal) {
         SkillsBuildUser user = repository.findByName(username);
         SkillsBuildUser principalUser = repository.findByName(principal.getName());
 
-        if (user == null) { return "userNotFound"; }
+        if (user == null) {
+            return "userNotFound";
+        }
 
         List<Badge> playerBadges = badgeRepository.findByOwner(user.getName());
 
         model.addAttribute("user", user);
         model.addAttribute("badges", playerBadges);
 
-        if (principal.getName().equals(user.getName())) { return "user"; }
+        if (principal.getName().equals(user.getName())) {
+            return "user";
+        }
 
         List<String> principalFriends = principalUser.getFriends().stream().map(SkillsBuildUser::getName).toList();
         List<String> principalOutgoingRequests = principalUser.getOutgoingFriendRequests().stream().map(SkillsBuildUser::getName).toList();
@@ -100,13 +117,16 @@ public class UserController {
 
     @PostMapping("/saveProfile")
     public ResponseEntity<String> saveProfile(@RequestBody SkillsBuildUser profileData, Principal principal, Model model) {
-        SkillsBuildUser user = repository.findByName(principal.getName());
+        SkillsBuildUser user = null;
+        System.out.println(user.getDob());
+        user = repository.findByName(principal.getName());
         if (user == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
         }
 
         user.setAlias(profileData.getAlias());
         user.setBio(profileData.getBio());
+        user.setDob(profileData.getDob());
 
         repository.save(user);
 
@@ -138,5 +158,17 @@ public class UserController {
         }
     }
 
+    @InitBinder
+    public void initBinder(final WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // Define the date format
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+    }
 }
+
+
+
+
+
+
 

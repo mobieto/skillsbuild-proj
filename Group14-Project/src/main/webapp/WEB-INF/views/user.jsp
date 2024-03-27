@@ -1,5 +1,7 @@
 <!DOCTYPE HTML>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <head>
     <title>User</title>
     <link rel="stylesheet" href="/userCss.css" />
@@ -46,6 +48,21 @@
                 </p>
                 <p>Number of courses completed: ${user.coursesCompleted}</p>
                 <p>Level: ${level}</p>
+                <p>D.O.B:
+                    <span id="dob">${dob}</span>
+                    <input id="dobInput" placeholder="${dob}">
+                    <fmt:formatDate value="${user.dob}" pattern="dd MMMM yyyy" />
+
+                </p>
+                <p>Occupation:
+                    <select id="occupation" name="occupation">
+                        <option value="unemployed">Unemployed</option>
+                        <option value="employed">Employed</option>
+                        <option value="self-employed">Self-employed</option>
+                        <option value="student">Student</option>
+                        <option value="retired">Retired</option>
+                    </select>
+
             </div>
         </div>
         <table>

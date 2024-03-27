@@ -1,7 +1,9 @@
 package com.example.group14project.domain;
+import java.time.LocalDate;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.*;
 
 @Entity
@@ -10,6 +12,7 @@ public class SkillsBuildUser {
     @Id
     private String name;
     private String password;
+    private LocalDate dob;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<UserRole> userRoles = new ArrayList<>();
     @ManyToMany(fetch = FetchType.EAGER)
@@ -25,6 +28,8 @@ public class SkillsBuildUser {
     private Leaderboard leaderboard;
     private int coursesCompleted;
     private Long id;
+    
+
 
     public Long getId() {
         return id;
@@ -33,6 +38,7 @@ public class SkillsBuildUser {
     public void setId(Long id) {
         this.id = id;
     }
+
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Course> courseCompletedList;
 
@@ -63,7 +69,7 @@ public class SkillsBuildUser {
     }
 
     public void removeActiveCourse(String courseSessionName) {
-        for(CourseSession courseSession : this.activeCourseList) {
+        for (CourseSession courseSession : this.activeCourseList) {
             if (Objects.equals(courseSession.getCourseName(), courseSessionName)) {
                 removeActiveCourse(courseSession);
                 return;
@@ -72,7 +78,7 @@ public class SkillsBuildUser {
     }
 
     public CourseSession getActiveCourse(String courseSessionName) {
-        for(CourseSession courseSession : this.activeCourseList) {
+        for (CourseSession courseSession : this.activeCourseList) {
             if (Objects.equals(courseSession.getCourseName(), courseSessionName)) {
                 return courseSession;
             }
@@ -83,11 +89,18 @@ public class SkillsBuildUser {
     public int getCoursesCompleted() {
         return coursesCompleted;
     }
+
     public void setCoursesCompleted(int coursesCompleted) {
         this.coursesCompleted = coursesCompleted;
     }
-    public Leaderboard getLeaderboard() {return leaderboard;}
-    public void setLeaderboard(Leaderboard leaderboard) {this.leaderboard = leaderboard;}
+
+    public Leaderboard getLeaderboard() {
+        return leaderboard;
+    }
+
+    public void setLeaderboard(Leaderboard leaderboard) {
+        this.leaderboard = leaderboard;
+    }
 
     public String getName() {
         return name;
@@ -195,6 +208,7 @@ public class SkillsBuildUser {
         this.alias = alias;
     }
 
+
     public String getBio() {
         return bio;
     }
@@ -211,4 +225,21 @@ public class SkillsBuildUser {
         this.profilePictureBase64 = profilePictureBase64;
     }
 
+    public LocalDate getDob() {
+        return dob;
+    }
+
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
 }
+
+
+
+
+
+   
+    
+
+  

@@ -16,8 +16,17 @@
         <form:label path="email">Email:</form:label>
         <form:input path="email" />
     </div>
-    <!-- Add other fields as needed -->
-    <input type="submit" value="Save Changes"/>
+    <div>
+        <form:label path="dob">D.O.B:</form:label>
+        <form:input path="dob" type="date" />
+    </div>
+<div>
+
+</div>
+<input type="submit" value="Save Changes" style="display:none;" id="saveChangesBtn"/>
+<button type="button" onclick="enableFields()" id="editProfileBtn">Edit Profile</button>
+
 </form:form>
+
 </body>
 </html>
