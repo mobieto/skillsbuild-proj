@@ -1,9 +1,0 @@
-Definition of done
-
-1. code for the user story is fully completed
-2. Security when handling users sensitive data   
-3. Successful extensive testing   
-4. Follows IBM branding  
-5. No known defects   
-6. user documentation for this story is completed
-7. Approved by stakeholders   
